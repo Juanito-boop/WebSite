@@ -2,32 +2,40 @@
   font-family: 'Inconsolata';
   src: url(../fonts/inconsolata.ttf);
 }
+
 @font-face {
   font-family: 'poppins';
   src: url(../fonts/poppins-Bold.ttf);
 }
+
 * {
   box-sizing: border-box;
 }
+
 body {
   margin: 0;
   font-family: 'Inconsolata';
-  background-image: url(../img/brown-wooden-flooring.jpg);
+  background-image: url("https://www.freepik.es/foto-gratis/material-fondo-textura-tablon-madera_2992159.htm#query=patron%20de%20madera&position=7&from_view=keyword");
 }
+
 img {
   display: block;
   width: 100%;
 }
+
 .logo {
   height: 30px;
   width: 30px;
 }
+
 .main-nav {
   display: none;
 }
+
 .main-header {
   padding: 0 20px;
 }
+
 .main-header__title {
   text-align: center;
   font-size: 2.5em;
@@ -35,22 +43,26 @@ img {
   color: #ffffff;
   font-family: 'poppins';
 }
+
 .main-header__container {
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
+
 .main-header__txt {
   font-size: 1em;
   color: #ffffff;
   font-family: 'poppins';
 }
+
 .icon-menu {
   font-size: 1.5em;
   border: 1px solid #454546;
   display: block;
   padding: 10px 20px;
 }
+
 .main-header__btn {
   display: block;
   padding: 10px 20px;
@@ -64,16 +76,19 @@ img {
   padding: 10px;
   width: 80%;
 }
+
 .main {
   padding: 0 20px;
   padding-bottom: 200px;
 }
+
 /*Estilos de slider*/
 .container-slider {
   margin: 50px 0;
   position: relative;
   overflow: hidden;
 }
+
 .slider {
   display: flex;
   width: 400%;
@@ -81,6 +96,7 @@ img {
   margin-left: -100%;
   position: relative;
 }
+
 .slider:before {
   content: '';
   position: absolute;
@@ -91,16 +107,19 @@ img {
   background: rgb(0, 0, 0, 0.5);
   height: 100%;
 }
+
 .slider__section {
   width: 100%;
   position: relative;
 }
+
 .slider__img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
+
 .slider__btn {
   position: absolute;
   width: 40px;
@@ -124,15 +143,19 @@ img {
   -ms-border-radius: 50%;
   -o-border-radius: 50%;
 }
+
 .slider__btn:hover {
   background: #ffffff;
 }
+
 .slider__btn--left {
   left: 10px;
 }
+
 .slider__btn--right {
   right: 10px;
 }
+
 .slider__content {
   position: absolute;
   top: 50%;
@@ -147,13 +170,16 @@ img {
   -o-transform: translate(-50%, -50%);
   z-index: 2;
 }
+
 .slider__title {
   font-size: 2em;
   margin: 0;
 }
+
 .slider__txt {
   margin: 5px 0;
 }
+
 .slider__link {
   display: block;
   border: 1px solid #ccc;
@@ -164,6 +190,7 @@ img {
   width: 150px;
   margin: 20px auto;
 }
+
 /*Estilos de productos*/
 .container-products {
   display: grid;
@@ -173,12 +200,14 @@ img {
   margin-bottom: 20px;
   grid-gap: 20px;
 }
+
 .product {
   border: 1px solid #ccc;
   padding: 20px;
   text-align: center;
   position: relative;
 }
+
 .product:before {
   content: 'New';
   background: #ff4e08;
@@ -194,44 +223,54 @@ img {
   -ms-transform: rotate(-90deg);
   -o-transform: rotate(-90deg);
 }
+
 .product__img {
   width: 100%;
   height: 100px;
   object-fit: cover;
 }
+
 .product__title {
   text-align: center;
 }
+
 .product__price {
   color: #ff4e00;
   font-weight: bold;
 }
+
 .product__icon {
   display: block;
   margin-top: 10px;
 }
+
 .container__testimonials {
   text-align: center;
   background: #f7f7f7;
   padding: 20px;
   margin: 20px 0;
 }
+
 .testimonials__txt {
   color: #777;
 }
+
 .container-editor {
   margin-top: 20px;
 }
+
 .editor__item {
   height: 200px;
   position: relative;
   overflow: hidden;
 }
+
 .editor__img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
+
 .editor__circle {
   width: 200px;
   height: 200px;
@@ -256,6 +295,7 @@ img {
   -ms-transition: all 0.5s;
   -o-transition: all 0.5s;
 }
+
 .editor__item:hover .editor__circle {
   bottom: -90px;
   right: -50px;
@@ -265,6 +305,7 @@ img {
   -ms-transform: scale(1.2);
   -o-transform: scale(1.2);
 }
+
 .editor__item:before {
   content: '';
   position: absolute;
@@ -280,18 +321,22 @@ img {
   -ms-transition: all 0.5s;
   -o-transition: all 0.5s;
 }
+
 .editor__item:hover:before {
   opacity: 1;
 }
+
 .container-tips {
   text-align: center;
   background: #747474;
   padding: 20px;
   margin: 20px 0;
 }
+
 .container-tips p {
   color: #fff;
 }
+
 .btn__shop {
   display: block;
   border: 1px solid rgb(0, 0, 0);
@@ -302,24 +347,29 @@ img {
   width: 150px;
   margin: 20px auto;
 }
+
 .main-footer {
   background: #151515;
   color: #fff;
   padding: 30px 20px;
 }
+
 .footer__title {
   border-bottom: 1px dotted #555;
   padding-bottom: 20px;
 }
+
 .footer__txt {
   color: #555;
 }
+
 .footer__link {
   color: #555;
   text-decoration: none;
   display: block;
   padding: 10px 0;
 }
+
 .footer__input {
   background: #151515;
   width: 100%;
@@ -327,7 +377,9 @@ img {
   padding: 20px;
   border: 1px solid #555;
 }
+
 .copy {
   color: #555;
 }
+
 /*Estilos para tablet*/
