@@ -5,6 +5,7 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="img/logo.png" />
     <link rel="stylesheet" href="css/Style.css" />
+    <link rel="stylesheet" href="css/Hamburguer.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
     <title>Tienda Online</title>
 </head>
@@ -15,16 +16,29 @@
             <div class="main-header__container">
                 <img src="img/logo.png" alt="" class="logo">
                 <h1 class="main-header__title">WINE STORE</h1>
-                <span class="icon-menu fas fa-bars" id="btn-menu"></span>
-                <nav class="main-nav" id="main-nav">
-                    <ul class="menu">
-                        <li class="menu__item"><a href="index.html" class="menu__link">HOME</a></li>
-                        <li class="menu__item"><a href="" class="menu__link">ABOUT</a></li>
-                        <li class="menu__item"><a href="" class="menu__link">FEATURES</a></li>
-                        <li class="menu__item"><a href="" class="menu__link">SHOP</a></li>
-                        <li class="menu__item"><a href="" class="menu__link">CONTACT</a></li>
+                <div class="icono-menu">
+                    <img src="img/bars-solid.svg" id="icono-menu">
+                </div>
+                <div class="cont-menu active" id="menu">
+                    <ul>
+                        <a href="index.html">
+                            <li> Home </li>
+                        </a>
+                        <a href="">
+                            <li> About </li>
+                        </a>
+                        <a href="">
+                            <li> Info </li>
+                        </a>
+                        <a href="">
+                            <li> Contact </li>
+                        </a>
+                        <a href="">
+                            <li> Show me more </li>
+                        </a>
                     </ul>
-                </nav>
+                </div>
+
             </div>
             <div class="main-header__container">
                 <!-- <span class="main-header__txt">Need Help</span> -->
@@ -122,30 +136,6 @@
                     </div>
                     <em class="product__icon fas fa-cart-plus"></em>
                 </div>
-                <div class="product">
-                    <img src="img/producto2.jpg" alt="" class="product__img">
-                    <div class="product__description">
-                        <h3 class="product__title">Wine Bottle</h3>
-                        <span class="product__price">$50.00 USD</span>
-                    </div>
-                    <em class="product__icon fas fa-cart-plus"></em>
-                </div>
-                <div class="product">
-                    <img src="img/producto3.jpg" alt="" class="product__img">
-                    <div class="product__description">
-                        <h3 class="product__title">Wine Bottle</h3>
-                        <span class="product__price">$50.00 USD</span>
-                    </div>
-                    <em class="product__icon fas fa-cart-plus"></em>
-                </div>
-                <div class="product">
-                    <img src="img/producto4.jpg" alt="" class="product__img">
-                    <div class="product__description">
-                        <h3 class="product__title">Wine Bottle</h3>
-                        <span class="product__price">$50.00 USD</span>
-                    </div>
-                    <em class="product__icon fas fa-cart-plus"></em>
-                </div>
             </section>
             <section class="container-products">
                 <div class="product">
@@ -188,30 +178,6 @@
                     </div>
                     <em class="product__icon fas fa-cart-plus"></em>
                 </div>
-                <div class="product">
-                    <img src="img/producto2.jpg" alt="" class="product__img">
-                    <div class="product__description">
-                        <h3 class="product__title">Wine Bottle</h3>
-                        <span class="product__price">$50.00 USD</span>
-                    </div>
-                    <em class="product__icon fas fa-cart-plus"></em>
-                </div>
-                <div class="product">
-                    <img src="img/producto3.jpg" alt="" class="product__img">
-                    <div class="product__description">
-                        <h3 class="product__title">Wine Bottle</h3>
-                        <span class="product__price">$50.00 USD</span>
-                    </div>
-                    <em class="product__icon fas fa-cart-plus"></em>
-                </div>
-                <div class="product">
-                    <img src="img/producto4.jpg" alt="" class="product__img">
-                    <div class="product__description">
-                        <h3 class="product__title">Wine Bottle</h3>
-                        <span class="product__price">$50.00 USD</span>
-                    </div>
-                    <em class="product__icon fas fa-cart-plus"></em>
-                </div>
             </section>
             <section class="container-products">
                 <div class="product">
@@ -248,96 +214,6 @@
                 </div>
                 <div class="product">
                     <img src="img/producto1.jpg" alt="" class="product__img">
-                    <div class="product__description">
-                        <h3 class="product__title">Wine Bottle</h3>
-                        <span class="product__price">$50.00 USD</span>
-                    </div>
-                    <em class="product__icon fas fa-cart-plus"></em>
-                </div>
-                <div class="product">
-                    <img src="img/producto2.jpg" alt="" class="product__img">
-                    <div class="product__description">
-                        <h3 class="product__title">Wine Bottle</h3>
-                        <span class="product__price">$50.00 USD</span>
-                    </div>
-                    <em class="product__icon fas fa-cart-plus"></em>
-                </div>
-                <div class="product">
-                    <img src="img/producto3.jpg" alt="" class="product__img">
-                    <div class="product__description">
-                        <h3 class="product__title">Wine Bottle</h3>
-                        <span class="product__price">$50.00 USD</span>
-                    </div>
-                    <em class="product__icon fas fa-cart-plus"></em>
-                </div>
-                <div class="product">
-                    <img src="img/producto4.jpg" alt="" class="product__img">
-                    <div class="product__description">
-                        <h3 class="product__title">Wine Bottle</h3>
-                        <span class="product__price">$50.00 USD</span>
-                    </div>
-                    <em class="product__icon fas fa-cart-plus"></em>
-                </div>
-            </section>
-            <section class="container-products">
-                <div class="product">
-                    <img src="img/producto1.jpg" alt="" class="product__img">
-                    <div class="product__description">
-                        <h3 class="product__title">Wine Bottle</h3>
-                        <span class="product__price">$50.00 USD</span>
-                    </div>
-                    <em class="product__icon fas fa-cart-plus"></em>
-                </div>
-                <div class="product">
-                    <img src="img/producto2.jpg" alt="" class="product__img">
-                    <div class="product__description">
-                        <h3 class="product__title">Wine Bottle</h3>
-                        <span class="product__price">$50.00 USD</span>
-                    </div>
-                    <em class="product__icon fas fa-cart-plus"></em>
-                </div>
-                <div class="product">
-                    <img src="img/producto3.jpg" alt="" class="product__img">
-                    <div class="product__description">
-                        <h3 class="product__title">Wine Bottle</h3>
-                        <span class="product__price">$50.00 USD</span>
-                    </div>
-                    <em class="product__icon fas fa-cart-plus"></em>
-                </div>
-                <div class="product">
-                    <img src="img/producto4.jpg" alt="" class="product__img">
-                    <div class="product__description">
-                        <h3 class="product__title">Wine Bottle</h3>
-                        <span class="product__price">$50.00 USD</span>
-                    </div>
-                    <em class="product__icon fas fa-cart-plus"></em>
-                </div>
-                <div class="product">
-                    <img src="img/producto1.jpg" alt="" class="product__img">
-                    <div class="product__description">
-                        <h3 class="product__title">Wine Bottle</h3>
-                        <span class="product__price">$50.00 USD</span>
-                    </div>
-                    <em class="product__icon fas fa-cart-plus"></em>
-                </div>
-                <div class="product">
-                    <img src="img/producto2.jpg" alt="" class="product__img">
-                    <div class="product__description">
-                        <h3 class="product__title">Wine Bottle</h3>
-                        <span class="product__price">$50.00 USD</span>
-                    </div>
-                    <em class="product__icon fas fa-cart-plus"></em>
-                </div>
-                <div class="product">
-                    <img src="img/producto3.jpg" alt="" class="product__img">
-                    <div class="product__description">
-                        <h3 class="product__title">Wine Bottle</h3>
-                        <span class="product__price">$50.00 USD</span>
-                    </div>
-                    <em class="product__icon fas fa-cart-plus"></em>
-                </div>
-                <div class="product">
-                    <img src="img/producto4.jpg" alt="" class="product__img">
                     <div class="product__description">
                         <h3 class="product__title">Wine Bottle</h3>
                         <span class="product__price">$50.00 USD</span>
@@ -424,6 +300,7 @@
         </footer>
     </section>
     <script src="js/slider.js"></script>
+    <script src="js/hamburguer.js"></script>
 </body>
 
 </html>
