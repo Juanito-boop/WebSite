@@ -15,8 +15,9 @@
 body {
   margin: 0;
   font-family: 'Inconsolata';
-  background-image: url("https://www.freepik.es/foto-gratis/material-fondo-textura-tablon-madera_2992159.htm#query=patron%20de%20madera&position=7&from_view=keyword");
+  background-image:url("https://images2.alphacoders.com/473/thumb-1920-473240.jpg");
 }
+
 
 img {
   display: block;
@@ -40,8 +41,8 @@ img {
   text-align: center;
   font-size: 2.5em;
   margin: 10px 0;
-  color: #ffffff;
-  font-family: 'poppins';
+  color: #141313;
+  font-family: ' italic';
 }
 
 .main-header__container {
@@ -52,13 +53,13 @@ img {
 
 .main-header__txt {
   font-size: 1em;
-  color: #ffffff;
+  color: #f1f1f1;
   font-family: 'poppins';
 }
 
 .icon-menu {
   font-size: 1.5em;
-  border: 1px solid #454546;
+  border: 1px solid #cecece;
   display: block;
   padding: 10px 20px;
 }
@@ -66,8 +67,8 @@ img {
 .main-header__btn {
   display: block;
   padding: 10px 20px;
-  color: #ffffff;
-  border: 1px solid #ffffff;
+  color: #dfd5d5;
+  border: 1px solid #cec8c8;
   text-decoration: none;
 }
 
@@ -209,8 +210,8 @@ img {
 }
 
 .product:before {
-  content: 'New';
-  background: #ff4e08;
+  content: 'NUEVO';
+  background: #910831;
   padding: 10px;
   width: 60px;
   position: absolute;
@@ -235,7 +236,7 @@ img {
 }
 
 .product__price {
-  color: #ff4e00;
+  color: #141313;
   font-weight: bold;
 }
 
@@ -246,13 +247,13 @@ img {
 
 .container__testimonials {
   text-align: center;
-  background: #f7f7f7;
+  background: #e6b120;
   padding: 20px;
   margin: 20px 0;
 }
 
 .testimonials__txt {
-  color: #777;
+  color: rgb(143, 4, 50);
 }
 
 .container-editor {
