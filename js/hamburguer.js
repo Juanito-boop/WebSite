@@ -10,8 +10,8 @@ iconoMenu.addEventListener('click', (e) => {
   const rutaActual = e.target.getAttribute('src')
 
   if (rutaActual == './img/icono-menu.svg') {
-    e.target.setAttribute('src', './img/icono-menu.svg')
+    e.target.setAttribute('./img/icono-menu.svg')
   } else {
-    e.target.setAttribute('src', './img/icono-menu.svg')
+    e.target.setAttribute('./img/icono-menu.svg')
   }
 })
