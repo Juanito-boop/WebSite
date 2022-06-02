@@ -61,6 +61,8 @@ h2 {
 .product {
   border: 1px solid #ccc;
   padding: 20px;
+  width: 200px;
+  height: 250px;
   text-align: center;
   position: relative;
 }
