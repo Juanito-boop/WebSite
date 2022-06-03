@@ -25,6 +25,14 @@
     font-family: ' Raleway';
 }
 
+.main-header-subsubtitle {
+    text-align: center;
+    font-size: 1em;
+    margin: 10px 0;
+    color: rgb(39, 39, 39);
+    font-family: ' Raleway';
+}
+
 .main-header__container {
     display: flex;
     justify-content: space-around;
