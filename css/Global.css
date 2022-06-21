@@ -20,7 +20,8 @@
 body {
   margin: 0;
   font-family: 'Inconsolata';
-  background-image: url("../img/—Pngtree—dark\ wooden\ panel\ background\ with_1159330.png");
+  /* background-image: url("../img/—Pngtree—dark\ wooden\ panel\ background\ with_1159330.png"); */
+  background-image: url("../img/vinos/wood-purple.png");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;

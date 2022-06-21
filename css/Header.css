@@ -10,6 +10,10 @@
 
 .main-header {
     padding: 0 20px;
+    width: 100%;
+    /* top: 0;
+    position: fixed;
+    z-index: 100; */
 }
 
 .centrado1 {
@@ -26,10 +30,11 @@
 }
 
 .main-header-subsubtitle {
+    FONT-VARIANT: JIS04;
     text-align: center;
     font-size: 1em;
     margin: 10px 0;
-    color: rgb(39, 39, 39);
+    color: rgb(0, 0, 0);
     font-family: ' Raleway';
 }
 
@@ -54,14 +59,6 @@
     padding: 10px 20px;
 }
 
-.main-header__btn {
-    display: block;
-    padding: 10px 20px;
-    color: #000000;
-    border: 2px outset #efb810;
-    text-decoration: none;
-}
-
 .main-header__input {
     display: block;
     padding: 10px;
@@ -69,6 +66,11 @@
     border-radius: 40px;
     border: 3px solid;
     border-color: #690069;
+}
+
+#lupa {
+    color: #fff;
+    box-shadow: #000 1px 0 20px;
 }
 
 .main {
