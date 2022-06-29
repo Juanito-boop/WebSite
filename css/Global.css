@@ -198,4 +198,25 @@ h2 {
   color: #555;
 }
 
+.flotante {
+  align-items: center;
+  width: 90%;
+  height: 90%;
+  border: 1px solid violet;
+  background: inherit;
+  width: 150px;
+  height: 150px;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  cursor: pointer;
+  z-index: 100000;
+}
+
+.flotante::before {
+  box-shadow: inset 0 0 2000px rgba(255, 255, 255, .5);
+  filter: blur(10px);
+  background: inherit;
+}
+
 /*Estilos para tablet*/

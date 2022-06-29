@@ -1,6 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="img/image-removebg-preview.png" />
