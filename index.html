@@ -16,54 +16,55 @@
     <title>Vinos De La Villa</title>
 </head>
 
-<body>
-    <header class="main-header">
-        <div class="container container--flex">
-            <br>
-            <div class="main-header__container">
-                <img src="img/image-removebg-preview.png" alt="" class="logo">
-                <section class="centrado1">
-                    <h1 class="main-header__title">LOS VINOS</h1>
-                    <h2 class="main-header__subtitle"><i>Tienda Gourmet</i></h2>
-                    <strong>
-                        <h3 class="main-header-subsubtitle">Carrera 9 11 47 Segundo piso de La Galleta</h3>
-                    </strong>
-                    <br>
-                    <div class="main-header__container">
-                        <p class="main-header__txt">CONTACTANOS (+57) 3219085857 <em class="fas fa-phone"></em></p>
-                    </div>
-                </section>
-                <div class="icono-menu">
-                    <img src="img/bars-solid.svg" id="icono-menu">
-                </div>
-                <div class="cont-menu active" id="menu">
-                    <ul>
-                        <a href="index.html">
-                            <li> Home </li>
-                        </a>
-                        <a href="">
-                            <li> Sepas </li>
-                        </a>
-                        <!-- <a href=""><li> Info </li></a>
-                        <a href=""><li> Contact </li></a>
-                        <a href=""><li> Show me more </li></a> -->
-                    </ul>
+<header class="main-header">
+    <div class="container container--flex">
+        <br>
+        <div class="main-header__container">
+            <img src="img/image-removebg-preview.png" alt="" class="logo">
+            <div class="centrado1">
+                <h1 class="main-header__title">LOS VINOS</h1>
+                <h2 class="main-header__subtitle"><i>Tienda Gourmet</i></h2>
+                <strong>
+                    <h3 class="main-header-subsubtitle">Carrera 9 11 47 Segundo piso de La Galleta</h3>
+                </strong>
+                <br>
+                <div class="main-header__container">
+                    <p class="main-header__txt">CONTACTANOS (+57) 3219085857 <em class="fas fa-phone"></em></p>
                 </div>
             </div>
-            <br>
+            <div class="icono-menu">
+                <img src="img/bars-solid.svg" id="icono-menu">
+            </div>
+            <div class="cont-menu active" id="menu">
+                <ul>
+                    <a href="index.html">
+                        <li> Home </li>
+                    </a>
+                    <a href="">
+                        <li> Sepas </li>
+                    </a>
+                    <!-- <a href=""><li> Info </li></a>
+                    <a href=""><li> Contact </li></a>
+                    <a href=""><li> Show me more </li></a> -->
+                </ul>
+            </div>
         </div>
-    </header>
-    <section class="main">
-        <div class="main-header__container">
-            <!-- <a href="login.html" class="product-btn"><em class="fas fa-user"></em></a>
-            <a href="" class="product-btn"><em class="fas fa-shopping-cart"></em></a> -->
-            <input type="search" class="main-header__input" placeholder="Que Producto Deseas Buscar? ">
-            <em class="fas fa-search" id="lupa
-            "></em>
-        </div>
+        <br>
+    </div>
+    <div class="main-header__container">
+        <!-- <a href="login.html" class="product-btn"><em class="fas fa-user"></em></a>
+        <a href="" class="product-btn"><em class="fas fa-shopping-cart"></em></a> -->
+        <input type="search" class="main-header__input" placeholder="Que Producto Deseas Buscar? ">
+        <em class="fas fa-search" id="lupa
+        "></em>
+    </div>
+</header>
+
+<body>
+    <div class="main">
         <div class="container">
             <h2 class="main-title">NUESTROS VINOS MAS VENDIDOS </h2>
-            <section class="container-products">
+            <div class="container-products">
                 <div class="product">
                     <img src="img/vinos/Petirrojo-merlot.png" alt="" class="product__img">
                     <div class="product__description">
@@ -116,9 +117,9 @@
                         <em class="fas fa-shopping-cart"> COMPRAR</em>
                     </a>
                 </div>
-            </section>
+            </div>
             <h2 class="main-title">VINOS IMPORTADOS MAS EXQUISITOS </h2>
-            <section class="container-products">
+            <div class="container-products">
                 <div class="product">
                     <img src="img/vinos/Muga.png" alt="" class="product__img">
                     <br>
@@ -177,9 +178,9 @@
                         <em class="fas fa-shopping-cart"> COMPRAR</em>
                     </a>
                 </div>
-            </section>
+            </div>
             <h2 class="main-title">NUESTROS MEJORES VINOS </h2>
-            <section class="container-products">
+            <div class="container-products">
                 <div class="product">
                     <img src="img/vinos/Angelica-zapata.png" alt="" class="product__img">
                     <div class="product__description">
@@ -230,7 +231,7 @@
                         <em class="fas fa-shopping-cart"> COMPRAR</em>
                     </a>
                 </div>
-            </section>
+            </div>
         </div>
         <div class="container-slider">
             <div class="slider" id="slider">
@@ -277,13 +278,14 @@
             <div class="slider__btn slider__btn--right" id="btn-right">&#62;</div>
             <div class="slider__btn slider__btn--left" id="btn-left">&#60;</div>
         </div>
-        <section class="container__testimonials">
-            <h2 class="section__title">DESCUBRE UN POCO DE NOSOTROS</h2>
-            <h3 class="testimonial__title">SOMOS VINOS DE LA VILLA</h3>
-            <br>
-            <p class="testimonial__txt">Estamos ubicados en Villa De Leyba boyaca
-                Carrera 9 11 47 Segundo piso de La Galleta, Villa de Leyva ,Boyaca, Colombia
+        <div class="testimonials">
+            <div class="container__testimonials">
+                <h2 class="section__title">DESCUBRE UN POCO DE NOSOTROS</h2>
+                <h3 class="testimonial__title">SOMOS VINOS DE LA VILLA</h3>
                 <br>
+                <p class="testimonial__txt">Estamos ubicados en Villa De Leyba boyaca
+                    Carrera 9 11 47 Segundo piso de La Galleta, Villa de Leyva ,Boyaca, Colombia
+                    <br>
                 <p class="testimonial__txt"> lugar para los amantes del vino. Vino por copa desde COP$8000 Botellas
                     desde COP$27.900 Amplio surtido en vinos de:
                     Colombia, España, Italia, Francia, Chile, Argentina, California
@@ -318,39 +320,36 @@
                 <br>
                 sáb
                 12:00 p. m. - 12:00 a. m.
-            </p>
-        </section>
-        <div class="container-editor">
-            <div class="editor__item">
-                <img src="img/pexels-payam-masouri-731348.jpg" alt="" class="editor__img">
-                <p class="editor__circle">SOPORTE </p>
+                </p>
             </div>
-            <div class="editor__item">
-                <img src="img/pexels-grape-things-2647933.jpg" alt="" class="editor__img">
-                <p class="editor__circle">SERVICIO AL CLINETE </p>
+            <div class="container-editor">
+                <div class="editor__item">
+                    <img src="img/pexels-payam-masouri-731348.jpg" alt="" class="editor__img">
+                    <p class="editor__circle">SOPORTE </p>
+                </div>
+                <div class="editor__item">
+                    <img src="img/pexels-grape-things-2647933.jpg" alt="" class="editor__img">
+                    <p class="editor__circle">SERVICIO AL CLINETE </p>
+                </div>
             </div>
-        </div>
-        <section class="container-tips">
-            <div class="tip">
-                <em class="far fa-hand-paper"></em>
-                <h2 class="tip__title">DUEÑO</h2>
-                <p class="tip__txt">DIEGO Y COMPAÑIA S.A.S
-
+            <div class="container-tips">
+                <div class="tip">
+                    <em class="far fa-hand-paper"></em>
+                    <h2 class="tip__title">DUEÑO</h2>
+                    <p class="tip__txt">DIEGO Y COMPAÑIA S.A.S
                     <P>
                         NIT 890309454-8
-
                     </P>
-
                     <p>
                         KRA 9 # 11-47 P.2
                     </p>
                     <a href="" class="btn__shop">contacto </a>
-                </p>
-            </div>
-            <div class="tip">
-                <em class="fas fa-rocket"></em>
-                <h2 class="tip__title">Gerente General</h2>
-                <p class="tip__txt">
+                    </p>
+                </div>
+                <div class="tip">
+                    <em class="fas fa-rocket"></em>
+                    <h2 class="tip__title">Gerente General</h2>
+                    <p class="tip__txt">
                     <p>
                         NUBIA VELASCO
                     </p>
@@ -363,28 +362,23 @@
                     <P>
                         Correo Electronico: ventas@vinosdelavilla.com
                     </P>
-                </p>
-                <a href="" class="btn__shop">contacto </a>
+                    </p>
+                    <a href="" class="btn__shop">contacto </a>
+                </div>
             </div>
-
-        </section>
-
+        </div>
         <footer class="main-footer">
-
             <div class="footer__section">
                 <h2 class="footer__title">UBICACION :</h2>
                 <p class="footer__txt"> Carrera 9 11 47 Segundo piso de La Galleta, a unos pasos de la plaza principal
                     de Villa de Leyva ,Boyaca, Colombia</p>
             </div>
-
             <div class="footer__section">
                 <h2 class="footer__title">Links</h2>
                 <p class="footer__txt"><a href="">HOME</a></p>
-
             </div>
         </footer>
-
-    </section>
+    </div>
     <script src="js/slider.js"></script>
     <script src="js/hamburguer.js"></script>
 </body>
