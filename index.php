@@ -1,14 +1,11 @@
-
 <?php
-    include("include/header.php");
+    include("include/principal/header.php");
 ?>
 <body>
     <?php
-        include("include/vinos.php");
-        include("include/slider.php");
-        include("include/testimonials.php");
-    ?>
-    <?php
-        include("include/footer.php");
+    include("include/principal/vinos.php");
+    include("include/principal/slider.php");
+    include("include/principal/testimonials.php");
+    include("include/principal/footer.php");
     ?>
 </body>
