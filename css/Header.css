@@ -74,6 +74,7 @@
 }
 
 .main {
-    padding: 0 20px;
-    padding-bottom: 200px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 0px;
 }

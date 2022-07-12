@@ -2,8 +2,8 @@
 .container-products {
     display: grid;
     gap: 20px;
-    grid-template-columns: 350px 350px 350px 350px 350px;
     place-content: center;
+    grid-template-columns: 350px 350px 350px 350px 350px;
 }
 
 .product {
@@ -21,6 +21,7 @@
     color: #000000;
     border: 2px outset #efb810;
     text-decoration: none;
+    text-align: center;
 }
 
 /* .product:before {
