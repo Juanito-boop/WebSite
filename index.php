@@ -1,7 +1,9 @@
 <?php
     include_once 'config/database.php';
-    $sentencia = $base_de_datos->query("SELECT nombre, sepa, descripcion, precio, id_categoria, producto, activo FROM productos where mostrar = true");
-    $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+    $sentencia_productos = $base_de_datos->query("SELECT nombre, sepa, descripcion, precio, id_categoria, producto, activo FROM productos where mostrar = true");
+    $sentencia_secciones = $base_de_datos->query("SELECT nombre, activo, id_unica FROM secciones where activo = true");
+    $resultado_productos = $sentencia_productos->fetchAll(PDO::FETCH_ASSOC);
+    $resultado_secciones = $sentencia_secciones->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <html lang="en">
@@ -63,84 +65,105 @@
 <body>
     <div class="main" style="padding-bottom: 0px;">
         <div class="container">
-            <h2 class="main-title">NUESTROS VINOS MAS VENDIDOS </h2>
-            <div class="container-products">
-                <?php foreach($resultado as $row) { ?> <!-- foreach deposita los datos obtenidos en la variable row-->
-                    <?php
-                        $categoria = $row['id_categoria']; //declaro una variable y le digo que sea igual a la columna id_categoria
-                        $unique = $row['producto']; //declaro una variable y le digo que sea igual a la columna producto
-                        $imagen = "img/vinos/" . $unique . ".png"; //declaro una variable y le digo que sea igual a la ruta img/vinos. concateno la variable unique y agrego el formato de la imagen
-                        if (!file_exists($imagen)) { //se declara una codicion que se interpreta de tal manera en que si no existe el archivo localizado con la variable imagen, se utilize una imagen diferente 
-                            $imagen = "img/logo.png";
-                        }
-                    ?>
-                    <?php if($categoria == 1) { ?> <!-- se declara una condicion que indica que si la variable catergoria declarada previamente, es igual a 1, se generen las etiquetas html, junto con la ruta de la imagen, trayendo los datos almacenados en la base de datos -->
-                        <div class="product">
-                            <div class="product__description">
-                            <img src="<?php echo $imagen; ?>" alt="" class="product__img">
-                                <h3 class="product__title"><?php echo $row['nombre']; ?></h3>
-                                <h3 class="product__title"><?php echo $row['sepa']; ?></h3>
-                                <span class="product__price"><?php echo number_format($row['precio'], 3, '.', ','); ?></span>
-                                <a href="" class="product-btn">
-                                    <em class="fas fa-shopping-cart"> COMPRAR</em>
-                                </a> 
-                            </div>
-                        </div>
-                    <?php }?>
-                <?php }?> 
-            </div>
-            <h2 class="main-title">VINOS IMPORTADOS MAS EXQUISITOS </h2>
-            <div class="container-products">
-                <?php foreach($resultado as $row) { ?>
-                    <?php
-                        $categoria = $row['id_categoria'];
-                        $unique = $row['producto'];
-                        $imagen = "img/vinos/" . $unique . ".png";
-                        if (!file_exists($imagen)) {
-                            $imagen = "img/logo.png";
-                        }
-                    ?>
-                    <?php if($categoria == 2) { ?>
-                        <div class="product">
-                            <div class="product__description">
-                            <img src="<?php echo $imagen; ?>" alt="" class="product__img">
-                                <h3 class="product__title"><?php echo $row['nombre']; ?></h3>
-                                <h3 class="product__title"><?php echo $row['sepa']; ?></h3>
-                                <span class="product__price"><?php echo number_format($row['precio'], 3, '.', ','); ?></span>
-                                <a href="" class="product-btn">
-                                    <em class="fas fa-shopping-cart"> COMPRAR</em>
-                                </a> 
-                            </div>
-                        </div>
-                    <?php }?>
-                <?php }?> 
-            </div>
-            <h2 class="main-title">NUESTROS MEJORES VINOS </h2>
-            <div class="container-products">
-                <?php foreach($resultado as $row) { ?>
-                    <?php
-                        $categoria = $row['id_categoria'];
-                        $unique = $row['producto'];
-                        $imagen = "img/vinos/" . $unique . ".png";
-                        if (!file_exists($imagen)) {
-                            $imagen = "img/logo.png";
-                        }
-                    ?>
-                    <?php if($categoria == 3) { ?>
-                        <div class="product">
-                            <div class="product__description">
-                            <img src="<?php echo $imagen; ?>" alt="" class="product__img">
-                                <h3 class="product__title"><?php echo $row['nombre']; ?></h3>
-                                <h3 class="product__title"><?php echo $row['sepa']; ?></h3>
-                                <span class="product__price"><?php echo number_format($row['precio'], 3, '.', ','); ?></span>
-                                <a href="" class="product-btn">
-                                    <em class="fas fa-shopping-cart"> COMPRAR</em>
-                                </a> 
-                            </div>
-                        </div>
-                    <?php }?>
-                <?php }?> 
-            </div>
+            <?php foreach($resultado_secciones as $row) { ?>
+                <?php
+                    $seccion = $row['id_unica'];    
+                ?>
+                <?php if($seccion == 1){?>
+                    <h2 class="main-title"><?php echo $row['nombre']?></h2>
+                    <div class="container-products">
+                        <?php foreach($resultado_productos as $row) { ?> <!-- foreach deposita los datos obtenidos en la variable row-->
+                            <?php
+                                $categoria = $row['id_categoria']; //declaro una variable y le digo que sea igual a la columna id_categoria
+                                $unique = $row['producto']; //declaro una variable y le digo que sea igual a la columna producto
+                                $imagen = "img/vinos/" . $unique . ".png"; //declaro una variable y le digo que sea igual a la ruta img/vinos. concateno la variable unique y agrego el formato de la imagen
+                                if (!file_exists($imagen)) { //se declara una codicion que se interpreta de tal manera en que si no existe el archivo localizado con la variable imagen, se utilize una imagen diferente 
+                                    $imagen = "img/logo.png";
+                                }
+                            ?>
+                            <?php if($categoria == 1) { ?> <!-- se declara una condicion que indica que si la variable catergoria declarada previamente, es igual a 1, se generen las etiquetas html, junto con la ruta de la imagen, trayendo los datos almacenados en la base de datos -->
+                                <div class="product">
+                                    <div class="product__description">
+                                    <img src="<?php echo $imagen; ?>" alt="" class="product__img">
+                                        <h3 class="product__title"><?php echo $row['nombre']; ?></h3>
+                                        <h3 class="product__title"><?php echo $row['sepa']; ?></h3>
+                                        <span class="product__price"><?php echo number_format($row['precio'], 3, '.', ','); ?></span>
+                                        <a href="" class="product-btn">
+                                            <em class="fas fa-shopping-cart"> COMPRAR</em>
+                                        </a> 
+                                    </div>
+                                </div>
+                            <?php }?>
+                        <?php }?> 
+                    </div>
+                <?php }?>
+            <?php }?>
+            <?php foreach($resultado_secciones as $row) { ?>
+                <?php
+                    $seccion = $row['id_unica'];    
+                ?>
+                <?php if($seccion == 2){?>
+                    <h2 class="main-title"><?php echo $row['nombre']?></h2>
+                    <div class="container-products">
+                        <?php foreach($resultado_productos as $row) { ?>
+                            <?php
+                                $categoria = $row['id_categoria'];
+                                $unique = $row['producto'];
+                                $imagen = "img/vinos/" . $unique . ".pg";
+                                if (!file_exists($imagen)) { 
+                                    $imagen = "img/logo.png";
+                                }
+                            ?>
+                            <?php if($categoria == 2) { ?>
+                                <div class="product">
+                                    <div class="product__description">
+                                    <img src="<?php echo $imagen; ?>" alt="" class="product__img">
+                                        <h3 class="product__title"><?php echo $row['nombre']; ?></h3>
+                                        <h3 class="product__title"><?php echo $row['sepa']; ?></h3>
+                                        <span class="product__price"><?php echo number_format($row['precio'], 3, '.', ','); ?></span>
+                                        <a href="" class="product-btn">
+                                            <em class="fas fa-shopping-cart"> COMPRAR</em>
+                                        </a> 
+                                    </div>
+                                </div>
+                            <?php }?>
+                        <?php }?> 
+                    </div>
+                <?php }?>
+            <?php }?>
+            <?php foreach($resultado_secciones as $row) { ?>
+                <?php
+                    $seccion = $row['id_unica'];    
+                ?>
+                <?php if($seccion == 3){?>
+                    <h2 class="main-title"><?php echo $row['nombre']?></h2>
+                    <div class="container-products">
+                        <?php foreach($resultado_productos as $row) { ?>
+                            <?php
+                                $categoria = $row['id_categoria'];
+                                $unique = $row['producto'];
+                                $imagen = "img/vinos/" . $unique . ".png";
+                                if (!file_exists($imagen)) { 
+                                    $imagen = "img/logo.png";
+                                }
+                            ?>
+                            <?php if($categoria == 3) { ?>
+                                <div class="product">
+                                    <div class="product__description">
+                                    <img src="<?php echo $imagen; ?>" alt="" class="product__img">
+                                        <h3 class="product__title"><?php echo $row['nombre']; ?></h3>
+                                        <h3 class="product__title"><?php echo $row['sepa']; ?></h3>
+                                        <span class="product__price"><?php echo number_format($row['precio'], 3, '.', ','); ?></span>
+                                        <a href="" class="product-btn">
+                                            <em class="fas fa-shopping-cart"> COMPRAR</em>
+                                        </a> 
+                                    </div>
+                                </div>
+                            <?php }?>
+                        <?php }?> 
+                    </div>
+                <?php }?>
+            <?php }?>
         <div class="container-slider">
             <div class="slider" id="slider">
                 <div class="slider__section">
