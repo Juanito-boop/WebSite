@@ -109,7 +109,7 @@
                             <?php
                                 $categoria = $row['id_categoria'];
                                 $unique = $row['producto'];
-                                $imagen = "img/vinos/" . $unique . ".pg";
+                                $imagen = "img/vinos/" . $unique . ".png";
                                 if (!file_exists($imagen)) { 
                                     $imagen = "img/logo.png";
                                 }
