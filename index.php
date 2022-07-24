@@ -1,10 +1,7 @@
 <?php
-    require 'config/database.php';
-    $db = new Database();
-    $con = $db->conectar();
-    $sql = $con->prepare("SELECT ID, nombre, sepa, descripcion, precio, id_categoria, producto FROM productos where activo = 1");
-    $sql->execute();
-    $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
+    include_once 'config/database.php';
+    $sentencia = $base_de_datos->query("SELECT nombre, sepa, descripcion, precio, id_categoria, producto, activo FROM productos where mostrar = true");
+    $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <html lang="en">

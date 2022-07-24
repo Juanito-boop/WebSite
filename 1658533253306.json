@@ -1,0 +1,152 @@
+[
+  {
+    "ID": "1",
+    "nombre": "Petirrojo",
+    "sepa": "Merlot",
+    "descripcion": "vino tinto",
+    "precio": "27.000",
+    "id_categoria": "1",
+    "activo": 1,
+    "producto": "245726"
+  },
+  {
+    "ID": "2",
+    "nombre": "Posta Pizzela",
+    "sepa": "Malbec",
+    "descripcion": "vino tinto",
+    "precio": "50.000",
+    "id_categoria": "1",
+    "activo": 1,
+    "producto": "933404"
+  },
+  {
+    "ID": "3",
+    "nombre": "Marques de villa de leyva",
+    "sepa": "Cabernet Sauvignon",
+    "descripcion": "vino tinto",
+    "precio": "50.000",
+    "id_categoria": "1",
+    "activo": 1,
+    "producto": "948930"
+  },
+  {
+    "ID": "5",
+    "nombre": "Purple Angel",
+    "sepa": "Carmenere",
+    "descripcion": "vino tinto",
+    "precio": "50.000",
+    "id_categoria": "1",
+    "activo": 1,
+    "producto": "330628"
+  },
+  {
+    "ID": "4",
+    "nombre": "Don Melchor",
+    "sepa": "Cabernet Sauvignon",
+    "descripcion": "vino tinto",
+    "precio": "50.000",
+    "id_categoria": "1",
+    "activo": 1,
+    "producto": "543152"
+  },
+  {
+    "ID": "6",
+    "nombre": "Muga",
+    "sepa": "Tempranillo",
+    "descripcion": "vino tinto",
+    "precio": "50.000",
+    "id_categoria": "2",
+    "activo": 1,
+    "producto": "692159"
+  },
+  {
+    "ID": "7",
+    "nombre": "Chateu st michelle",
+    "sepa": "Cabernet sauvignon",
+    "descripcion": "vino tinto",
+    "precio": "50.000",
+    "id_categoria": "2",
+    "activo": 1,
+    "producto": "323324"
+  },
+  {
+    "ID": "8",
+    "nombre": "Maison castel gran reserva",
+    "sepa": "Cabernet sauvignon",
+    "descripcion": "vino tinto",
+    "precio": "50.000",
+    "id_categoria": "2",
+    "activo": 1,
+    "producto": "191880"
+  },
+  {
+    "ID": "9",
+    "nombre": "santa margherita",
+    "sepa": "Pinot grigio",
+    "descripcion": "vino blanco",
+    "precio": "50.000",
+    "id_categoria": "2",
+    "activo": 1,
+    "producto": "257609"
+  },
+  {
+    "ID": "10",
+    "nombre": "Montes alpha M",
+    "sepa": "80% Cabernet Sauvignon",
+    "descripcion": "vino tinto",
+    "precio": "50.000",
+    "id_categoria": "2",
+    "activo": 1,
+    "producto": "782699"
+  },
+  {
+    "ID": "11",
+    "nombre": "Angelica zapata",
+    "sepa": "Malbec",
+    "descripcion": "vino tinto",
+    "precio": "50.000",
+    "id_categoria": "3",
+    "activo": 1,
+    "producto": "850550"
+  },
+  {
+    "ID": "12",
+    "nombre": "Gran enemigo",
+    "sepa": "Malbec",
+    "descripcion": "vino tinto",
+    "precio": "50.000",
+    "id_categoria": "3",
+    "activo": 1,
+    "producto": "652132"
+  },
+  {
+    "ID": "13",
+    "nombre": "Zuccardi serie A",
+    "sepa": "Malbec",
+    "descripcion": "vino tinto",
+    "precio": "50.000",
+    "id_categoria": "3",
+    "activo": 1,
+    "producto": "438553"
+  },
+  {
+    "ID": "14",
+    "nombre": "Cerro verde",
+    "sepa": "Merlot",
+    "descripcion": "vino tinto",
+    "precio": "50.000",
+    "id_categoria": "3",
+    "activo": 1,
+    "producto": "178631"
+  },
+  {
+    "ID": "15",
+    "nombre": "Codice",
+    "sepa": "Tempranillo",
+    "descripcion": "vino tinto",
+    "precio": "50.000",
+    "id_categoria": "3",
+    "activo": 1,
+    "producto": "265178"
+  }
+]

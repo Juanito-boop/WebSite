@@ -27,37 +27,37 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `productos`
 --
 
-CREATE TABLE `productos` (
-  `ID` int(11) NOT NULL,
-  `nombre` varchar(200) COLLATE utf8_spanish_ci NOT NULL,
-  `sepa` varchar(200) COLLATE utf8_spanish_ci NOT NULL,
-  `descripcion` text COLLATE utf8_spanish_ci NOT NULL,
-  `precio` decimal(10,3) NOT NULL,
-  `id_categoria` int(11) NOT NULL,
-  `activo` int(11) NOT NULL,
-  `producto` int(11) NOT NULL
+CREATE TABLE productos (
+  ID int(11) NOT NULL,
+  nombre varchar(200) COLLATE utf8_spanish_ci NOT NULL,
+  sepa varchar(200) COLLATE utf8_spanish_ci NOT NULL,
+  descripcion text COLLATE utf8_spanish_ci NOT NULL,
+  precio decimal(10,3) NOT NULL,
+  id_categoria int(11) NOT NULL,
+  activo int(11) NOT NULL,
+  producto int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `productos`
 --
 
-INSERT INTO `productos` (`ID`, `nombre`, `sepa`, `descripcion`, `precio`, `id_categoria`, `activo`, `producto`) VALUES
-(1, 'Petirrojo', 'Merlot', 'vino tinto', '27.000', 1, 1, 245726),
-(2, 'Posta Pizzela', 'Malbec', 'Vino Tinto', '50.000', 1, 1, 933404),
-(3, 'Marques de villa de leyva', 'Cabernet Sauvignon', 'vino tinto', '50.000', 1, 1, 948930),
-(4, 'Don melchor', 'Cabernet sauvignon', 'vino tinto', '50.000', 1, 1, 543152),
-(5, 'Purple angel', 'Carmenere', 'vino tinto', '50.000', 1, 1, 330628),
-(6, 'Muga', 'Tempranillo', 'vino tinto', '50.000', 2, 1, 692159),
-(7, 'Chateu st michelle', 'Cabernet sauvignon', 'vino tinto', '50.000', 2, 1, 323324),
-(8, 'Maison castel gran reserva', 'Cabernet sauvignon', 'vino tinto', '50.000', 2, 1, 191880),
-(9, 'santa margherita', 'Pinot grigio', 'vino blanco', '50.000', 2, 1, 257609),
-(10, 'Montes alpha M', '80% Cabernet Sauvignon', 'vino tinto', '50.000', 2, 1, 782699),
-(11, 'Angelica zapata', 'Malbec', 'vino tinto', '50.000', 3, 1, 850550),
-(12, 'Gran enemigo', 'Malbec', 'vino tinto', '50.000', 3, 1, 652132),
-(13, 'Zuccardi serie A', 'Malbec', 'vino tinto', '50.000', 3, 1, 438553),
-(14, 'Cerro verde', 'Merlot', 'vino tinto', '50.000', 3, 1, 178631),
-(15, 'Codice', 'Tempranillo', 'vino tinto', '50.000', 3, 1, 265178);
+INSERT INTO productos ("ID", nombre, sepa, descripcion, precio, id_categoria, activo, producto) VALUES
+(1, 'Petirrojo', 'Merlot', 'vino tinto', '27.000', 1, NULL, 245726),
+(2, 'Posta Pizzela', 'Malbec', 'Vino Tinto', '50.000', 1, NULL, 933404),
+(3, 'Marques de villa de leyva', 'Cabernet Sauvignon', 'vino tinto', '50.000', 1, NULL, 948930),
+(4, 'Don melchor', 'Cabernet sauvignon', 'vino tinto', '50.000', 1, NULL, 543152),
+(5, 'Purple angel', 'Carmenere', 'vino tinto', '50.000', 1, NULL, 330628),
+(6, 'Muga', 'Tempranillo', 'vino tinto', '50.000', 2, NULL, 692159),
+(7, 'Chateu st michelle', 'Cabernet sauvignon', 'vino tinto', '50.000', 2, NULL, 323324),
+(8, 'Maison castel gran reserva', 'Cabernet sauvignon', 'vino tinto', '50.000', 2, NULL, 191880),
+(9, 'santa margherita', 'Pinot grigio', 'vino blanco', '50.000', 2, NULL, 257609),
+(10, 'Montes alpha M', '80% Cabernet Sauvignon', 'vino tinto', '50.000', 2, NULL, 782699),
+(11, 'Angelica zapata', 'Malbec', 'vino tinto', '50.000', 3, NULL, 850550),
+(12, 'Gran enemigo', 'Malbec', 'vino tinto', '50.000', 3, NULL, 652132),
+(13, 'Zuccardi serie A', 'Malbec', 'vino tinto', '50.000', 3, NULL, 438553),
+(14, 'Cerro verde', 'Merlot', 'vino tinto', '50.000', 3, NULL, 178631),
+(15, 'Codice', 'Tempranillo', 'vino tinto', '50.000', 3, NULL, 265178);
 
 --
 -- Índices para tablas volcadas
