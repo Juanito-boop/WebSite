@@ -59,6 +59,9 @@
         <input type="search" class="main-header__input" placeholder="Que Producto Deseas Buscar? ">
         <em class="fas fa-search" id="lupa
         "></em>
+        <div>
+            <!-- falta agregar boton de carrito -->
+        </div>
     </div>
 </header>
 
@@ -80,15 +83,14 @@
                         <div class="container-products">
                         <?php if ($mostrar == true && $promocion == true && $vacio != NULL) {?>
                             <div class="product">
-                                    <div class="product__description">
-                                        <img src="<?php echo $imagen; ?>" alt="" class="product__img">
-                                        <h3 class="product__title"><?php echo $row['nombre']; ?></h3>
-                                        <h3 class="product__title"><?php echo $row['sepa']; ?></h3>
-                                        <span class="product__price"><?php echo number_format($row['precio'], 3, '.', ','); ?></span>
-                                        <a href="" class="product-btn">
-                                            <em class="fas fa-shopping-cart"> COMPRAR</em>
-                                        </a> 
-                                    </div>
+                                <div class="product__description">
+                                    <img src="<?php echo $imagen; ?>" alt="" class="product__img">
+                                    <h3 class="product__title"><?php echo $row['nombre']; ?></h3>
+                                    <h3 class="product__title"><?php echo $row['sepa']; ?></h3>
+                                    <span class="product__price"><?php echo number_format($row['precio'], 3, '.', ','); ?></span>
+                                    <a href="" class="product-btn">
+                                        <em class="fas fa-shopping-cart"> COMPRAR</em>
+                                    </a> 
                                 </div>
                             </div>
                         <?php }?>
