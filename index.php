@@ -2,7 +2,7 @@
     include_once 'config/database.php';
     $sentencia_productos = $base_de_datos->query("SELECT nombre, sepa, descripcion, precio, id_categoria, producto, activo, promocion, mostrar, nuevo_precio FROM productos where mostrar = true");
     $sentencia_secciones = $base_de_datos->query("SELECT nombre, activo, id_unica FROM secciones where activo = true");
-    $resultado_productos = $sentencia_productos->fetchAll(PDO::FETCH_ASSOC);
+    $resultado_productos = $sentencia_productos->fetchAll(PDO::FETCH_ASSOC); //especifica un array indexado por columnas
     $resultado_secciones = $sentencia_secciones->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
@@ -23,49 +23,48 @@
     <title>Vinos De La Villa</title>
 </head>
 
-<header class="main-header">
-    <div class="container container--flex">
-        <br>
-        <div class="main-header__container">
-            <img src="img/image-removebg-preview.png" alt="" class="logo">
-            <div class="centrado1">
-                <h1 class="main-header__title">LOS VINOS</h1>
-                <h2 class="main-header__subtitle"><i>Tienda Gourmet</i></h2>
-                <strong>
-                    <h3 class="main-header-subsubtitle">Carrera 9 11 47 Segundo piso de La Galleta</h3>
-                </strong>
-                <br>
-                <div class="main-header__container">
-                    <p class="main-header__txt">CONTACTANOS (+57) 3219085857 <em class="fas fa-phone"></em></p>
+<body>
+    <header class="main-header">
+        <div class="container container--flex">
+            <br>
+            <div class="main-header__container">
+                <img src="img/image-removebg-preview.png" alt="" class="logo">
+                <div class="centrado1">
+                    <h1 class="main-header__title">LOS VINOS</h1>
+                    <h2 class="main-header__subtitle"><i>Tienda Gourmet</i></h2>
+                    <strong>
+                        <h3 class="main-header-subsubtitle">Carrera 9 11 47 Segundo piso de La Galleta</h3>
+                    </strong>
+                    <br>
+                    <div class="main-header__container">
+                        <p class="main-header__txt">CONTACTANOS (+57) 3219085857 <em class="fas fa-phone"></em></p>
+                    </div>
+                </div>
+                <div class="icono-menu">
+                    <img src="img/bars-solid.svg" id="icono-menu">
+                </div>
+                <div class="cont-menu active" id="menu">
+                    <ul>
+                        <a href="index.html">
+                            <li> Home </li>
+                        </a>
+                        <a href="">
+                            <li> Sepas </li>
+                        </a>
+                    </ul>
                 </div>
             </div>
-            <div class="icono-menu">
-                <img src="img/bars-solid.svg" id="icono-menu">
-            </div>
-            <div class="cont-menu active" id="menu">
-                <ul>
-                    <a href="index.html">
-                        <li> Home </li>
-                    </a>
-                    <a href="">
-                        <li> Sepas </li>
-                    </a>
-                </ul>
+            <br>
+        </div>
+        <div class="main-header__container">
+            <input type="search" class="main-header__input" placeholder="Que Producto Deseas Buscar? ">
+            <em class="fas fa-search" id="lupa
+            "></em>
+            <div>
+                <!-- falta agregar boton de carrito -->
             </div>
         </div>
-        <br>
-    </div>
-    <div class="main-header__container">
-        <input type="search" class="main-header__input" placeholder="Que Producto Deseas Buscar? ">
-        <em class="fas fa-search" id="lupa
-        "></em>
-        <div>
-            <!-- falta agregar boton de carrito -->
-        </div>
-    </div>
-</header>
-
-<body>
+    </header>
     <div class="main" style="padding-bottom: 0px;">
         <div class="container">
             <?php foreach ($resultado_secciones as $row) { ?>
@@ -104,7 +103,7 @@
                 <?php if($seccion == 1){?>
                     <h2 class="main-title"><strong><?php echo $row['nombre']?></strong></h2>
                     <div class="container-products">
-                        <?php foreach($resultado_productos as $row) { ?> <!-- foreach deposita los datos obtenidos en la variable row-->
+                        <?php foreach($resultado_productos as $row) { ?> <!-- foreach recorre varias estructuras que contienen elementos como matrices , recursos u objetos-->
                             <?php
                                 $promocion = $row['promocion'];
                                 $categoria = $row['id_categoria']; //declaro una variable y le digo que sea igual a la columna id_categoria
@@ -165,6 +164,7 @@
                     </div>
                 <?php }?>
             <?php }?>
+            /* A PHP code that is getting data from a database and showing it on the screen. */
             <?php foreach($resultado_secciones as $row) { ?>
                 <?php
                     $seccion = $row['id_unica'];    
