@@ -109,7 +109,8 @@ $resultado_secciones = $sentencia_secciones->fetchAll(PDO::FETCH_ASSOC);
                                 $categoria = $row['id_categoria']; //declaro una variable y le digo que sea igual a la columna id_categoria
                                 $unique = $row['producto']; //declaro una variable y le digo que sea igual a la columna producto
                                 $imagen = "img/vinos/" . $unique . ".png"; //declaro una variable y le digo que sea igual a la ruta img/vinos. concateno la variable unique y agrego el formato de la imagen
-                                if (!file_exists($imagen)) { //se declara una codicion que se interpreta de tal manera en que si no existe el archivo localizado con la variable imagen, se utilize una imagen diferente 
+                                if (!file_exists($imagen)) { 
+                                    // se declara una codicion que se interpreta de tal manera en que si no existe el archivo localizado con la variable imagen, se utilize una imagen diferente
                                     $imagen = "img/logo.png";
                                 }
                                 ?>
@@ -173,8 +174,8 @@ $resultado_secciones = $sentencia_secciones->fetchAll(PDO::FETCH_ASSOC);
                     <?php if ($seccion == 3) { ?>
                         <h2 class="main-title"><?php echo $row['nombre'] ?></h2>
                         <div class="container-products">
-                            /* Un código PHP que recorre una base de datos y muestra los resultados en una
-                            tabla HTML. */
+                            <!-- Un código PHP que recorre una base de datos y muestra los resultados en una
+                            tabla HTML. -->
                             <?php foreach ($resultado_productos as $row) { ?>
                                 <?php
                                 $promocion = $row['promocion'];
@@ -255,7 +256,7 @@ $resultado_secciones = $sentencia_secciones->fetchAll(PDO::FETCH_ASSOC);
                 <h3 class="testimonial__title">SOMOS VINOS DE LA VILLA</h3>
                 <br>
                 <p class="testimonial__txt">Estamos ubicados en Villa De Leyba boyaca
-                    Carrera 9 11 47 Segundo piso de La Galleta, Villa de Leyva ,Boyaca, Colombia
+                    Carrera 9 11 47 Segundo piso de La Galleta, Villa de Leyva ,Boyaca, Colombia</p>
                     <br>
                 <p class="testimonial__txt"> lugar para los amantes del vino. Vino por copa desde COP$8000 Botellas
                     desde COP$27.900 Amplio surtido en vinos de:
