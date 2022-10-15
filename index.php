@@ -166,7 +166,7 @@ $resultado_secciones = $sentencia_secciones->fetchAll(PDO::FETCH_ASSOC);
                         </div>
                     <?php } ?>
                 <?php } ?>
-                /* A PHP code that is getting data from a database and showing it on the screen. */
+                <!-- /* A PHP code that is getting data from a database and showing it on the screen. */ -->
                 <?php foreach ($resultado_secciones as $row) { ?>
                     <?php
                     $seccion = $row['id_unica'];
