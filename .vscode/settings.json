@@ -1,0 +1,8 @@
+{
+    "php.version": "v8.2",
+    "docwriter.style": "Auto-detect",
+    "docwriter.progress.trackMethods": false,
+    "docwriter.progress.trackFunctions": false,
+    "docwriter.progress.trackTypes": false,
+    "docwriter.language": "Spanish"
+}
