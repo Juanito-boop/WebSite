@@ -3,7 +3,7 @@
     display: grid;
     gap: 20px;
     place-content: center;
-    grid-template-columns: 350px 350px 350px 350px 350px;
+    grid-template-columns: 240px 240px 240px 240px 240px;
 }
 
 .product {

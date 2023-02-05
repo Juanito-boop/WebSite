@@ -1,10 +1,11 @@
 <?php
-/* Obtener los datos de la base de datos y almacenarlos en una matriz. */
 include_once 'config/database.php';
-$sentencia_productos = $base_de_datos->query("SELECT nombre, sepa, descripcion, precio, id_categoria, producto, activo, promocion, mostrar, nuevo_precio FROM productos where mostrar = true");
-$sentencia_secciones = $base_de_datos->query("SELECT nombre, activo, id_unica FROM secciones where activo = true");
+
+$sentencia_productos = $base_de_datos->query("SELECT nombre, sepa, descripcion, precio, id_categoria, producto, activo, promocion, mostrar, nuevo_precio FROM tienda.productos where mostrar = true");
 $resultado_productos = $sentencia_productos->fetchAll(PDO::FETCH_ASSOC); //especifica un array indexado por columnas
-$resultado_secciones = $sentencia_secciones->fetchAll(PDO::FETCH_ASSOC);
+
+$sentencia_secciones = $base_de_datos->query("SELECT nombre, activo, id_unica FROM tienda.secciones where activo = true");
+$resultado_secciones = $sentencia_secciones->fetchAll(PDO::FETCH_ASSOC); //especifica un array indexado por columnas
 ?>
 
 <html lang="en">
@@ -16,12 +17,14 @@ $resultado_secciones = $sentencia_secciones->fetchAll(PDO::FETCH_ASSOC);
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@200&display=swap" />
+    <title>Vinos De La Villa</title>
+    <!-- Estilos -->
     <link rel="stylesheet" href="css/Global.css" />
     <link rel="stylesheet" href="css/Hamburguer.css" />
     <link rel="stylesheet" href="css/Header.css" />
     <link rel="stylesheet" href="css/Products.css" />
     <link rel="stylesheet" href="css/Slider.css" />
-    <title>Vinos De La Villa</title>
+
 </head>
 
 <body>
@@ -68,206 +71,107 @@ $resultado_secciones = $sentencia_secciones->fetchAll(PDO::FETCH_ASSOC);
     </header>
     <div class="main" style="padding-bottom: 0px;">
         <div class="container">
-            <?php foreach ($resultado_secciones as $row) { ?>
-                <?php foreach ($resultado_productos as $row) { ?>
-                    <?php
-                    $seccion = $row['id_unica'];
-                    $vacio = $row['nuevo_precio'];
-                    $promocion = $row['promocion'];
-                    $mostrar = $row['mostrar'];
-                    ?>
-                    <?php if ($seccion == 4 && $promocion == true) { ?>
-                        <h2 class="main-title"><strong><?php echo $row['nombre'] ?></strong></h2>
-                        <div class="container-products">
-                            <?php if ($mostrar == true && $promocion == true && $vacio != NULL) { ?>
-                                <div class="product">
-                                    <div class="product__description">
-                                        <img src="<?php echo $imagen; ?>" alt="" class="product__img">
-                                        <h3 class="product__title"><?php echo $row['nombre']; ?></h3>
-                                        <h3 class="product__title"><?php echo $row['sepa']; ?></h3>
-                                        <span class="product__price"><?php echo number_format($row['precio'], 3, '.', ','); ?></span>
-                                        <a href="" class="product-btn">
-                                            <em class="fas fa-shopping-cart"> COMPRAR</em>
-                                        </a>
-                                    </div>
-                                </div>
-                            <?php } ?>
-                        </div>
-                    <?php } ?>
-                <?php } ?>
-                <?php foreach ($resultado_secciones as $row) { ?>
-                    <?php
-                    $seccion = $row['id_unica'];
-                    ?>
-                    <?php if ($seccion == 1) { ?>
-                        <h2 class="main-title"><strong><?php echo $row['nombre'] ?></strong></h2>
-                        <div class="container-products">
-                            <?php foreach ($resultado_productos as $row) { ?>
-                                <!-- foreach recorre varias estructuras que contienen elementos como matrices , recursos u objetos-->
-                                <?php
-                                $promocion = $row['promocion'];
-                                $categoria = $row['id_categoria']; //declaro una variable y le digo que sea igual a la columna id_categoria
-                                $unique = $row['producto']; //declaro una variable y le digo que sea igual a la columna producto
-                                $imagen = "img/vinos/" . $unique . ".png"; //declaro una variable y le digo que sea igual a la ruta img/vinos. concateno la variable unique y agrego el formato de la imagen
-                                if (!file_exists($imagen)) { 
-                                    // se declara una codicion que se interpreta de tal manera en que si no existe el archivo localizado con la variable imagen, se utilize una imagen diferente
-                                    $imagen = "img/logo.png";
-                                }
-                                ?>
-                                <?php if ($categoria == 1 && $promocion == false) { ?>
-                                    <!-- se declara una condicion que indica que si la variable catergoria declarada previamente, es igual a 1, se generen las etiquetas html, junto con la ruta de la imagen, trayendo los datos almacenados en la base de datos -->
-                                    <div class="product">
-                                        <div class="product__description">
-                                            <img src="<?php echo $imagen; ?>" alt="" class="product__img">
-                                            <h3 class="product__title"><?php echo $row['nombre']; ?></h3>
-                                            <h3 class="product__title"><?php echo $row['sepa']; ?></h3>
-                                            <span class="product__price"><?php echo number_format($row['precio'], 3, '.', ','); ?></span>
-                                            <a href="" class="product-btn">
-                                                <em class="fas fa-shopping-cart"> COMPRAR</em>
-                                            </a>
-                                        </div>
-                                    </div>
-                                <?php } ?>
-                            <?php } ?>
-                        </div>
-                    <?php } ?>
-                <?php } ?>
-                <?php foreach ($resultado_secciones as $row) { ?>
-                    <?php
-                    $seccion = $row['id_unica'];
-                    ?>
-                    <?php if ($seccion == 2) { ?>
-                        <h2 class="main-title"><?php echo $row['nombre'] ?></h2>
-                        <div class="container-products">
-                            <?php foreach ($resultado_productos as $row) { ?>
-                                <?php
-                                $promocion = $row['promocion'];
-                                $categoria = $row['id_categoria'];
-                                $unique = $row['producto'];
-                                $imagen = "img/vinos/" . $unique . ".png";
-                                if (!file_exists($imagen)) {
-                                    $imagen = "img/logo.png";
-                                }
-                                ?>
-                                <?php if ($categoria == 2 && $promocion == false) { ?>
-                                    <div class="product">
-                                        <div class="product__description">
-                                            <img src="<?php echo $imagen; ?>" alt="" class="product__img">
-                                            <h3 class="product__title"><?php echo $row['nombre']; ?></h3>
-                                            <h3 class="product__title"><?php echo $row['sepa']; ?></h3>
-                                            <span class="product__price"><?php echo number_format($row['precio'], 3, '.', ','); ?></span>
-                                            <a href="" class="product-btn">
-                                                <em class="fas fa-shopping-cart"> COMPRAR</em>
-                                            </a>
-                                        </div>
-                                    </div>
-                                <?php } ?>
-                            <?php } ?>
-                        </div>
-                    <?php } ?>
-                <?php } ?>
-                <!-- /* A PHP code that is getting data from a database and showing it on the screen. */ -->
-                <?php foreach ($resultado_secciones as $row) { ?>
-                    <?php
-                    $seccion = $row['id_unica'];
-                    ?>
-                    <?php if ($seccion == 3) { ?>
-                        <h2 class="main-title"><?php echo $row['nombre'] ?></h2>
-                        <div class="container-products">
-                            <!-- Un código PHP que recorre una base de datos y muestra los resultados en una
-                            tabla HTML. -->
-                            <?php foreach ($resultado_productos as $row) { ?>
-                                <?php
-                                $promocion = $row['promocion'];
-                                $categoria = $row['id_categoria'];
-                                $unique = $row['producto'];
-                                $imagen = "img/vinos/" . $unique . ".png";
-                                if (!file_exists($imagen)) {
-                                    $imagen = "img/logo.png";
-                                }
-                                ?>
-                                <?php if ($categoria == 3 && $promocion == false) { ?>
-                                    <div class="product">
-                                        <div class="product__description">
-                                            <img src="<?php echo $imagen; ?>" alt="" class="product__img">
-                                            <h3 class="product__title"><?php echo $row['nombre']; ?></h3>
-                                            <h3 class="product__title"><?php echo $row['sepa']; ?></h3>
-                                            <span class="product__price"><?php echo number_format($row['precio'], 3, '.', ','); ?></span>
-                                            <a href="" class="product-btn">
-                                                <em class="fas fa-shopping-cart"> COMPRAR</em>
-                                            </a>
-                                        </div>
-                                    </div>
-                                <?php } ?>
-                            <?php } ?>
-                        </div>
-                    <?php } ?>
-                <?php } ?>
-            <?php } ?>
-        </div>
-        <div class="container-slider">
-            <div class="slider" id="slider">
-                <div class="slider__section">
-                    <img src="img/pofvnj.jpg" alt="" class="slider__img" />
-                    <div class="slider__content">
-                        <h2 class="slider__title">Los mejores vinos</h2>
-                        <p class="slider__txt">En invierno no hay mal abrigo con una copa de buen vino</p>
-                        <a href="" class="slider__link">ADQUIERE TU BOTELLA ¿QUE ESPERAS?</a>
-                    </div>
-                </div>
-                <div class="slider__section">
-                    <img src="img/villix.jpg" alt="" class="slider__img" />
-                    <div class="slider__content">
-                        <h2 class="slider__title">UN POCO ACERCA DE NOSOTROS</h2>
-                        <p class="slider__txt">Nos encontramos en villa de leyva, te esperamos para degustar una buena
-                            copa
-                        </p>
-                        <a href="" class="slider__link">Villa de Leyva Boyaca </a>
-                    </div>
-                </div>
-                <div class="slider__section">
-                    <img src="img/vinos.jpg" alt="" class="slider__img" />
-                    <div class="slider__content">
-                        <h2 class="slider__title">Vinos de la más alta calidad</h2>
-                        <p class="slider__txt">En nuestro repertorio podemos encontrar una gran cantidad y variedad de
-                            vinos
-                            tanto nacionales como internacionales
-                            <br>
-                            "Un día sin vino es un día sin sol"
-                        </p>
-                        <a href="" class="slider__link">ADQUIERE EL TUYO AHORA</a>
-                    </div>
-                </div>
-                <div class="slider__section">
-                    <img src="img/xdeerf.jpg" alt="" class="slider__img" />
-                    <div class="slider__content">
-                        <h2 class="slider__title">Con nosotros tendrá la mejor experiencia vinícola</h2>
-                        <p class="slider__txt">El vino siembra poesía en los corazones</p>
-                        <a href="" class="slider__link">ADQUIERE EL TUYO AHORA</a>
-                    </div>
-                </div>
-            </div>
-            <div class="slider__btn slider__btn--right" id="btn-right">&#62;</div>
-            <div class="slider__btn slider__btn--left" id="btn-left">&#60;</div>
+            <?php
+            //<!-- empiezan las tarjetas -->
+            foreach ($resultado_secciones as $seccion_productos) {
+                //Este código imprime una sección de productos en una página web.
+                if ($seccion_productos['id_unica'] == 1) { //Verifica que la sección sea la correcta
+                    echo '<h2 class = "main-title"><strong>' . $seccion_productos['nombre'] . '</strong></h2>'; //Imprime el título de la sección
+                    echo '<div class = "container-products">'; //Inicia el contenedor de productos
+                    foreach ($resultado_productos as $productos) { //Recorre los productos obtenidos en la consulta
+                        $promocion = $productos['promocion']; //Verifica si el producto está en promoción
+                        $categoria = $productos['id_categoria']; //Obtiene el ID de la categoría del producto
+                        $unique = $productos['producto']; //Obtiene el ID único del producto 
+                        $imagen = file_exists("img/vinos/" . $unique . ".png") ? "img/vinos/" . $unique . ".png" : "img/logo.png"; //Verifica si existe una imagen para el producto, si no existe usa un logo por defecto 
+                        if ($categoria == 1 && !$promocion) { //Verifica que el producto pertenezca a la categoría y no esté en promoción 
+                            echo '<div  class = "product">'; //Inicia el contenedor del producto 
+                            echo '<div  class = "product_description">'; //Inicia el contenedor de descripción del producto 
+                            echo '<img  src   = "' . $imagen . '" alt = "" class = "product_img">'; //Imprime la imagen del producto 
+                            echo '<h3   class = "product_title">' . $productos['nombre'] . '</h3>'; //Imprime el nombre del producto 
+                            echo '<h3   class = "product_title">' . $productos['sepa'] . '</h3>'; //Imprime la descripción corta del producto 
+                            echo '<span class = "product_price">' . number_format($productos['precio'], 3, '.', ',') . '</span>'; //Imprime el precio formateado con separador de miles y decimales  
+                            if ($productos['promocion'] === true) { //Verifica si hay promoción para este producto y muestra un boton diferente para comprarlo  
+                                echo '<a href = "" class = "promotion-btn"><em class = "fas fa-shopping-cart"> COMPRAR </em></a>'; //Boton para comprar si hay promoción  
+                            } else { //En caso contrario muestra otro boton para comprar si no hay promoción   
+                                echo '<a href = "" class = "product-btn"><em class = "fas fa-shopping-cart"> COMPRAR </em></a>'; //Boton para comprar si no hay promoción  
+                            }
+                            echo '</div>'; //Cierra contenedor de descripción del producto 
+                            echo '</div>'; //Cierra contenedor del producto 
+                        }
+                    }
+                    echo '</div>'; //Cierra contenedor de los prodcutos  
+                } elseif ($seccion_productos['id_unica'] == 2) {
+                    echo '<h2 class = "main-title"> <strong>' . $seccion_productos['nombre'] . '</strong> </h2>';
+                    echo '<div class = "container-products">';
+                    foreach ($resultado_productos as $productos) {
+                        $promocion = $productos['promocion'];
+                        $categoria = $productos['id_categoria'];
+                        $unique = $productos['producto'];
+                        $imagen = file_exists("img/vinos/" . $unique . ".png") ? "img/vinos/" . $unique . ".png" : "img/logo.png";
+                        if ($categoria == 2 && !$promocion) {
+                            echo '<div  class = "product">';
+                            echo '<div  class = "product_description">';
+                            echo '<img  src   = "' . $imagen . '" alt = "" class = "product_img">';
+                            echo '<h3   class = "product_title">' . $productos['nombre'] . '</h3>';
+                            echo '<h3   class = "product_title">' . $productos['sepa'] . '</h3>';
+                            echo '<span class = "product_price">' . number_format($productos['precio'], 3, '.', ',') . '</span>';
+                            if ($productos['promocion'] === true) {
+                                echo '<a href = "" class = "promotion-btn"> <em class = "fas fa-shopping-cart"> COMPRAR </em> </a>';
+                            } else {
+                                echo '<a href = "" class = "product-btn"> <em class = "fas fa-shopping-cart"> COMPRAR </em> </a>';
+                            }
+                            echo '</div>';
+                            echo '</div>';
+                        }
+                    }
+                    echo '</div>';
+                } elseif ($seccion_productos['id_unica'] == 3) {
+                    echo '<h2 class = "main-title"> <strong>' . $seccion_productos['nombre'] . '</strong> </h2>';
+                    echo '<div class = "container-products">';
+                    foreach ($resultado_productos as $productos) {
+                        $promocion = $productos['promocion'];
+                        $categoria = $productos['id_categoria'];
+                        $unique = $productos['producto'];
+                        $imagen = file_exists("img/vinos/" . $unique . ".png") ? "img/vinos/" . $unique . ".png" : "img/logo.png";
+                        if ($categoria == 3 && !$promocion) {
+                            echo '<div  class = "product">';
+                            echo '<div  class = "product_description">';
+                            echo '<img  src   = "' . $imagen . '" alt = "" class = "product_img">';
+                            echo '<h3   class = "product_title">' . $productos['nombre'] . '</h3>';
+                            echo '<h3   class = "product_title">' . $productos['sepa'] . '</h3>';
+                            echo '<span class = "product_price">' . number_format($productos['precio'], 3, '.', ',') . '</span>';
+                            if ($productos['promocion'] === true) {
+                                echo '<a href = "" class = "promotion-btn"> <em class = "fas fa-shopping-cart"> COMPRAR </em> </a>';
+                            } else {
+                                echo '<a href = "" class = "product-btn"> <em class = "fas fa-shopping-cart"> COMPRAR </em> </a>';
+                            }
+                            echo '</div>';
+                            echo '</div>';
+                        }
+                    }
+                    echo '</div>';
+                }
+            }
+            ?>
         </div>
         <div class="testimonials">
-            <div class="container__testimonials">
-                <h2 class="section__title">DESCUBRE UN POCO DE NOSOTROS</h2>
-                <h3 class="testimonial__title">SOMOS VINOS DE LA VILLA</h3>
+            <div class="container_testimonials">
+                <h2 class="section_title">DESCUBRE UN POCO DE NOSOTROS</h2>
+                <h3 class="testimonial_title">SOMOS VINOS DE LA VILLA</h3>
                 <br>
-                <p class="testimonial__txt">Estamos ubicados en Villa De Leyba boyaca
+                <p class="testimonial_txt">Estamos ubicados en Villa De Leyba boyaca
                     Carrera 9 11 47 Segundo piso de La Galleta, Villa de Leyva ,Boyaca, Colombia</p>
-                    <br>
-                <p class="testimonial__txt"> lugar para los amantes del vino. Vino por copa desde COP$8000 Botellas
+                <br>
+                <p class="testimonial_txt"> lugar para los amantes del vino. Vino por copa desde COP$8000 Botellas
                     desde COP$27.900 Amplio surtido en vinos de:
                     Colombia, España, Italia, Francia, Chile, Argentina, California
                     para acompañar: Tapas, Panini, tablas de quesos y jamones. Buena musica. Ambiente agradable.</p>
                 <br>
-                <p class="testimonial__txt"> Poseemos deferentes servicios como :Bar de vinos, Bar, Española, Pub
+                <p class="testimonial_txt"> Poseemos deferentes servicios como :Bar de vinos, Bar, Española, Pub
                     tambien podemos ofrecer servicio de restarurante como :Cena, Abierto hasta tarde(revisar horario
                     segun corresponda ), Bebidas</p>
                 <br>
-                <p class="testimonial__txt"> OTRAS CARACTERÍSTICAS
+                <p class="testimonial_txt"> OTRAS CARACTERÍSTICAS
                     Comodos Asientos, Brindaos el fino alcohol, Wi-Fi gratis, Acepta tarjetas de crédito, Servicio de
                     mesa, Reservas, Acceso para silla de ruedas, Vino y cerveza</p>
                 HORARIOS DE ATENCION :
@@ -295,33 +199,33 @@ $resultado_secciones = $sentencia_secciones->fetchAll(PDO::FETCH_ASSOC);
                 </p>
             </div>
             <div class="container-editor">
-                <div class="editor__item">
-                    <img src="img/pexels-payam-masouri-731348.jpg" alt="" class="editor__img">
-                    <p class="editor__circle">SOPORTE </p>
+                <div class="editor_item">
+                    <img src="img/pexels-payam-masouri-731348.jpg" alt="" class="editor_img">
+                    <p class="editor_circle">SOPORTE </p>
                 </div>
-                <div class="editor__item">
-                    <img src="img/pexels-grape-things-2647933.jpg" alt="" class="editor__img">
-                    <p class="editor__circle">SERVICIO AL CLINETE </p>
+                <div class="editor_item">
+                    <img src="img/pexels-grape-things-2647933.jpg" alt="" class="editor_img">
+                    <p class="editor_circle">SERVICIO AL CLINETE </p>
                 </div>
             </div>
             <div class="container-tips">
                 <div class="tip">
                     <em class="far fa-hand-paper"></em>
-                    <h2 class="tip__title">DUEÑO</h2>
-                    <p class="tip__txt">DIEGO Y COMPAÑIA S.A.S
+                    <h2 class="tip_title">DUEÑO</h2>
+                    <p class="tip_txt">DIEGO Y COMPAÑIA S.A.S
                     <P>
                         NIT 890309454-8
                     </P>
                     <p>
                         KRA 9 # 11-47 P.2
                     </p>
-                    <a href="" class="btn__shop">contacto </a>
+                    <a href="" class="btn_shop">contacto </a>
                     </p>
                 </div>
                 <div class="tip">
                     <em class="fas fa-rocket"></em>
-                    <h2 class="tip__title">Gerente General</h2>
-                    <p class="tip__txt">
+                    <h2 class="tip_title">Gerente General</h2>
+                    <p class="tip_txt">
                     <p>
                         NUBIA VELASCO
                     </p>
@@ -335,22 +239,22 @@ $resultado_secciones = $sentencia_secciones->fetchAll(PDO::FETCH_ASSOC);
                         Correo Electronico: ventas@vinosdelavilla.com
                     </P>
                     </p>
-                    <a href="" class="btn__shop">contacto </a>
+                    <a href="" class="btn_shop">contacto </a>
                 </div>
             </div>
         </div>
         <footer class="main-footer">
-            <div class="footer__section">
-                <h2 class="footer__title">UBICACION :</h2>
-                <p class="footer__txt"> Carrera 9 11 47 Segundo piso de La Galleta, a unos pasos de la plaza principal
+            <div class="footer_section">
+                <h2 class="footer_title">UBICACION :</h2>
+                <p class="footer_txt"> Carrera 9 11 47 Segundo piso de La Galleta, a unos pasos de la plaza principal
                     de Villa de Leyva ,Boyaca, Colombia</p>
             </div>
-            <div class="footer__section">
-                <h2 class="footer__title">Links</h2>
-                <p class="footer__txt"><a href="">HOME</a></p>
+            <div class="footer_section">
+                <h2 class="footer_title">Links</h2>
+                <p class="footer_txt"><a href="">HOME</a></p>
             </div>
         </footer>
+        <script src="js/slider.js"></script>
+        <script src="js/hamburguer.js"></script>
     </div>
-    <script src="js/slider.js"></script>
-    <script src="js/hamburguer.js"></script>
 </body>
