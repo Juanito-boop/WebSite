@@ -1,13 +1,3 @@
-<?php
-include_once 'config/database.php';
-
-$sentencia_productos = $base_de_datos->query("SELECT nombre, sepa, descripcion, precio, id_categoria, producto, activo, promocion, mostrar, nuevo_precio FROM tienda.productos where mostrar = true");
-$resultado_productos = $sentencia_productos->fetchAll(PDO::FETCH_ASSOC); //especifica un array indexado por columnas
-
-$sentencia_secciones = $base_de_datos->query("SELECT nombre, activo, id_unica FROM tienda.secciones where activo = true");
-$resultado_secciones = $sentencia_secciones->fetchAll(PDO::FETCH_ASSOC); //especifica un array indexado por columnas
-?>
-
 <html lang="en">
 
 <head>
@@ -72,86 +62,12 @@ $resultado_secciones = $sentencia_secciones->fetchAll(PDO::FETCH_ASSOC); //espec
     <div class="main" style="padding-bottom: 0px;">
         <div class="container">
             <?php
+            require 'functions.php';
             //<!-- empiezan las tarjetas -->
-            foreach ($resultado_secciones as $seccion_productos) {
-                //Este código imprime una sección de productos en una página web.
-                if ($seccion_productos['id_unica'] == 1) { //Verifica que la sección sea la correcta
-                    echo '<h2 class = "main-title"><strong>' . $seccion_productos['nombre'] . '</strong></h2>'; //Imprime el título de la sección
-                    echo '<div class = "container-products">'; //Inicia el contenedor de productos
-                    foreach ($resultado_productos as $productos) { //Recorre los productos obtenidos en la consulta
-                        $promocion = $productos['promocion']; //Verifica si el producto está en promoción
-                        $categoria = $productos['id_categoria']; //Obtiene el ID de la categoría del producto
-                        $unique = $productos['producto']; //Obtiene el ID único del producto 
-                        $imagen = file_exists("img/vinos/" . $unique . ".png") ? "img/vinos/" . $unique . ".png" : "img/logo.png"; //Verifica si existe una imagen para el producto, si no existe usa un logo por defecto 
-                        if ($categoria == 1 && !$promocion) { //Verifica que el producto pertenezca a la categoría y no esté en promoción 
-                            echo '<div  class = "product">'; //Inicia el contenedor del producto 
-                            echo '<div  class = "product_description">'; //Inicia el contenedor de descripción del producto 
-                            echo '<img  src   = "' . $imagen . '" alt = "" class = "product_img">'; //Imprime la imagen del producto 
-                            echo '<h3   class = "product_title">' . $productos['nombre'] . '</h3>'; //Imprime el nombre del producto 
-                            echo '<h3   class = "product_title">' . $productos['sepa'] . '</h3>'; //Imprime la descripción corta del producto 
-                            echo '<span class = "product_price">' . number_format($productos['precio'], 3, '.', ',') . '</span>'; //Imprime el precio formateado con separador de miles y decimales  
-                            if ($productos['promocion'] === true) { //Verifica si hay promoción para este producto y muestra un boton diferente para comprarlo  
-                                echo '<a href = "" class = "promotion-btn"><em class = "fas fa-shopping-cart"> COMPRAR </em></a>'; //Boton para comprar si hay promoción  
-                            } else { //En caso contrario muestra otro boton para comprar si no hay promoción   
-                                echo '<a href = "" class = "product-btn"><em class = "fas fa-shopping-cart"> COMPRAR </em></a>'; //Boton para comprar si no hay promoción  
-                            }
-                            echo '</div>'; //Cierra contenedor de descripción del producto 
-                            echo '</div>'; //Cierra contenedor del producto 
-                        }
-                    }
-                    echo '</div>'; //Cierra contenedor de los prodcutos  
-                } elseif ($seccion_productos['id_unica'] == 2) {
-                    echo '<h2 class = "main-title"> <strong>' . $seccion_productos['nombre'] . '</strong> </h2>';
-                    echo '<div class = "container-products">';
-                    foreach ($resultado_productos as $productos) {
-                        $promocion = $productos['promocion'];
-                        $categoria = $productos['id_categoria'];
-                        $unique = $productos['producto'];
-                        $imagen = file_exists("img/vinos/" . $unique . ".png") ? "img/vinos/" . $unique . ".png" : "img/logo.png";
-                        if ($categoria == 2 && !$promocion) {
-                            echo '<div  class = "product">';
-                            echo '<div  class = "product_description">';
-                            echo '<img  src   = "' . $imagen . '" alt = "" class = "product_img">';
-                            echo '<h3   class = "product_title">' . $productos['nombre'] . '</h3>';
-                            echo '<h3   class = "product_title">' . $productos['sepa'] . '</h3>';
-                            echo '<span class = "product_price">' . number_format($productos['precio'], 3, '.', ',') . '</span>';
-                            if ($productos['promocion'] === true) {
-                                echo '<a href = "" class = "promotion-btn"> <em class = "fas fa-shopping-cart"> COMPRAR </em> </a>';
-                            } else {
-                                echo '<a href = "" class = "product-btn"> <em class = "fas fa-shopping-cart"> COMPRAR </em> </a>';
-                            }
-                            echo '</div>';
-                            echo '</div>';
-                        }
-                    }
-                    echo '</div>';
-                } elseif ($seccion_productos['id_unica'] == 3) {
-                    echo '<h2 class = "main-title"> <strong>' . $seccion_productos['nombre'] . '</strong> </h2>';
-                    echo '<div class = "container-products">';
-                    foreach ($resultado_productos as $productos) {
-                        $promocion = $productos['promocion'];
-                        $categoria = $productos['id_categoria'];
-                        $unique = $productos['producto'];
-                        $imagen = file_exists("img/vinos/" . $unique . ".png") ? "img/vinos/" . $unique . ".png" : "img/logo.png";
-                        if ($categoria == 3 && !$promocion) {
-                            echo '<div  class = "product">';
-                            echo '<div  class = "product_description">';
-                            echo '<img  src   = "' . $imagen . '" alt = "" class = "product_img">';
-                            echo '<h3   class = "product_title">' . $productos['nombre'] . '</h3>';
-                            echo '<h3   class = "product_title">' . $productos['sepa'] . '</h3>';
-                            echo '<span class = "product_price">' . number_format($productos['precio'], 3, '.', ',') . '</span>';
-                            if ($productos['promocion'] === true) {
-                                echo '<a href = "" class = "promotion-btn"> <em class = "fas fa-shopping-cart"> COMPRAR </em> </a>';
-                            } else {
-                                echo '<a href = "" class = "product-btn"> <em class = "fas fa-shopping-cart"> COMPRAR </em> </a>';
-                            }
-                            echo '</div>';
-                            echo '</div>';
-                        }
-                    }
-                    echo '</div>';
-                }
-            }
+            tarjetas(1);
+            tarjetas(2);
+            tarjetas(3);
+
             ?>
         </div>
         <div class="testimonials">
