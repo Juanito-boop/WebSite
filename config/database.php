@@ -14,9 +14,9 @@ $password = "postgresql";
 $charset = "utf8";
 /* Trying to connect to the database and if it fails it will show an error message. */
 try {
-    $base_de_datos = new PDO("pgsql:host=$host;dbname=$db_name", $username, $password);
+    $_base_de_datos = new PDO("pgsql:host=$host;dbname=$db_name", $username, $password);
     // Establecer el modo de error para PDO como EXCEPTION
-    $base_de_datos->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $_base_de_datos->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     //echo "Conexión exitosa a la base de datos";
 } catch (PDOException $e) {
     echo "Error de conexión a la base de datos: " . $e->getMessage();
