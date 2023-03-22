@@ -67,7 +67,6 @@
             tarjetas(1);
             tarjetas(2);
             tarjetas(3);
-
             ?>
         </div>
         <div class="testimonials">
