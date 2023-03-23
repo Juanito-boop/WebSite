@@ -3,11 +3,11 @@ include_once 'config/database.php';
 
 // Seleccionar productos de la tabla 'productos' donde 'mostrar' sea verdadero
 $_sentencia_productos = $_base_de_datos->query("SELECT nombre, sepa, descripcion, precio, id_categoria, producto, activo, promocion, mostrar, nuevo_precio FROM tienda.productos WHERE mostrar = true");
+
 // Seleccionar secciones de la tabla 'secciones' donde 'activo' sea verdadero
 $_sentencia_secciones = $_base_de_datos->query("SELECT nombre, activo, id_unica FROM tienda.secciones WHERE activo = true");
-// Salida: $_sentencia_productos y $_sentencia_secciones, que contienen resultados de consulta de base de datos.
 
-//especifica un array indexado por columnas
+// Salida: $_sentencia_productos y $_sentencia_secciones, que contienen resultados de consulta de base de datos.
 $_resultado_productos = $_sentencia_productos->fetchAll(PDO::FETCH_ASSOC);
 $_resultado_secciones = $_sentencia_secciones->fetchAll(PDO::FETCH_ASSOC);
 
@@ -18,6 +18,7 @@ function get_image($_unique)
     $imagen = (file_exists($image)) ? $image : "img/logo.png";
     return $imagen;
 }
+
 //Esta función obtiene el botón de comprar según si el producto está en promoción o no
 function get_button($_promotion)
 {
