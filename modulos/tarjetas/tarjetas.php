@@ -1,5 +1,5 @@
 <?php
-include_once 'config/database.php';
+include_once './config/database.php';
 
 // Seleccionar productos de la tabla 'productos' donde 'mostrar' sea verdadero
 $_sentencia_productos = $_base_de_datos->query("SELECT nombre, sepa, descripcion, precio, id_categoria, producto, activo, promocion, mostrar, nuevo_precio FROM tienda.productos WHERE mostrar = true");

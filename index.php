@@ -20,16 +20,12 @@
 <body>
     <header class="main-header">
         <div class="container container--flex">
-            <br>
             <div class="main-header__container">
                 <img src="img/image-removebg-preview.png" alt="" class="logo">
                 <div class="centrado1">
                     <h1 class="main-header__title">LOS VINOS</h1>
                     <h2 class="main-header__subtitle"><i>Tienda Gourmet</i></h2>
-                    <strong>
-                        <h3 class="main-header-subsubtitle">Carrera 9 11 47 Segundo piso de La Galleta</h3>
-                    </strong>
-                    <br>
+                    <h3 class="main-header-subsubtitle">Carrera 9 11 47 Segundo piso de La Galleta</h3>
                     <div class="main-header__container">
                         <p class="main-header__txt">CONTACTANOS (+57) 3219085857 <em class="fas fa-phone"></em></p>
                     </div>
@@ -39,30 +35,25 @@
                 </div>
                 <div class="cont-menu active" id="menu">
                     <ul>
-                        <a href="index.html">
-                            <li> Home </li>
-                        </a>
-                        <a href="">
-                            <li> Sepas </li>
-                        </a>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="">Sepas</a></li>
                     </ul>
                 </div>
             </div>
-            <br>
         </div>
         <div class="main-header__container">
-            <input type="search" class="main-header__input" placeholder="Que Producto Deseas Buscar? ">
-            <em class="fas fa-search" id="lupa
-            "></em>
+            <label for="search" class="sr-only">Search Products</label>
+            <input type="search" id="search" class="main-header__input" placeholder="What product are you looking for?">
+            <em class="fas fa-search" id="lupa"></em>
             <div>
-                <!-- falta agregar boton de carrito -->
+                <!-- Add cart button here -->
             </div>
         </div>
     </header>
     <div class="main" style="padding-bottom: 0px;">
         <div class="container">
             <?php
-            require 'functions.php';
+            require_once 'modulos/tarjetas/tarjetas.php';
             //<!-- empiezan las tarjetas -->
             tarjetas(1);
             tarjetas(2);
@@ -73,46 +64,38 @@
             <div class="container_testimonials">
                 <h2 class="section_title">DESCUBRE UN POCO DE NOSOTROS</h2>
                 <h3 class="testimonial_title">SOMOS VINOS DE LA VILLA</h3>
-                <br>
-                <p class="testimonial_txt">Estamos ubicados en Villa De Leyba boyaca
-                    Carrera 9 11 47 Segundo piso de La Galleta, Villa de Leyva ,Boyaca, Colombia</p>
-                <br>
-                <p class="testimonial_txt"> lugar para los amantes del vino. Vino por copa desde COP$8000 Botellas
-                    desde COP$27.900 Amplio surtido en vinos de:
-                    Colombia, España, Italia, Francia, Chile, Argentina, California
-                    para acompañar: Tapas, Panini, tablas de quesos y jamones. Buena musica. Ambiente agradable.</p>
-                <br>
-                <p class="testimonial_txt"> Poseemos deferentes servicios como :Bar de vinos, Bar, Española, Pub
-                    tambien podemos ofrecer servicio de restarurante como :Cena, Abierto hasta tarde(revisar horario
-                    segun corresponda ), Bebidas</p>
-                <br>
-                <p class="testimonial_txt"> OTRAS CARACTERÍSTICAS
-                    Comodos Asientos, Brindaos el fino alcohol, Wi-Fi gratis, Acepta tarjetas de crédito, Servicio de
-                    mesa, Reservas, Acceso para silla de ruedas, Vino y cerveza</p>
-                HORARIOS DE ATENCION :
-                <br>
-                dom
-                12:00 p. m. - 10:00 p. m.
-                <br>
-                lun
-                3:00 p. m. - 10:00 p. m.
-                <br>
-                mar
-                3:00 p. m. - 10:00 p. m.
-                <br>
-                mié
-                3:00 p. m. - 10:00 p. m.
-                <br>
-                jue
-                3:00 p. m. - 10:00 p. m.
-                <br>
-                vie
-                12:00 p. m. - 12:00 a. m.
-                <br>
-                sáb
-                12:00 p. m. - 12:00 a. m.
+
+                <p class="testimonial_txt">Estamos ubicados en Villa De Leyba boyaca Carrera 9 11 47 Segundo piso de La
+                    Galleta,
+                    Villa de Leyva, Boyaca, Colombia
                 </p>
+
+                <p class="testimonial_txt">Lugar para los amantes del vino. Vino por copa desde COP$8000 Botellas desde
+                    COP$27.900
+                    Amplio surtido en vinos de: Colombia, España, Italia, Francia, Chile, Argentina, California para
+                    acompañar:
+                    Tapas, Panini, tablas de quesos y jamones. Buena música. Ambiente agradable.
+                </p>
+
+                <p class="testimonial_txt">Poseemos diferentes servicios como: Bar de vinos, Bar, Española, Pub. También
+                    podemos
+                    ofrecer servicio de restaurante como: Cena, Abierto hasta tarde (revisar horario según corresponda),
+                    Bebidas
+                </p>
+
+                <p class="testimonial_txt">OTRAS CARACTERÍSTICAS: Comodos Asientos, Brindamos el fino alcohol, Wi-Fi
+                    gratis,
+                    Acepta tarjetas de crédito, Servicio de mesa, Reservas, Acceso para silla de ruedas, Vino y cerveza
+                </p>
+
+                <p>HORARIOS DE ATENCION :</p>
+                <br>
+                <p>dom 12:00 p. m. - 10:00 p. m.</p>
+                <p>lun-mar-mié-jue 3:00 p. m. - 10:00 p. m.</p>
+                <p>vie-sáb 12:00 p. m. - 12:00 a. m.</p>
+
             </div>
+
             <div class="container-editor">
                 <div class="editor_item">
                     <img src="img/pexels-payam-masouri-731348.jpg" alt="" class="editor_img">
@@ -120,41 +103,27 @@
                 </div>
                 <div class="editor_item">
                     <img src="img/pexels-grape-things-2647933.jpg" alt="" class="editor_img">
-                    <p class="editor_circle">SERVICIO AL CLINETE </p>
+                    <p class="editor_circle">SERVICIO AL CLIENTE </p>
                 </div>
             </div>
+
             <div class="container-tips">
                 <div class="tip">
                     <em class="far fa-hand-paper"></em>
                     <h2 class="tip_title">DUEÑO</h2>
-                    <p class="tip_txt">DIEGO Y COMPAÑIA S.A.S
-                    <P>
-                        NIT 890309454-8
-                    </P>
-                    <p>
-                        KRA 9 # 11-47 P.2
-                    </p>
-                    <a href="" class="btn_shop">contacto </a>
-                    </p>
+                    <p class="tip_txt">DIEGO Y COMPAÑIA S.A.S</p>
+                    <p>NIT 890309454-8</p>
+                    <p>KRA 9 # 11-47 P.2</p>
+                    <a href="" class="btn_shop">CONTACTO</a>
                 </div>
                 <div class="tip">
                     <em class="fas fa-rocket"></em>
                     <h2 class="tip_title">Gerente General</h2>
-                    <p class="tip_txt">
-                    <p>
-                        NUBIA VELASCO
-                    </p>
-                    <P>
-                        KRA 9 # 11-47 P.2
-                    </P>
-                    <P>
-                        Telefono : 3219085857
-                    </P>
-                    <P>
-                        Correo Electronico: ventas@vinosdelavilla.com
-                    </P>
-                    </p>
-                    <a href="" class="btn_shop">contacto </a>
+                    <p class="tip_txt">NUBIA VELASCO</p>
+                    <p>KRA 9 # 11-47 P.2</p>
+                    <p>Telefono: 3219085857</p>
+                    <p>Correo Electronico: ventas@vinosdelavilla.com</p>
+                    <a href="" class="btn_shop">CONTACTO</a>
                 </div>
             </div>
         </div>
