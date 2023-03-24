@@ -17,13 +17,10 @@ if(isset($_GET['busqueda'])){
 
     // Si hay resultados, los devolvemos como JSON, sino devolvemos un mensaje de error. 
     if ($resultado->num_rows > 0) { 
-
         $datos = array();
-
         while($row = $resultado->fetch_assoc()) { 
 
             $datos[] = $row;
-
         }
 
         echo json_encode($datos);

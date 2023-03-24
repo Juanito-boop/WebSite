@@ -12,21 +12,19 @@ $_resultado_productos = $_sentencia_productos->fetchAll(PDO::FETCH_ASSOC);
 $_resultado_secciones = $_sentencia_secciones->fetchAll(PDO::FETCH_ASSOC);
 
 //Esta función obtiene la imagen del producto actual  
-function get_image($_unique)
+function get_image($_unique_id)
 {
-    $image = "img/vinos/" . $_unique . ".png";
-    $imagen = (file_exists($image)) ? $image : "img/logo.png";
-    return $imagen;
+    $_image_path = 'img/vinos/' . $_unique_id . '.png';
+    $_image_exists = file_exists($_image_path) ? $_image_path : "img/logo.png";
+    return $_image_exists;
 }
 
 //Esta función obtiene el botón de comprar según si el producto está en promoción o no
-function get_button($_promotion)
+function get_button($_isPromotion)
 {
-    if ($_promotion === true) {
-        return '<a href="" class="promotion-btn"><em class="fas fa-shopping-cart"> PROMOCION </em></a>';
-    } else {
-        return '<a href="" class="product-btn"><em class="fas fa-shopping-cart"> COMPRAR </em></a>';
-    }
+    $class = $_isPromotion ? 'promotion-btn' : 'product-btn';
+    $text = $_isPromotion ? 'PROMOCION' : 'COMPRAR';
+    return '<a href="" class="' . $class . '"><em class="fas fa-shopping-cart">' . $text . '</em></a>';
 }
 
 //Esta función obtiene la caja del producto actual
@@ -42,8 +40,8 @@ function get_product($_productos, $_x)
         return '<div class="product">
               <div class="product_description">
                 <img src="' . $_imagen . '" alt="" class="product_img">
-                <h3 class="product_title">' . $_productos['nombre'] . '</h3>
-                <h3 class="product_title">' . $_productos['sepa'] . '</h3>
+                <h3 class="product__title">' . $_productos['nombre'] . '</h3>
+                <h3 class="product__title">' . $_productos['sepa'] . '</h3>
                 <span class="product_price">' . number_format($_productos['precio'], 3, '.', ',') . '</span>
                 ' . $button . '
               </div>
