@@ -3,7 +3,9 @@
     display: grid;
     gap: 20px;
     place-content: center;
-    grid-template-columns: repeat(5, 240px);
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    transition: transform 0.3s ease;
+    /* animación */
 }
 
 .product {
@@ -50,4 +52,22 @@
 .product__icon {
     display: block;
     margin-top: 10px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+.pagination button {
+    margin: 0 10px;
+    background-color: #ddd;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.pagination button:hover {
+    cursor: pointer;
 }

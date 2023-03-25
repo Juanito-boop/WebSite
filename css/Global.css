@@ -174,31 +174,37 @@ h2 {
 .main-footer {
   background: var(--color-8);
   color: var(--color-10);
-  padding: 30px 20px;
+  padding: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.footer_title {
-  border-bottom: 1px dotted var(--color-9);
-  padding-bottom: 20px;
+.footer_links {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 50%;
 }
 
-.footer_txt {
-  color: var(--color-9);
-}
-
-.footer_link {
+.footer_links a {
   color: var(--color-9);
   text-decoration: none;
-  display: block;
-  padding: 10px 0;
+  padding: 10px 20px;
+  margin: 0 10px;
+  border: 1px solid var(--color-9);
+  border-radius: 5px;
 }
 
 .footer_input {
   background: #151515;
-  width: 100%;
+  width: 50%;
   display: block;
   padding: 20px;
   border: 1px solid var(--color-9);
+  color: var(--color-9);
+  margin-right: 20px;
 }
 
 .copy {

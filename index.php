@@ -51,14 +51,33 @@
         </div>
     </header>
     <div class="main" style="padding-bottom: 0px;">
-        <div class="container">
-            <?php
-            require_once 'modulos/tarjetas/tarjetas.php';
-            //<!-- empiezan las tarjetas -->
-            tarjetas(1);
-            tarjetas(2);
-            tarjetas(3);
-            ?>
+        <div>
+            <div class="container">
+                <?php
+                require_once 'modulos/tarjetas/tarjetas.php';
+                //<!-- empiezan las tarjetas -->
+                tarjetas(1);
+                ?>
+                <div class="pagination">
+                    <button id="prev-btn"> 🔙 </button>
+                    <button id="next-btn"> 🔜 </button>
+                </div>
+                <?php
+                tarjetas(2);
+                ?>
+                <div class="pagination">
+                    <button id="prev-btn"> 🔙 </button>
+                    <button id="next-btn"> 🔜 </button>
+                </div>
+                <?php
+                tarjetas(3);
+                ?>
+                <div class="pagination">
+                    <button id="prev-btn"> 🔙 </button>
+                    <button id="next-btn"> 🔜 </button>
+                </div>
+                ?>
+            </div>
         </div>
         <div class="testimonials">
             <div class="container_testimonials">
@@ -140,5 +159,6 @@
         </footer>
         <script src="js/slider.js"></script>
         <script src="js/hamburguer.js"></script>
+        <script src="js/paginacion.js"></script>
     </div>
 </body>
