@@ -1,11 +1,12 @@
 const gridContainer = document.querySelector('.container-products');
 const itemsPerPage = 5;
 let currentPage = 1;
-const prevBtn = document.querySelector('#prev-btn1');
-const nextBtn = document.querySelector('#next-btn1');
+const pzrevBtn = document.querySelector('#prev-btn1');
 const prevBtn2 = document.querySelector('#prev-btn2');
-const nextBtn2 = document.querySelector('#next-btn2');
 const prevBtn3 = document.querySelector('#prev-btn3');
+
+const nextBtn = document.querySelector('#next-btn1');
+const nextBtn2 = document.querySelector('#next-btn2');
 const nextBtn3 = document.querySelector('#next-btn3');
 
 // Función para mostrar los items de la página actual
@@ -22,24 +23,22 @@ function showItems(page) {
     });
 }
 
-// Mostrar los items de la primera página al cargar la página
-showItems(currentPage);
+// Función para calcular el número total de páginas
+function calculateTotalPages() {
+    return Math.ceil(gridContainer.children.length / itemsPerPage);
+}
 
 function buttonClickHandler(nextBtn, prevBtn) {
     const totalPages = calculateTotalPages();
-    return () => {
+    return function () {
         currentPage = (currentPage + 1) > totalPages ? 1 : (currentPage + 1);
         showItems(currentPage);
     };
 }
 
 function addButtonListener(nextBtn, prevBtn) {
-    nextBtn.addEventListener('click', function () {
-        buttonClickHandler(nextBtn, prevBtn);
-    });
-    prevBtn.addEventListener('click', function () {
-        buttonClickHandler(nextBtn, prevBtn);
-    });
+    nextBtn.addEventListener('click', buttonClickHandler(nextBtn, prevBtn));
+    prevBtn.addEventListener('click', buttonClickHandler(nextBtn, prevBtn));
 }
 
 // Asignar eventos de click para el primer grupo de botones
@@ -51,7 +50,5 @@ addButtonListener(nextBtn2, prevBtn2);
 // Asignar eventos de click para el tercer grupo de botones
 addButtonListener(nextBtn3, prevBtn3);
 
-// Función para calcular el número total de páginas
-function calculateTotalPages() {
-    return Math.ceil(gridContainer.children.length / itemsPerPage);
-}
+// Mostrar los items de la primera página al cargar la página
+showItems(currentPage);

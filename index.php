@@ -29,9 +29,7 @@ require_once 'modulos/tarjetas/tarjetas.php';
                     <h1 class="main-header__title">LOS VINOS</h1>
                     <h2 class="main-header__subtitle"><i>Tienda Gourmet</i></h2>
                     <h3 class="main-header__subsubtitle">Carrera 9 11 47 Segundo piso de La Galleta</h3>
-                    <div class="main-header__container">
-                        <p class="main-header__txt">CONTACTANOS (+57) 3219085857 <em class="fas fa-phone"></em></p>
-                    </div>
+                    <p class="main-header__txt">CONTACTANOS (+57) 3219085857 <em class="fas fa-phone"></em></p>
                 </div>
                 <div class="icono-menu">
                     <img src="img/bars-solid.svg" id="icono-menu">
@@ -55,15 +53,14 @@ require_once 'modulos/tarjetas/tarjetas.php';
         <!-- empiezan las tarjetas -->
         <div class="container">
             <?php
-            $num_tarjetas = 3;
-            foreach (range(1, $num_tarjetas) as $i) { ?>
+            foreach (range(1, 3) as $i) { ?>
                 <div>
                     <?php
                     tarjetas($i);
                     ?>
                     <div class="pagination">
-                        <button id="prev-btn<?php echo is_numeric($i) ? $i : "" ?>">🔙</button>
-                        <button id="next-btn<?php echo is_numeric($i) ? $i : "" ?>">🔜</button>
+                        <button id="prev-btn<?php echo $i; ?>">🔙</button>
+                        <button id="next-btn<?php echo $i; ?>">🔜</button>
                     </div>
                 </div>
                 <?php
