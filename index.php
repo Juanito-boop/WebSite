@@ -52,6 +52,7 @@ require_once 'modulos/tarjetas/tarjetas.php';
     <div class="main" style="padding-bottom: 0px;">
         <!-- empiezan las tarjetas -->
         <div class="container">
+            <!-- Este código es una estructura de una plantilla HTML que utiliza PHP para generar contenido dinámico. En este caso, se genera un contenedor con clase "container" que contiene tres repeticiones de un bloque div. Dentro de cada bloque, se llama a una función "tarjetas" con un argumento $i que indica el número de la iteración actual. Además, cada bloque contiene una subsección "pagination" con dos botones que tienen ids únicos en función de la $i. La función "range" se utiliza para generar el rango de números del 1 al 3 (ambos inclusive) y el bucle "foreach" se ejecuta tres veces, una por cada número en el rango. -->
             <?php
             foreach (range(1, 3) as $i) { ?>
                 <div>
