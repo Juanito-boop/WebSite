@@ -1,7 +1,7 @@
 const gridContainer = document.querySelector('.container-products');
 const itemsPerPage = 5;
 let currentPage = 1;
-const pzrevBtn = document.querySelector('#prev-btn1');
+const prevBtn = document.querySelector('#prev-btn1');
 const prevBtn2 = document.querySelector('#prev-btn2');
 const prevBtn3 = document.querySelector('#prev-btn3');
 
