@@ -1,25 +1,28 @@
-Electronic Commerce de Vinos
-Este proyecto es una tienda en línea de vinos a nivel nacional. Los clientes pueden realizar compras desde la comodidad de su hogar y recibir sus productos en la puerta de su casa.
+#Electronic Commerce de Vinos
 
-Instalación
-Clona el repositorio desde GitHub: git clone https://github.com/Juanito-boop/WebSite.git
-Configura un servidor Apache y asegúrate de tener instalado PHP y PostgreSQL.
-Crea una base de datos de PostgreSQL para el proyecto.
-En la carpeta config, renombra el archivo database_example.php a database.php y actualiza los valores para la conexión a la base de datos.
-Ejecuta el archivo database.sql en tu base de datos para crear las tablas necesarias.
-Abre el proyecto en tu servidor local (http://localhost/WebSite).
-Uso
-Los usuarios pueden crear una cuenta para guardar su información y revisar su historial de compras.
-Los usuarios pueden navegar por los productos disponibles en la tienda y agregarlos a su carrito de compras.
-Los usuarios pueden realizar compras utilizando una tarjeta de crédito o débito.
-Los administradores pueden agregar nuevos productos, editar los productos existentes y ver las órdenes realizadas por los clientes.
-Contribuir
-Si deseas contribuir a este proyecto, sigue estos pasos:
+<p> Este proyecto es una tienda en línea de vinos a nivel nacional. Los clientes pueden realizar compras desde la comodidad de su hogar y recibir sus productos en la puerta de su casa.</p>
 
-Haz un Fork del repositorio.
-Crea una nueva rama (git checkout -b feature/MyFeature).
-Haz tus cambios y haz commit de los mismos (git commit -am 'Add some feature').
-Sube tus cambios a la rama (git push origin feature/MyFeature).
-Abre un Pull Request.
-Licencia
-Este proyecto está bajo la Licencia MIT - mira el archivo LICENSE.md para más detalles.
+##Instalación
+
+<ol><li>Clona el repositorio desde GitHub:
+```git clone https://github.com/Juanito-boop/WebSite.git```</li>
+    <li>Configura un servidor Apache y asegúrate de tener instalado PHP 8.2 y PostgreSQL.</li>
+    <li>Crea una base de datos de PostgreSQL llamada tienda.</li>
+    <li>En la carpeta config, entra al archivo dataBD.php y actualiza los valores para la conexión a la base de datos.</li>
+    <li>Ejecuta el archivo PGSQL.sql en tu base de datos para crear las tablas necesarias.</li>
+    <li>Abre el proyecto en tu servidor local (http://localhost/WebSite).</li></ol>
+
+##Uso
+
+<ol><li>Los usuarios pueden crear una cuenta para guardar su información y revisar su historial de compras.</li>
+    <li>Los usuarios pueden navegar por los productos disponibles en la tienda y agregarlos a su carrito de compras.</li>
+    <li>Los usuarios pueden realizar compras utilizando una tarjeta de crédito o débito.</li>
+    <li>Los administradores pueden agregar nuevos productos, editar los productos existentes y ver las órdenes realizadas por los clientes.</li></ol>
+
+##Tecnologías utilizadas
+
+<li>HTML5</li>
+<li>CSS3</li>
+<li>JavaScript</li>
+<li>PHP</li>
+<li>PostgreSQL</li>
