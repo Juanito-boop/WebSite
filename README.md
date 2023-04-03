@@ -4,12 +4,11 @@
 
 <h1>Instalación</h1>
     
-<ol><li>Clona el repositorio desde GitHub:</li>
-    <code>git clone https://github.com/Juanito-boop/WebSite.git</code>
-    <li>Configura un servidor Apache y asegúrate de tener instalado PHP 8.2 y PostgreSQL.</li>
+<ol><li>Clona el repositorio desde GitHub: <code>git clone https://github.com/Juanito-boop/WebSite.git</code></li>
+    <li>Configura un servidor Apache(XAMMP, WAMMP, Laragon) y asegúrate de tener instalado PHP 8.0 o superior y PostgreSQL.</li>
     <li>Crea una base de datos de PostgreSQL llamada tienda.</li>
-    <li>En la carpeta config, entra al archivo dataBD.php y actualiza los valores para la conexión a la base de datos.</li>
-    <li>Ejecuta el archivo PGSQL.sql en tu base de datos para crear las tablas necesarias.</li>
+    <li>En la carpeta config, entrar al archivo dataBD.php y actualizar los valores para la conexión a la base de datos.</li>
+    <li>Ejecuta el archivo PGSQL.sql ubicado en la carpeta sql dentro tu base de datos para crear las tablas y los registros necesarios.</li>
     <li>Abre el proyecto en tu servidor local (http://localhost/WebSite).</li></ol>
 
 <h1>Uso</h1>
