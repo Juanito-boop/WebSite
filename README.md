@@ -3,9 +3,7 @@
 <p> Este proyecto es una tienda en línea de vinos a nivel nacional. Los clientes pueden realizar compras desde la comodidad de su hogar y recibir sus productos en la puerta de su casa.</p>
 
 <h1>Instalación</h1>
-    ```
     git clone https://github.com/Juanito-boop/WebSite.git
-    ```
 <ol><li>Clona el repositorio desde GitHub:</li>
     <li>Configura un servidor Apache y asegúrate de tener instalado PHP 8.2 y PostgreSQL.</li>
     <li>Crea una base de datos de PostgreSQL llamada tienda.</li>
