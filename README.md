@@ -4,8 +4,8 @@
 
 <h1>Instalación</h1>
 
-<ol><li>Clona el repositorio desde GitHub:
-```git clone https://github.com/Juanito-boop/WebSite.git```</li>
+<ol><li>Clona el repositorio desde GitHub:</li>
+```git clone https://github.com/Juanito-boop/WebSite.git```
     <li>Configura un servidor Apache y asegúrate de tener instalado PHP 8.2 y PostgreSQL.</li>
     <li>Crea una base de datos de PostgreSQL llamada tienda.</li>
     <li>En la carpeta config, entra al archivo dataBD.php y actualiza los valores para la conexión a la base de datos.</li>
