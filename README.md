@@ -6,9 +6,7 @@
 
 <ol><li>Clona el repositorio desde GitHub:</li>
     ```
-    
     git clone https://github.com/Juanito-boop/WebSite.git
-    
     ```
     <li>Configura un servidor Apache y asegúrate de tener instalado PHP 8.2 y PostgreSQL.</li>
     <li>Crea una base de datos de PostgreSQL llamada tienda.</li>
