@@ -1,8 +1,8 @@
-#Electronic Commerce de Vinos
+<h1>Electronic Commerce de Vinos</h1>
 
 <p> Este proyecto es una tienda en línea de vinos a nivel nacional. Los clientes pueden realizar compras desde la comodidad de su hogar y recibir sus productos en la puerta de su casa.</p>
 
-##Instalación
+<h1>Instalación</h1>
 
 <ol><li>Clona el repositorio desde GitHub:
 ```git clone https://github.com/Juanito-boop/WebSite.git```</li>
@@ -12,14 +12,14 @@
     <li>Ejecuta el archivo PGSQL.sql en tu base de datos para crear las tablas necesarias.</li>
     <li>Abre el proyecto en tu servidor local (http://localhost/WebSite).</li></ol>
 
-##Uso
+<h1>Uso</h1>
 
 <ol><li>Los usuarios pueden crear una cuenta para guardar su información y revisar su historial de compras.</li>
     <li>Los usuarios pueden navegar por los productos disponibles en la tienda y agregarlos a su carrito de compras.</li>
     <li>Los usuarios pueden realizar compras utilizando una tarjeta de crédito o débito.</li>
     <li>Los administradores pueden agregar nuevos productos, editar los productos existentes y ver las órdenes realizadas por los clientes.</li></ol>
 
-##Tecnologías utilizadas
+<h1>Tecnologías utilizadas</h1>
 
 <li>HTML5</li>
 <li>CSS3</li>
