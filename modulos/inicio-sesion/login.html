@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/login.css">
+    <title>Log-in</title>
+</head>
+
+<!--Este es un formulario para iniciar sesión en una página web-->
+
+<body>
+    <form class="box" action="validar.php" method="POST">
+        <h1>Inicio de Sesion</h1>
+        <!--Campo para ingresar el nombre de usuario-->
+        <input type="text" id="user_name" name="user" placeholder="Username" required>
+        <!--Campo para ingresar la contraseña-->
+        <input type="password" id="password" name="pass" placeholder="Password" required>
+        <!--Botón para enviar los datos-->
+        <input type="submit" name="" value="Login">
+        <!--Enlace para redirigir al usuario a la página de registro si no tiene una cuenta-->
+        <a href="../registro/registro.html">¿No tienes una cuenta? Regístrate aquí</a>
+    </form>
+</body>
+
+
+</html>

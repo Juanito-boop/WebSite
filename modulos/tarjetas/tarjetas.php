@@ -1,14 +1,19 @@
 <?php
 include_once './config/database.php';
+$obj = new Connection();
+$conn = $obj->Conexion();
 
-//El código ejecuta una consulta a una base de datos llamada "tienda" y a la tabla "productos". La consulta devuelve los valores de las columnas "nombre", "sepa", "descripcion", "precio", "id_categoria", "producto", "activo", "promocion", "mostrar" y "nuevo_precio" de aquellos registros donde el valor de la columna "mostrar" es igual a true. Estos valores serán almacenados en una variable llamada $_sentencia_productos. La conexión a la base de datos se realiza mediante una variable llamada $_base_de_datos.
-$_sentencia_productos = $_base_de_datos->query("SELECT nombre, sepa, descripcion, precio, id_categoria, producto, activo, promocion, mostrar, nuevo_precio FROM tienda.productos WHERE mostrar = true");
+//El código ejecuta una consulta a una base de datos llamada "tienda" y a la tabla "productos". La consulta devuelve los valores de todas columnas de aquellos registros donde el valor de la columna "mostrar" es igual a true. Estos valores serán almacenados en una variable llamada $_sentencia_productos.
+$_sentencia_productos = $conn->query("SELECT * FROM tienda.productos WHERE mostrar = true");
 
 //Este código ejecuta una consulta SQL a la base de datos de la tienda, en la tabla secciones, para seleccionar los nombres, valores de activo y las ids únicas de todas las secciones que estén activas. La consulta se realiza usando el método query() de $_base_de_datos que es un objeto de la clase de la conexión de la base de datos. Los resultados de la consulta se almacenan en la variable $_sentencia_secciones para que puedan ser usados posteriormente en el código.
-$_sentencia_secciones = $_base_de_datos->query("SELECT nombre, activo, id_unica FROM tienda.secciones WHERE activo = true");
+$_sentencia_secciones = $conn->query("SELECT * FROM tienda.secciones WHERE activo = true");
+
+//Se ejecutan las sentencias almacenadas en las variables $_sentencia_productos y $_sentencia_secciones
+$_sentencia_productos->execute();
+$_sentencia_secciones->execute();
 
 //El código usa la biblioteca PDO de PHP para acceder a una base de datos. La función fetchAll devuelve todas las filas del conjunto de resultados como un array asociativo, donde la clave del array es el nombre de la columna y el valor es el valor de la celda correspondiente. En el primer caso, $_resultado_productos recupera todas las filas de la sentencia SQL $_sentencia_productos y las almacena en un array asociativo usando el modo PDO::FETCH_ASSOC. En el segundo caso, $_resultado_secciones hace lo mismo para la sentencia SQL $_sentencia_secciones.
-
 $_resultado_productos = $_sentencia_productos->fetchAll(PDO::FETCH_ASSOC);
 $_resultado_secciones = $_sentencia_secciones->fetchAll(PDO::FETCH_ASSOC);
 
@@ -44,8 +49,8 @@ function get_product($_productos, $_x)
         return '<div class="product">
               <div class="product_description">
                 <img src="' . $_imagen . '" alt="" class="product_img">
-                <h3 class="product__title">' . $_productos['nombre'] . '</h3>
-                <h3 class="product__title">' . $_productos['sepa'] . '</h3>
+                <h3 class="product__title bold">' . $_productos['nombre'] . '</h3>
+                <h3 class="product__title bold">' . $_productos['sepa'] . '</h3>
                 <span class="product_price">' . number_format($_productos['precio'], 3, '.', ',') . '</span>
                 ' . $button . '
               </div>

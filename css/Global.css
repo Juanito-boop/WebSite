@@ -38,10 +38,15 @@
 body {
   margin: 0;
   font-family: 'Inconsolata';
-  background-image: url("../img/—Pngtree—dark\ wooden\ panel\ background\ with_1159330.png");
+  /* background-image: url("../img/—Pngtree—dark\ wooden\ panel\ background\ with_1159330.png");
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-size: cover;
+  background-size: cover; */
+  background: rgb(230, 177, 32);
+  background: -moz-radial-gradient(circle, var(--color-2) 0%, var(--color-4) 100%);
+  background: -webkit-radial-gradient(circle, var(--color-2) 0%, var(--color-4) 100%);
+  background: radial-gradient(circle, var(--color-2) 0%, var(--color-4) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="var(--color-2)", endColorstr="var(--color-4)", GradientType=1);
 }
 
 body::-webkit-scrollbar {

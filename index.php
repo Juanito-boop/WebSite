@@ -24,7 +24,9 @@ require_once 'modulos/tarjetas/tarjetas.php';
     <header class="main-header">
         <div class="container container--flex">
             <div class="main-header__container">
-                <img src="img/image-removebg-preview.png" alt="" class="logo">
+                <a href="modulos/inicio-sesion/login.html">
+                    <img src="img/image-removebg-preview.png" alt="" class="logo">
+                </a>
                 <div class="centrado1">
                     <h1 class="main-header__title">LOS VINOS</h1>
                     <h2 class="main-header__subtitle"><i>Tienda Gourmet</i></h2>

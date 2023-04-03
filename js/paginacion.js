@@ -1,6 +1,7 @@
 const gridContainer = document.querySelector('.container-products');
 const itemsPerPage = 5;
 let currentPage = 1;
+
 const prevBtn = document.querySelector('#prev-btn1');
 const prevBtn2 = document.querySelector('#prev-btn2');
 const prevBtn3 = document.querySelector('#prev-btn3');
@@ -39,6 +40,16 @@ function buttonClickHandler(nextBtn, prevBtn) {
 function addButtonListener(nextBtn, prevBtn) {
     nextBtn.addEventListener('click', buttonClickHandler(nextBtn, prevBtn));
     prevBtn.addEventListener('click', buttonClickHandler(nextBtn, prevBtn));
+}
+
+function addButtonListener(nextBtn2, prevBtn2) {
+    nextBtn2.addEventListener('click', buttonClickHandler(nextBtn2, prevBtn2));
+    prevBtn2.addEventListener('click', buttonClickHandler(nextBtn2, prevBtn2));
+}
+
+function removeButtonListener(nextBtn3, prevBtn3) {
+    nextBtn3.addEventListener('click', buttonClickHandler(nextBtn3, prevBtn3));
+    prevBtn3.addEventListener('click', buttonClickHandler(nextBtn3, prevBtn3));
 }
 
 // Asignar eventos de click para el primer grupo de botones
