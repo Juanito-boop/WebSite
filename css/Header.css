@@ -21,7 +21,6 @@
 .main-header__title,
 .main-header-subsubtitle {
     font-size: 2.5em;
-    margin: 10px 0;
     color: #141313;
     font-family: 'Raleway';
 }
@@ -34,11 +33,12 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .main-header__txt {
     font-size: 1.1em;
-    border: 1px solid #ccc;
     color: #000000;
     font-family: 'poppins';
 }
