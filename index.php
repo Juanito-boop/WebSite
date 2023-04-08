@@ -5,7 +5,7 @@ require_once 'modulos/tarjetas/tarjetas.php';
 
 <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="./img/image-removebg-preview.png">
+    <link rel="icon" type="image/png" href="./img/image-removebg-preview.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -45,11 +45,13 @@ require_once 'modulos/tarjetas/tarjetas.php';
                 <!-- Add cart button here -->
             </div>
         </div>
-        <div class="main-header__container">
-            <label for="search" class="sr-only">Search Products</label>
-            <input type="search" id="search" class="main-header__input" placeholder="What product are you looking for?">
-            <em class="fas fa-search" id="lupa"></em>
-        </div>
+        <form id="formulario" method="POST" action="modulos/consultas-preparadas/consultas-preparadas.php">
+            <div class="main-header__container">
+                <input type="search" id="search" class="main-header__input"
+                    placeholder="What product are you looking for?">
+                <em class="fas fa-search" id="lupa"></em>
+            </div>
+        </form>
     </header>
     <div class="main" style="padding-bottom: 0px;">
         <!-- empiezan las tarjetas -->
@@ -98,9 +100,9 @@ require_once 'modulos/tarjetas/tarjetas.php';
 
                 <p>HORARIOS DE ATENCION :</p>
                 <ul>
-                    <li>dom 12:00 p. m. - 10:00 p. m.</li>
-                    <li>lun-mar-mié-jue 3:00 p. m. - 10:00 p. m.</li>
-                    <li>vie-sáb 12:00 p. m. - 12:00 a. m.</li>
+                    dom 12:00 p. m. - 10:00 p. m.<br>
+                    lun-mar-mié-jue 3:00 p. m. - 10:00 p. m.<br>
+                    vie-sáb 12:00 p. m. - 12:00 a. m.<br>
                 </ul>
 
             </div>
