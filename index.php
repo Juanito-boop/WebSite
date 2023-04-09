@@ -17,7 +17,6 @@ require_once 'modulos/tarjetas/tarjetas.php';
     <link rel="stylesheet" href="css/Header.css">
     <link rel="stylesheet" href="css/Products.css">
     <link rel="stylesheet" href="css/Slider.css">
-
 </head>
 
 <body>
@@ -30,7 +29,7 @@ require_once 'modulos/tarjetas/tarjetas.php';
                 <div class="centrado1">
                     <h1 class="main-header__title">LOS VINOS</h1>
                     <h2 class="main-header__subtitle"><i>Tienda Gourmet</i></h2>
-                    <h3 class="main-header__subsubtitle">Carrera 9 11 47 Segundo piso de La Galleta</h3>
+                    <h2 class="main-header__subsubtitle">Carrera 9 11 47 Segundo piso de La Galleta</h2>
                     <p class="main-header__txt">CONTACTANOS (+57) 3219085857 <em class="fas fa-phone"></em></p>
                 </div>
                 <div class="icono-menu">
@@ -80,19 +79,16 @@ require_once 'modulos/tarjetas/tarjetas.php';
                 <p class="testimonial_txt">Estamos ubicados en Villa De Leyva boyaca Carrera 9 11 47 Segundo piso de La
                     Galleta,
                     Villa de Leyva, Boyaca, Colombia</p>
-
                 <p class="testimonial_txt">Lugar para los amantes del vino. Vino por copa desde COP$8000 Botellas desde
                     COP$27.900
                     Amplio surtido en vinos de: Colombia, España, Italia, Francia, Chile, Argentina y California para
                     acompañar:
                     Tapas, Panini, tablas de quesos y jamones. Buena música. Ambiente agradable.</p>
-
                 <p class="testimonial_txt">Poseemos diferentes servicios como: Bar de vinos, Bar, Española, Pub. También
                     podemos
                     ofrecer servicio de restaurante como: Cenas, Abierto hasta tarde (revisar horario según
                     corresponda),
                     Bebidas</p>
-
                 <p class="testimonial_txt">OTRAS CARACTERÍSTICAS: Comodos Asientos, Brindamos el fino alcohol, Wi-Fi
                     gratis,
                     Acepta tarjetas de crédito, Servicio de mesa, Reservas, Acceso para silla de ruedas, Vino y cerveza
@@ -150,6 +146,6 @@ require_once 'modulos/tarjetas/tarjetas.php';
             </div>
         </footer>
         <script src="js/hamburguer.js"></script>
-        <script src="js/paginacion.js"></script>
+        <script src="js/gridContainer.js"></script>
     </div>
 </body>

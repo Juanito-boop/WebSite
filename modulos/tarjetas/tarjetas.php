@@ -3,13 +3,13 @@ include_once './config/database.php';
 $obj = new Connection();
 $conn = $obj->Conexion();
 
-//El código ejecuta una consulta a una base de datos llamada "tienda" y a la tabla "productos". La consulta devuelve los valores de todas columnas de aquellos registros donde el valor de la columna "mostrar" es igual a true. Estos valores serán almacenados en una variable llamada $_sentencia_productos.
-$_sentencia_productos = $conn->query("SELECT * FROM tienda.productos WHERE mostrar = true");
+//El código selecciona todos los registros de la tabla "vinos" de la base de datos "tienda" donde la columna "activo" es verdadera. La variable "$_sentencia_productos" almacena el resultado de la consulta.
+$_sentencia_productos = $conn->query("SELECT * FROM tienda.prueba WHERE activo = true");
 
-//Este código ejecuta una consulta SQL a la base de datos de la tienda, en la tabla secciones, para seleccionar los nombres, valores de activo y las ids únicas de todas las secciones que estén activas. La consulta se realiza usando el método query() de $_base_de_datos que es un objeto de la clase de la conexión de la base de datos. Los resultados de la consulta se almacenan en la variable $_sentencia_secciones para que puedan ser usados posteriormente en el código.
+//El código $_sentencia_secciones = $conn->query("SELECT * FROM tienda.secciones WHERE activo = true"); se utiliza para hacer una consulta a una base de datos. En este caso, se está seleccionando todas las filas de la tabla "secciones" en la base de datos "tienda" donde el valor de la columna "activo" es "true". La variable $_sentencia_secciones almacenará el resultado de la consulta, que se puede utilizar posteriormente en el código. Se asume que la variable $conn es una instancia de la conexión a la base de datos.
 $_sentencia_secciones = $conn->query("SELECT * FROM tienda.secciones WHERE activo = true");
 
-//Se ejecutan las sentencias almacenadas en las variables $_sentencia_productos y $_sentencia_secciones
+//El código ejecuta dos sentencias preparadas en PHP. La primera sentencia se ejecuta en una variable llamada $_sentencia_productos y la segunda en una variable llamada $_sentencia_secciones. Una sentencia preparada es una forma de precompilar una consulta SQL que se utilizará varias veces con diferentes valores. Esto ayuda a mejorar el rendimiento y la seguridad al evitar la necesidad de analizar la consulta cada vez que se ejecuta. La función execute() ejecuta las sentencias preparadas que se han asignado a las variables $_sentencia_productos y $_sentencia_secciones respectivamente. Esto permite que las consultas SQL en ambas sentencias preparadas se ejecuten en el motor de base de datos y se recuperen los datos correspondientes.
 $_sentencia_productos->execute();
 $_sentencia_secciones->execute();
 
@@ -36,42 +36,45 @@ function get_button($_isPromotion)
     return '<a href="" class="' . $class . '"><em class="fas fa-shopping-cart">' . $text . '</em></a>';
 }
 
-//Este código define una función llamada "get_product" que recibe dos parámetros: el primer parámetro es un array $_productos que contiene información de productos como 'promocion', 'id_categoria', 'producto', 'nombre', 'sepa' y 'precio'; el segundo parámetro ($_x) es una categoría de producto. El propósito de la función es devolver un bloque de HTML con información del producto que pertenece a la categoría recibida como parámetro ($_x). Primero, la función asigna variables locales para algunas de las claves del array $_productos. A continuación, llama a las funciones "get_image" y "get_button" para obtener información adicional de la imagen y el botón del producto. Luego, si la categoría del producto es igual al parámetro recibido ($_x), la función formatea un bloque de HTML que contiene la imagen, el nombre, el precio y el botón del producto, y lo devuelve como una cadena.En resumen, la función "get_product" toma información de un array de productos y devuelve un bloque de HTML que representa esa información para un producto específico que pertenece a la categoría solicitada.
+//Esta función de PHP toma dos parámetros, uno de ellos es un array de productos ($_productos) y el otro es un ID de categoría ($_x). Luego extrae la promoción, el ID de la categoría, el ID de imagen única y el enlace de imagen del array de productos. También recupera un botón y una tasa de cambio de moneda. La función luego multiplica el precio del producto por la tasa de cambio de moneda para convertir el precio de dólares a pesos colombianos. Finalmente, verifica si el ID de la categoría del producto coincide con el ID de la categoría de entrada. Si lo hace, devuelve una cadena HTML que muestra la imagen del producto, el nombre, la variedad, el precio en pesos colombianos y un botón para la promoción. Si la categoría del producto no coincide con la categoría de entrada, la función no devuelve nada.
 function get_product($_productos, $_x)
 {
     $_promocion = $_productos['promocion'];
     $_categoria = $_productos['id_categoria'];
-    $_unique = $_productos['producto'];
+    $_unique = $_productos['id_imagen'];
     $_imagen = get_image($_unique);
     $button = get_button($_promocion);
+    $taza_cambio = 4568.38;
+    $precio_cop = $_productos['precio'] * $taza_cambio;
 
     if ($_categoria == $_x) {
         return '<div class="product">
               <div class="product_description">
                 <img src="' . $_imagen . '" alt="" class="product_img">
                 <h3 class="product__title bold">' . $_productos['nombre'] . '</h3>
-                <h3 class="product__title bold">' . $_productos['sepa'] . '</h3>
-                <span class="product_price">' . number_format($_productos['precio'], 3, '.', ',') . '</span>
+                <h3 class="product__title bold">' . $_productos['variedad'] . '</h3>
+                <span class="product_price"> $' . number_format($precio_cop, 0, '.', ',') . ' COP </span>
                 ' . $button . '
               </div>
             </div>';
     }
 }
 
-//Este código define una función llamada "get_section" que tiene tres parámetros: $_seccion_productos, $_x y $_resultado_productos. La función comienza inicializando la variable $_section como una cadena que contiene un título en HTML con el nombre de la sección de productos pasada como parámetro. Luego, agrega otra cadena HTML que establece una clase para un contenedor de productos. A continuación, la función itera a través del arreglo de productos $_resultado_productos utilizando un bucle "foreach" y para cada producto llama a la función "get_product" con dos parámetros: el producto y $_x. La función "get_product" regresa una cadena HTML con la información del producto. Finalmente, la función "get_section" cierra el contenedor de productos y retorna la cadena HTML completa. Este código en sí mismo no produce salida visible en la pantalla ya que es una función que se puede llamar en otra parte del código.
+//
 function get_section($_seccion_productos, $_x, $_resultado_productos)
 {
+    static $i = 1;
     $_section = '<h2 class="main-title"><strong>' . $_seccion_productos['nombre'] . '</strong></h2>';
-    $_section .= '<div class="container-products">';
+    $_section .= '<div class="container-products" id="container' . $i . '">';
     foreach ($_resultado_productos as $_productos) {
         $_section .= get_product($_productos, $_x);
     }
     $_section .= '</div>';
+    $i++;
     return $_section;
 }
 
 //La función get_all_sections() recibe tres parámetros: $_resultado_secciones, $_x y $_resultado_productos. Esta función se encarga de recorrer el arreglo $_resultado_secciones y concatenar a la variable $_sections la salida de la función get_section() cada vez que encuentra una sección cuyo valor de id_unica coincide con el valor de $_x. La función get_section() se llama con tres parámetros: $_seccion_productos, $_x y $_resultado_productos. Al finalizar el ciclo, la función retorna el valor concatenado de $_sections.
-
 function get_all_sections($_resultado_secciones, $_x, $_resultado_productos)
 {
     $_sections = "";
@@ -84,7 +87,6 @@ function get_all_sections($_resultado_secciones, $_x, $_resultado_productos)
 }
 
 //El código define una función llamada "tarjetas" que toma un parámetro llamado "$_x". Dentro de la función, se utiliza la palabra clave "global" para hacer referencia a dos variables definidas fuera de la función llamadas "$_resultado_secciones" y "$_resultado_productos". La función llama a otra función llamada "get_all_sections" pasando las tres variables como argumentos y asigna el resultado de esa función a una variable llamada "$sections". Finalmente, la función imprime el contenido de la variable "$sections" utilizando la función "echo". En resumen, la función "tarjetas" obtiene una lista de todas las secciones y productos y las imprime en la pantalla.
-
 function tarjetas($_x)
 {
     global $_resultado_secciones, $_resultado_productos;
