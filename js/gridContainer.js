@@ -38,7 +38,6 @@ function showItems(page) {
         });
     });
 
-
     if (page > calculateTotalPages()) {
         currentPage = 1;
         showItems(currentPage);
