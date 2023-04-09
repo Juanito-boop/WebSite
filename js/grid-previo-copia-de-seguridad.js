@@ -25,13 +25,6 @@ function showItems(container, page) {
     const startIndex = (page - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
 
-    // Eliminar objetos nulos antes de calcular el número de páginas
-    Array.from(container.children).forEach(child => {
-        if (child.classList.contains('null-item')) {
-            child.remove();
-        }
-    });
-
     const itemsToShow = Array.from(container.children).filter(child => child.classList.contains('product'));
     itemsToShow.forEach((item, index) => {
         if (index >= startIndex && index < endIndex) {
@@ -41,20 +34,7 @@ function showItems(container, page) {
         }
     });
 
-    // Agregar objetos nulos si es necesario
     const totalPages = calculateTotalPages(container);
-    const items = Array.from(container.children).filter(child => child.classList.contains('product'));
-    const itemsToFill = itemsPerPage - (items.length % itemsPerPage);
-
-    if (itemsToFill > 0 && page === totalPages) {
-        for (let i = 0; i < itemsToFill; i++) {
-            const nullItem = document.createElement('div');
-            nullItem.classList.add('null-item');
-            nullItem.style.border = 'none';
-            container.appendChild(nullItem);
-        }
-    }
-
     if (page > totalPages) {
         page = 1;
         showItems(container, page);
@@ -67,7 +47,7 @@ function showItems(container, page) {
 }
 
 function addNextButtonListener(nextBtn, container, currentPage) {
-    nextBtn.addEventListener('mouseup', function () {
+    nextBtn.addEventListener('click', function () {
         currentPage++;
         currentPage = showItems(container, currentPage);
         console.log('Current Page:', currentPage);
@@ -75,7 +55,7 @@ function addNextButtonListener(nextBtn, container, currentPage) {
 }
 
 function addPrevButtonListener(prevBtn, container, currentPage) {
-    prevBtn.addEventListener('mousedown', function () {
+    prevBtn.addEventListener('click', function () {
         if (currentPage > 1) {
             currentPage--;
             currentPage = showItems(container, currentPage);
