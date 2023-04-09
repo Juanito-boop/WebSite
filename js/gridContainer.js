@@ -10,7 +10,7 @@ const nextBtn1 = document.querySelector('#next-btn1');
 const nextBtn2 = document.querySelector('#next-btn2');
 const nextBtn3 = document.querySelector('#next-btn3');
 
-const itemsPerPage = 5;
+const itemsPerPage = 4;
 
 let currentPage1 = 1;
 let currentPage2 = 1;
@@ -44,7 +44,8 @@ function showItems(container, page) {
     // Agregar objetos nulos si es necesario
     const totalPages = calculateTotalPages(container);
     const items = Array.from(container.children).filter(child => child.classList.contains('product'));
-    const itemsToFill = itemsPerPage - (items.length % itemsPerPage);
+    const numItems = items.length;
+    const itemsToFill = (numItems % itemsPerPage === 0) ? 0 : itemsPerPage - (numItems % itemsPerPage);
 
     if (itemsToFill > 0 && page === totalPages) {
         for (let i = 0; i < itemsToFill; i++) {
@@ -65,6 +66,7 @@ function showItems(container, page) {
 
     return page;
 }
+
 
 function addNextButtonListener(nextBtn, container, currentPage) {
     nextBtn.addEventListener('mouseup', function () {
