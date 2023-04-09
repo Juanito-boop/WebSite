@@ -10,7 +10,7 @@ const nextBtn1 = document.querySelector('#next-btn1');
 const nextBtn2 = document.querySelector('#next-btn2');
 const nextBtn3 = document.querySelector('#next-btn3');
 
-const itemsPerPage = 4;
+const itemsPerPage = 5;
 
 let currentPage1 = 1;
 let currentPage2 = 1;
