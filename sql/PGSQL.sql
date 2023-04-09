@@ -67,10 +67,7 @@ INSERT INTO usuarios (usuario, clave, nombre, apellido, email, rol) VALUES
     ('persona_1', '12345678', 'tienda',    'online',   'tienda@online.com',           'Administrador'),
     ('persona_2', '12345678', 'Elizabeth', 'Gottlieb', 'Schuyler.Cronin@hotmail.com', 'UsuarioCorriente');
 
-TRUNCATE vinos;
-
-INSERT INTO vinos (nombre, variedad, anada, bodega, pais, region, precio, stock, tipo, nivel_alcohol, tipo_barrica, notas_cata, temperatura_consumo, maridaje, id_categoria, activo, id_imagen, mostrar, promocion)
-VALUES
+INSERT INTO vinos (nombre, variedad, anada, bodega, pais, region, precio, stock, tipo, nivel_alcohol, tipo_barrica, notas_cata, temperatura_consumo, maridaje, id_categoria, activo, id_imagen, promocion) VALUES
 
 ('Petirrojo', 'Merlot', 2019, 'Viñedos Petirrojo', 'Chile', 'Valle Central', 11.99, 40, 'Tinto', 13.5, 'Crianza en barrica de roble', 'Notas de frutas rojas y especias, con cuerpo medio y taninos suaves.', '16-18°C', 'Carnes rojas y quesos.', 1, true, 245726, false),
 
