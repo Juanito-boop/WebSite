@@ -4,17 +4,9 @@
     gap: 20px;
     place-content: center;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    transition: transform 0.3s ease;
     /* animación */
-}
-
-.product {
-    border: 2px outset #efb810;
-    border-radius: 10px;
-    height: auto;
-    /* height: 100%; */
-    padding: 20px;
-    text-align: center;
+    transition: ease 0s, opacity 0;
+    height: 335px;
 }
 
 .product {
@@ -23,6 +15,7 @@
     height: 100%;
     padding: 20px;
     text-align: center;
+    height: 335px;
 }
 
 .product__img {

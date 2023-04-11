@@ -1,4 +1,4 @@
--- Active: 1675450657549@@127.0.0.1@5432@postgres@tienda
+-- Active: 1681022712039@@db.hijaeegxjbuivzckpijg.supabase.co@5432@postgres
 CREATE TABLE IF NOT EXISTS secciones (
     ID BIGSERIAL PRIMARY KEY,
     nombre TEXT NOT NULL,

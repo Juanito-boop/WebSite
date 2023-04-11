@@ -98,12 +98,10 @@ function addPrevButtonListener(prevBtn, container, currentPage) {
         if (currentPage > 1) {
             currentPage--;
             currentPage = showItems(container, currentPage);
-            console.log('Current Page:', currentPage);
         } else {
             // Recibe como parámetros el botón, el contenedor y la página actual
             currentPage = calculateTotalPages(container);
             currentPage = showItems(container, currentPage);
-            console.log('Current Page:', currentPage);
         }
     });
 }

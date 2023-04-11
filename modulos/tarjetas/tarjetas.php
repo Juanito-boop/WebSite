@@ -4,10 +4,10 @@ $obj = new Connection();
 $conn = $obj->Conexion();
 
 //El código selecciona todos los registros de la tabla "vinos" de la base de datos "tienda" donde la columna "activo" es verdadera. La variable "$_sentencia_productos" almacena el resultado de la consulta.
-$_sentencia_productos = $conn->query("SELECT * FROM tienda.vinos WHERE activo = true");
+$_sentencia_productos = $conn->query("SELECT * FROM prueba WHERE activo = true");
 
 //El código $_sentencia_secciones = $conn->query("SELECT * FROM tienda.secciones WHERE activo = true"); se utiliza para hacer una consulta a una base de datos. En este caso, se está seleccionando todas las filas de la tabla "secciones" en la base de datos "tienda" donde el valor de la columna "activo" es "true". La variable $_sentencia_secciones almacenará el resultado de la consulta, que se puede utilizar posteriormente en el código. Se asume que la variable $conn es una instancia de la conexión a la base de datos.
-$_sentencia_secciones = $conn->query("SELECT * FROM tienda.secciones WHERE activo = true");
+$_sentencia_secciones = $conn->query("SELECT * FROM secciones WHERE activo = true");
 
 //El código ejecuta dos sentencias preparadas en PHP. La primera sentencia se ejecuta en una variable llamada $_sentencia_productos y la segunda en una variable llamada $_sentencia_secciones. Una sentencia preparada es una forma de precompilar una consulta SQL que se utilizará varias veces con diferentes valores. Esto ayuda a mejorar el rendimiento y la seguridad al evitar la necesidad de analizar la consulta cada vez que se ejecuta. La función execute() ejecuta las sentencias preparadas que se han asignado a las variables $_sentencia_productos y $_sentencia_secciones respectivamente. Esto permite que las consultas SQL en ambas sentencias preparadas se ejecuten en el motor de base de datos y se recuperen los datos correspondientes.
 $_sentencia_productos->execute();
