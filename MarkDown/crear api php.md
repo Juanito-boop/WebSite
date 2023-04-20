@@ -1,5 +1,3 @@
-
-
 <?php
 //Incluimos la conexión a la base de datos
 require_once('conexion.php');

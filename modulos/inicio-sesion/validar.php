@@ -21,7 +21,7 @@ if (isset($_POST['user']) && isset($_POST['pass'])) {
     // Verificamos si se ha encontrado al usuario en la base de datos
     if ($resultado) {
         // Si se encontró al usuario, establecemos la variable de sesión 'usuario' con el valor de $usuario
-        $_SESSION['usuario'] = $usuario;
+        $SESSION['usuario'] = $usuario;
         // Enviamos un mensaje de respuesta al usuario indicando que el inicio de sesión fue exitoso
         //echo "Inicio de sesion correcto";
         // Redireccionamos al usuario a la página de inicio (opcional)
