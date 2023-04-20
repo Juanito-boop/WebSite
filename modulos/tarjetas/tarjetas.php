@@ -1,94 +1,198 @@
 <?php
+// Incluye el archivo `database.php` y crea un nuevo objeto `Connection`. Luego llama al método
+// `Conexion()` en el objeto para establecer una conexión con la base de datos y asigna el objeto de
+// conexión resultante a la variable `$conn`.
 include_once './config/database.php';
 $obj = new Connection();
 $conn = $obj->Conexion();
 
-//El código ejecuta una consulta a una base de datos llamada "tienda" y a la tabla "productos". La consulta devuelve los valores de todas columnas de aquellos registros donde el valor de la columna "mostrar" es igual a true. Estos valores serán almacenados en una variable llamada $_sentencia_productos.
-$_sentencia_productos = $conn->query("SELECT * FROM tienda.productos WHERE mostrar = true");
+// La variable `$sentencia_productos` está ejecutando una consulta SQL para recuperar datos de varias
+// tablas (`vinos`, `variedades`, `paises` y `secciones`) usando combinaciones internas. La consulta
+// selecciona columnas específicas de cada tabla y alias algunas de ellas con nuevos nombres
+// (`nombre_vino`, `precio_vino`, `uva`, `pais`, `seccion` y `categoria`). El conjunto de resultados
+// contendrá información sobre los vinos, incluido su nombre, precio, imagen, estado de promoción,
+// variedad de uva, país de origen, categoría y si están activos o no.
+$sentencia_productos = $conn->prepare(
+    "SELECT 
+        paises.pais AS pais,
+        secciones.nombre AS seccion,
+        variedades.variedad AS uva,
+        vinos.id as id,
+        vinos.id_categoria as categoria,
+        vinos.id_imagen as imagen,
+        vinos.nombre as nombre_vino,
+        vinos.precio as precio_vino,
+        vinos.promocion as promocion
+    FROM vinos 
+    INNER JOIN variedades ON variedades.id = vinos.variedad 
+    INNER JOIN paises ON vinos.pais = paises.id 
+    INNER JOIN secciones ON vinos.id_categoria = secciones.id"
+);
 
-//Este código ejecuta una consulta SQL a la base de datos de la tienda, en la tabla secciones, para seleccionar los nombres, valores de activo y las ids únicas de todas las secciones que estén activas. La consulta se realiza usando el método query() de $_base_de_datos que es un objeto de la clase de la conexión de la base de datos. Los resultados de la consulta se almacenan en la variable $_sentencia_secciones para que puedan ser usados posteriormente en el código.
-$_sentencia_secciones = $conn->query("SELECT * FROM tienda.secciones WHERE activo = true");
+// La línea de código está preparando una declaración SQL para seleccionar todas las columnas de la
+// tabla "secciones" donde la columna "activo" es verdadera.
+$sentencia_secciones = $conn->prepare("SELECT * FROM secciones WHERE activo = true");
 
-//Se ejecutan las sentencias almacenadas en las variables $_sentencia_productos y $_sentencia_secciones
-$_sentencia_productos->execute();
-$_sentencia_secciones->execute();
+// Estas líneas de código ejecutan instrucciones SQL preparadas para recuperar datos de las tablas de
+// la base de datos `vinos`, `variedades`, `paises` y `secciones`. Los resultados de estas consultas se
+// almacenan en las variables `$sentencia_productos` y `$sentencia_secciones`, respectivamente, que se
+// utilizarán posteriormente en el código para generar contenido HTML para el sitio web.
+$sentencia_productos->execute();
+$sentencia_secciones->execute();
 
-//El código usa la biblioteca PDO de PHP para acceder a una base de datos. La función fetchAll devuelve todas las filas del conjunto de resultados como un array asociativo, donde la clave del array es el nombre de la columna y el valor es el valor de la celda correspondiente. En el primer caso, $_resultado_productos recupera todas las filas de la sentencia SQL $_sentencia_productos y las almacena en un array asociativo usando el modo PDO::FETCH_ASSOC. En el segundo caso, $_resultado_secciones hace lo mismo para la sentencia SQL $_sentencia_secciones.
-$_resultado_productos = $_sentencia_productos->fetchAll(PDO::FETCH_ASSOC);
-$_resultado_secciones = $_sentencia_secciones->fetchAll(PDO::FETCH_ASSOC);
+// Estas líneas de código ejecutan declaraciones SQL preparadas y obtienen todos los resultados de las
+// consultas. Los resultados se almacenan en las variables `$resultado_productos` y
+// `$resultado_secciones`, respectivamente. Estas variables se utilizarán más adelante en el código
+// para generar contenido HTML para el sitio web.
+$resultado_productos = $sentencia_productos->fetchAll();
+$resultado_secciones = $sentencia_secciones->fetchAll();
 
-//La siguiente función recibe un parámetro único y devuelve la ruta de un archivo de imagen si existe, de lo contrario devuelve la ruta de una imagen de logo.  
-function get_image($_unique_id)
+// La función devuelve la ruta de un archivo de imagen en función de una ID única o una ruta de imagen
+// de logotipo predeterminada si el archivo no existe.
+// 
+// @param unique_id El identificador único de un archivo de imagen. Se utiliza para construir la ruta
+// del archivo de la imagen.
+// 
+// @return la ruta del archivo de imagen con la ID única proporcionada, si existe; de lo contrario,
+// devuelve la ruta de un archivo de imagen predeterminado.
+function get_image($unique_id)
 {
-    // Se construye la ruta de la imagen a partir del identificador único
-    $_image_path = 'img/vinos/' . $_unique_id . '.png';
-    // Si la imagen existe se devuelve su ruta, si no se devuelve la ruta de una imagen de logo
-    $_image_exists = file_exists($_image_path) ? $_image_path : "img/logo.png";
-    // Se devuelve la ruta de la imagen que se encontró
-    return $_image_exists;
+    $image_path = 'img/vinos/' . $unique_id . '.png';
+    $image_exists = file_exists($image_path) ? $image_path : "img/logo.png";
+    return $image_exists;
 }
 
-//La función get_button() acepta un parámetro booleano $_isPromotion que determina si el botón debe ser una promoción (verdadero) o un botón de compra (falso). En base a este parámetro, se asigna una clase CSS y un texto al botón. La clase y el texto se utilizan para construir la estructura HTML del botón. Finalmente, se devuelve el botón construido en forma de cadena.
-function get_button($_isPromotion)
+// La función devuelve un botón con diferente texto y clase dependiendo de si es una promoción o un
+// producto regular.
+// 
+// @param isPromotion Un valor booleano que indica si el botón es para una promoción o un producto
+// normal.
+// 
+// @return una cadena HTML que contiene un enlace con una clase y texto basado en el valor del
+// parámetro . Si  es verdadero, el enlace tendrá una clase de 'promoción-btn'
+// y el texto 'PROMOCIÓN'. Si  es falso, el enlace tendrá una clase de 'product-btn' y el
+// texto 'COMPRAR'
+function get_button($isPromotion)
 {
-    $class = $_isPromotion ? 'promotion-btn' : 'product-btn';
-    $text = $_isPromotion ? 'PROMOCION' : 'COMPRAR';
+    $class = $isPromotion ? 'promotion-btn' : 'product-btn';
+    $text = $isPromotion ? 'PROMOCION' : 'COMPRAR';
     return '<a href="" class="' . $class . '"><em class="fas fa-shopping-cart">' . $text . '</em></a>';
 }
 
-//Este código define una función llamada "get_product" que recibe dos parámetros: el primer parámetro es un array $_productos que contiene información de productos como 'promocion', 'id_categoria', 'producto', 'nombre', 'sepa' y 'precio'; el segundo parámetro ($_x) es una categoría de producto. El propósito de la función es devolver un bloque de HTML con información del producto que pertenece a la categoría recibida como parámetro ($_x). Primero, la función asigna variables locales para algunas de las claves del array $_productos. A continuación, llama a las funciones "get_image" y "get_button" para obtener información adicional de la imagen y el botón del producto. Luego, si la categoría del producto es igual al parámetro recibido ($_x), la función formatea un bloque de HTML que contiene la imagen, el nombre, el precio y el botón del producto, y lo devuelve como una cadena.En resumen, la función "get_product" toma información de un array de productos y devuelve un bloque de HTML que representa esa información para un producto específico que pertenece a la categoría solicitada.
-function get_product($_productos, $_x)
+// La función devuelve el código HTML de un producto según su categoría y muestra su nombre, uva,
+// precio en pesos colombianos, imagen y botón promocional.
+// 
+// @param productos Una matriz que contiene información sobre un producto, incluido su estado de
+// promoción, categoría, identificador de imagen único, nombre, variedad de uva y precio.
+// @param x La categoría del producto que queremos filtrar y mostrar.
+// 
+// @return Una cadena HTML que contiene la información del producto (nombre, imagen, descripción,
+// precio y botón) para un producto que coincide con la categoría especificada.
+function get_product($productos, $x)
 {
-    $_promocion = $_productos['promocion'];
-    $_categoria = $_productos['id_categoria'];
-    $_unique = $_productos['producto'];
-    $_imagen = get_image($_unique);
-    $button = get_button($_promocion);
+    $promocion = $productos['promocion'];
+    $categoria = $productos['categoria'];
+    $unique = $productos['imagen'];
+    $nombre = $productos['nombre_vino'];
+    $uva = $productos['uva'];
+    $precio = $productos['precio_vino'];
+    $imagen = get_image($unique);
+    $button = get_button($promocion);
+    $taza_cambio = 4568.38;
+    $precio_cop = $precio * $taza_cambio;
 
-    if ($_categoria == $_x) {
+    if ($categoria == $x) {
         return '<div class="product">
-              <div class="product_description">
-                <img src="' . $_imagen . '" alt="" class="product_img">
-                <h3 class="product__title bold">' . $_productos['nombre'] . '</h3>
-                <h3 class="product__title bold">' . $_productos['sepa'] . '</h3>
-                <span class="product_price">' . number_format($_productos['precio'], 3, '.', ',') . '</span>
-                ' . $button . '
-              </div>
-            </div>';
+                    <div class="product_description">
+                    <img src="' . $imagen . '" alt="" class="product_img">
+                    <h2 class="product_title bold">' . $nombre . '</h2>
+                    <h2 class="product_description bold">' . $uva . '</h2>
+                    <h2 class="product_price bold"> $' . number_format($precio_cop, 0, '.', ',') . ' COP </h2>
+                    ' . $button . '
+                    </div>
+                </div>';
     }
 }
 
-//Este código define una función llamada "get_section" que tiene tres parámetros: $_seccion_productos, $_x y $_resultado_productos. La función comienza inicializando la variable $_section como una cadena que contiene un título en HTML con el nombre de la sección de productos pasada como parámetro. Luego, agrega otra cadena HTML que establece una clase para un contenedor de productos. A continuación, la función itera a través del arreglo de productos $_resultado_productos utilizando un bucle "foreach" y para cada producto llama a la función "get_product" con dos parámetros: el producto y $_x. La función "get_product" regresa una cadena HTML con la información del producto. Finalmente, la función "get_section" cierra el contenedor de productos y retorna la cadena HTML completa. Este código en sí mismo no produce salida visible en la pantalla ya que es una función que se puede llamar en otra parte del código.
-function get_section($_seccion_productos, $_x, $_resultado_productos)
+// Esta función genera una sección de código HTML con un título y un contenedor para productos basados
+// en datos de entrada.
+// 
+// @param resultado_secciones Es una variable que contiene una matriz con información sobre una
+// sección, como su nombre.
+// @param x La variable  se pasa como parámetro a la función get_section(), pero no se usa dentro de
+// la función. Por lo tanto, su valor no es relevante para la ejecución de la función.
+// @param resultado_productos Es una matriz de productos que pertenecen a una sección en particular.
+// 
+// @return una cadena que contiene código HTML para una sección de productos, incluido un título y un
+// contenedor con los productos. Los productos se obtienen del arreglo  usando la
+// función get_product(). La variable  se usa para generar una identificación única para cada
+// contenedor.
+function get_section($resultado_secciones, $x, $resultado_productos)
 {
-    $_section = '<h2 class="main-title"><strong>' . $_seccion_productos['nombre'] . '</strong></h2>';
-    $_section .= '<div class="container-products">';
-    foreach ($_resultado_productos as $_productos) {
-        $_section .= get_product($_productos, $_x);
+    static $i = 1;
+    $section = '<h2 class="main-title"><strong>' . $resultado_secciones['nombre'] . '</strong></h2>';
+    $section .= '<div class="container-products" id="container' . $i . '">';
+    foreach ($resultado_productos as $productos) {
+        $section .= get_product($productos, $x);
     }
-    $_section .= '</div>';
-    return $_section;
+    $section .= '</div>';
+    $i++;
+    return $section;
 }
 
-//La función get_all_sections() recibe tres parámetros: $_resultado_secciones, $_x y $_resultado_productos. Esta función se encarga de recorrer el arreglo $_resultado_secciones y concatenar a la variable $_sections la salida de la función get_section() cada vez que encuentra una sección cuyo valor de id_unica coincide con el valor de $_x. La función get_section() se llama con tres parámetros: $_seccion_productos, $_x y $_resultado_productos. Al finalizar el ciclo, la función retorna el valor concatenado de $_sections.
-
-function get_all_sections($_resultado_secciones, $_x, $_resultado_productos)
+// La función recupera todas las secciones de un conjunto dado de resultados en función de un
+// identificador único y las devuelve como una cadena.
+// 
+// @param resultado_secciones Es una variable que contiene un arreglo de todas las secciones y sus
+// respectivos productos.
+// @param x La variable  es un identificador único para una sección específica de productos. Se
+// utiliza para filtrar la matriz  y recuperar solo la sección que coincide con el
+// identificador dado.
+// @param resultado_productos Es una variable que contiene el resultado de una consulta u operación que
+// recupera una lista de productos. Es probable que sea una matriz u objeto que contenga información
+// sobre cada producto, como su nombre, precio y descripción. Esta variable se usa como parámetro en la
+// función get_all_sections() para ayudar
+// 
+// @return una cadena que contiene todas las secciones que coinciden con la ID dada, generada por la
+// función `get_section()`.
+function get_all_sections($resultado_secciones, $x, $resultado_productos)
 {
-    $_sections = "";
-    foreach ($_resultado_secciones as $_seccion_productos) {
-        if ($_seccion_productos['id_unica'] == $_x) {
-            $_sections .= get_section($_seccion_productos, $_x, $_resultado_productos);
+    $sections = "";
+    foreach ($resultado_secciones as $seccion_productos) {
+        if ($seccion_productos['id_unica'] == $x) {
+            $sections .= get_section($seccion_productos, $x, $resultado_productos);
         }
     }
-    return $_sections;
+    return $sections;
 }
 
-//El código define una función llamada "tarjetas" que toma un parámetro llamado "$_x". Dentro de la función, se utiliza la palabra clave "global" para hacer referencia a dos variables definidas fuera de la función llamadas "$_resultado_secciones" y "$_resultado_productos". La función llama a otra función llamada "get_all_sections" pasando las tres variables como argumentos y asigna el resultado de esa función a una variable llamada "$sections". Finalmente, la función imprime el contenido de la variable "$sections" utilizando la función "echo". En resumen, la función "tarjetas" obtiene una lista de todas las secciones y productos y las imprime en la pantalla.
-
-function tarjetas($_x)
+// La función "tarjetas" recupera todas las secciones y productos de un conjunto de resultados dado y
+// los genera.
+// 
+// @param x El parámetro  está siendo pasado a la función tarjetas(). No está claro en el código dado
+// qué tipo de datos es  o qué valor tiene. Es posible que  sea un parámetro de entrada que se use
+// para filtrar las secciones y los productos que devuelve get_all
+function tarjetas($x)
 {
-    global $_resultado_secciones, $_resultado_productos;
-    $sections = get_all_sections($_resultado_secciones, $_x, $_resultado_productos);
+    global $resultado_secciones, $resultado_productos;
+    $sections = get_all_sections($resultado_secciones, $x, $resultado_productos);
     echo $sections;
 }
+
+// Esta función genera un conjunto de tarjetas con paginación para cada sección en una matriz dada.
+function tarjetasFin()
+{
+    global $resultado_secciones;
+    $total_secciones = count($resultado_secciones);
+    for ($i = 1; $i <= $total_secciones; $i++) {
+        echo '<div>';
+        tarjetas($i);
+        echo '<div class="pagination">';
+        echo '<button id="prev-btn' . $i . '">🔙</button>';
+        echo '<button id="next-btn' . $i . '">🔜</button>';
+        echo '</div>';
+        echo '</div>';
+    }
+}
+
 ?>

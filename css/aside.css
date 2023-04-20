@@ -1,0 +1,23 @@
+aside {
+    width: 240px;
+    margin-right: 10px;
+}
+
+.contenedor_principal {
+    display: flex;
+    margin: 0px 10px 0px 10px;
+
+}
+
+main {
+    width: 100%;
+    margin-left: 10px;
+}
+
+.filtro {
+    border-bottom: 1px solid;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 18px;
+    padding: 16px 12px 8px;
+}

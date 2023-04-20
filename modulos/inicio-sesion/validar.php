@@ -11,7 +11,7 @@ if (isset($_POST['user']) && isset($_POST['pass'])) {
     // Conectamos a la base de datos utilizando PDO
     $conexion = new PDO("pgsql:host=" . HOST . ";port=" . PORT . ";dbname=" . DBNAME, USER, PASSWORD);
     // Preparamos la consulta SQL para buscar al usuario en la base de datos
-    $consulta = "SELECT usuario, clave FROM tienda.usuarios WHERE usuario=:usuario AND clave=:clave";
+    $consulta = "SELECT usuario, clave FROM usuarios WHERE usuario=:usuario AND clave=:clave";
     // Creamos un objeto PDOStatement con la consulta SQL
     $statement = $conexion->prepare($consulta);
     // Ejecutamos la consulta, vinculando los valores de los marcadores de posición con las variables PHP correspondientes
@@ -21,7 +21,7 @@ if (isset($_POST['user']) && isset($_POST['pass'])) {
     // Verificamos si se ha encontrado al usuario en la base de datos
     if ($resultado) {
         // Si se encontró al usuario, establecemos la variable de sesión 'usuario' con el valor de $usuario
-        $_SESSION['usuario'] = $usuario;
+        $SESSION['usuario'] = $usuario;
         // Enviamos un mensaje de respuesta al usuario indicando que el inicio de sesión fue exitoso
         //echo "Inicio de sesion correcto";
         // Redireccionamos al usuario a la página de inicio (opcional)

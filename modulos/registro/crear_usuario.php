@@ -14,7 +14,7 @@ if (isset($_POST['usuario']) && isset($_POST['clave']) && isset($_POST['nombre']
     // Conectamos a la base de datos utilizando PDO
     $conexion = new PDO("pgsql:host=" . HOST . ";port=" . PORT . ";dbname=" . DBNAME, USER, PASSWORD);
     // Preparamos la consulta SQL para insertar al usuario en la base de datos
-    $consulta = "INSERT INTO tienda.usuarios (usuario, clave, nombre, apellido, email, rol) VALUES (:usuario, :clave, :nombre, :apellido, :email, :rol)";
+    $consulta = "INSERT INTO usuarios (usuario, clave, nombre, apellido, email, rol) VALUES (:usuario, :clave, :nombre, :apellido, :email, :rol)";
     // Creamos un objeto PDOStatement con la consulta SQL
     $statement = $conexion->prepare($consulta);
     // Ejecutamos la consulta, vinculando los valores de los marcadores de posición con las variables PHP correspondientes

@@ -18,10 +18,9 @@
     margin-top: 10px;
 }
 
-.main-header__title,
+.main-header_title,
 .main-header-subsubtitle {
     font-size: 2.5em;
-    margin: 10px 0;
     color: #141313;
     font-family: 'Raleway';
 }
@@ -30,15 +29,16 @@
     font-variant: JIS04;
 }
 
-.main-header__container {
+.main-header_container {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
-.main-header__txt {
+.main-header_txt {
     font-size: 1.1em;
-    border: 1px solid #ccc;
     color: #000000;
     font-family: 'poppins';
 }
@@ -50,7 +50,7 @@
     padding: 10px 20px;
 }
 
-.main-header__input {
+.main-header_input {
     display: block;
     padding: 10px;
     width: 90%;
@@ -60,9 +60,5 @@
 
 #lupa {
     color: #fff;
-    box-shadow: #000 1px 0 20px;
-}
-
-.main {
-    padding: 0 20px;
+    /* box-shadow: #000 1px 0 20px; */
 }
