@@ -4,11 +4,46 @@ require('../../config/database.php');
 // Conectamos a la base de datos utilizando PDO
 $conexion = new PDO("pgsql:host=" . HOST . ";port=" . PORT . ";dbname=" . DBNAME, USER, PASSWORD);
 
-$sentencia_productos = $conexion->query(
-    "SELECT vinos.*, variedades.variedad AS variedad_uva, paises.pais AS pais_origen, secciones.nombre AS nombre_seccion FROM vinos INNER JOIN variedades ON variedades.id = vinos.variedad INNER JOIN paises ON vinos.pais = paises.id INNER JOIN secciones ON vinos.id_categoria = secciones.id ORDER BY vinos.id ASC"
+// Obtener el valor de búsqueda de la URL
+$searchValue = $_GET['q'];
+
+$sentencia_productos = $conexion->prepare(
+    "SELECT 
+        paises.pais AS pais,
+        secciones.nombre AS seccion,
+        variedades.variedad AS uva, vinos.id as id_vino,
+        vinos.id_categoria as categoria,
+        vinos.id_imagen as imagen,
+        vinos.nombre as nombre_vino,
+        vinos.precio as precio_vino,
+        vinos.promocion as promocion
+    FROM vinos 
+    INNER JOIN variedades ON variedades.id = vinos.variedad 
+    INNER JOIN paises ON vinos.pais = paises.id 
+    INNER JOIN secciones ON vinos.id_categoria = secciones.id
+    WHERE 
+    pais LIKE '%$searchValue%' OR
+    uva LIKE '%$searchValue%' OR
+    nombre_vino LIKE '%$searchValue%"
 );
 if ($sentencia_productos->rowCount() == 0) {
-    echo ("No");
+    $sentencia_productos = $conexion->prepare(
+        "SELECT 
+        paises.pais AS pais,
+        secciones.nombre AS seccion,
+        variedades.variedad AS uva,
+        vinos.id as id_vino,
+        vinos.id_categoria as categoria,
+        vinos.id_imagen as imagen,
+        vinos.nombre as nombre_vino,
+        vinos.precio as precio_vino,
+        vinos.promocion as promocion
+    FROM vinos 
+    INNER JOIN variedades ON variedades.id = vinos.variedad 
+    INNER JOIN paises ON vinos.pais = paises.id 
+    INNER JOIN secciones ON vinos.id_categoria = secciones.id"
+    );
+    print_r($sentencia_productos);
 } else {
-    echo ("si");
+    return $sentencia_productos;
 }

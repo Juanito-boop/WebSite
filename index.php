@@ -1,7 +1,7 @@
 <?php
-require_once 'modulos/tarjetas/tarjetas.php';
-require_once 'modulos/filtro/filtro.php'
-    ?>
+require_once './modulos/tarjetas/tarjetas.php';
+require_once './modulos/filtro/filtro.php';
+?>
 <html lang="en">
 
 <head>
@@ -48,7 +48,7 @@ require_once 'modulos/filtro/filtro.php'
         </div>
         <div class="main-header_container">
             <input type="search" id="busqueda" name="busqeda" class="main-header_input"
-                placeholder="What product are you looking for?" oninput="buscar()">
+                placeholder="What product are you looking for?">
             <em class="fas fa-search" id="lupa"></em>
         </div>
     </header>
@@ -61,10 +61,12 @@ require_once 'modulos/filtro/filtro.php'
             las cuales representa una variedad de vino diferente. Esto permite al usuario filtrar
             los productos que se muestran en la sección principal de la página web seleccionando una
             o más variedades de vino. -->
-            <div class="filtro">Filtrar por:</div>
-            <?php
-            generarDivsVariedadConCheckbox();
-            ?>
+            <div class="filtro">
+                <div class="label">Filtrar por:</div>
+                <?php
+                generarDivsVariedadConCheckbox();
+                ?>
+            </div>
         </aside>
         <main>
             <!-- empiezan las tarjetas -->

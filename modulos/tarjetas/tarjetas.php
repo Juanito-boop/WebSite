@@ -17,7 +17,7 @@ $sentencia_productos = $conn->prepare(
         paises.pais AS pais,
         secciones.nombre AS seccion,
         variedades.variedad AS uva,
-        vinos.id as id,
+        vinos.id as id_vino,
         vinos.id_categoria as categoria,
         vinos.id_imagen as imagen,
         vinos.nombre as nombre_vino,
@@ -31,7 +31,7 @@ $sentencia_productos = $conn->prepare(
 
 // La línea de código está preparando una declaración SQL para seleccionar todas las columnas de la
 // tabla "secciones" donde la columna "activo" es verdadera.
-$sentencia_secciones = $conn->prepare("SELECT * FROM secciones WHERE activo = true");
+$sentencia_secciones = $conn->prepare("SELECT * FROM secciones WHERE activo = true LIMIT 3");
 
 // Estas líneas de código ejecutan instrucciones SQL preparadas para recuperar datos de las tablas de
 // la base de datos `vinos`, `variedades`, `paises` y `secciones`. Los resultados de estas consultas se

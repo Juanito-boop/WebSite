@@ -116,32 +116,32 @@ INSERT INTO variedades (variedad, pais_origen) VALUES
 
 INSERT INTO vinos (nombre, variedad, anada, bodega, pais, region, precio, stock, tipo, nivel_alcohol, tipo_barrica, notas_cata, temperatura_consumo, maridaje, id_categoria, activo, id_imagen, promocion) VALUES
 
-('Petirrojo', 5, 2019, 'Viñedos Petirrojo', 3, 'Valle Central', 11.99, 40, 'Tinto', 13.5, 'Crianza en barrica de roble', 'Notas de frutas rojas y especias, con cuerpo medio y taninos suaves.', '16-18°C', 'Carnes rojas y quesos.', 1, true, 245726, false),
+    ('Petirrojo', 5, 2019, 'Viñedos Petirrojo', 3, 'Valle Central', 11.99, 40, 'Tinto', 13.5, 'Crianza en barrica de roble', 'Notas de frutas rojas y especias, con cuerpo medio y taninos suaves.', '16-18°C', 'Carnes rojas y quesos.', 1, true, 245726, false),
 
-('Posta Pizzella', 4, 2019, 'Bodega La Posta', 1, 'Valle de Uco, Mendoza', 22.99,  50, 'Tinto', 14.5, 'Roble francés', 'Intenso y profundo, con notas de frutos negros, violetas y vainilla. En boca es jugoso, equilibrado y persistente.', '16-18°C', 'Carnes rojas asadas, pastas con salsas picantes, quesos fuertes', 1, true, 933404, false),
+    ('Posta Pizzella', 4, 2019, 'Bodega La Posta', 1, 'Valle de Uco, Mendoza', 22.99,  50, 'Tinto', 14.5, 'Roble francés', 'Intenso y profundo, con notas de frutos negros, violetas y vainilla. En boca es jugoso, equilibrado y persistente.', '16-18°C', 'Carnes rojas asadas, pastas con salsas picantes, quesos fuertes', 1, true, 933404, false),
 
-('Marquez de villa de leyva', 2, 2017, 'Viñedo Marquez', 2, 'Villa de Leyva', 25.99,  50, 'Tinto', 13.5, 'Roble francés', 'Notas a frutas maduras y especias. Cuerpo medio con taninos suaves', '16-18°C', 'Carnes rojas, quesos fuertes y chocolate negro', 1, true, 948930, false),
+    ('Marquez de villa de leyva', 2, 2017, 'Viñedo Marquez', 2, 'Villa de Leyva', 25.99,  50, 'Tinto', 13.5, 'Roble francés', 'Notas a frutas maduras y especias. Cuerpo medio con taninos suaves', '16-18°C', 'Carnes rojas, quesos fuertes y chocolate negro', 1, true, 948930, false),
 
-('Don Melchor', 2, 2018, 'Concha y Toro', 3, 'Maipo', 125.99, 50, 'Tinto', 14.5, 'Roble francés', 'Vino de color rojo intenso con aromas a cassis, cereza y notas a especias, clavo de olor y nuez moscada. En boca es un vino estructurado y de taninos redondos.', '16-18°C', 'Carnes rojas, guisos y quesos maduros.', 1, true, 543152, false),
+    ('Don Melchor', 2, 2018, 'Concha y Toro', 3, 'Maipo', 125.99, 50, 'Tinto', 14.5, 'Roble francés', 'Vino de color rojo intenso con aromas a cassis, cereza y notas a especias, clavo de olor y nuez moscada. En boca es un vino estructurado y de taninos redondos.', '16-18°C', 'Carnes rojas, guisos y quesos maduros.', 1, true, 543152, false),
 
-('Purple Angel', 3, 2018, 'Montes Wines', 3, 'Colchagua Valley', 45.99, 50, 'Tinto', 14.5, 'Roble francés', 'Notas de frutas negras y especias, taninos firmes y redondos, final largo y persistente', '16-18°C', 'Asados de cordero, carnes rojas y quesos maduros', 1, true, 330628, false),
+    ('Purple Angel', 3, 2018, 'Montes Wines', 3, 'Colchagua Valley', 45.99, 50, 'Tinto', 14.5, 'Roble francés', 'Notas de frutas negras y especias, taninos firmes y redondos, final largo y persistente', '16-18°C', 'Asados de cordero, carnes rojas y quesos maduros', 1, true, 330628, false),
 
-('Muga', 6, 2016, 'Bodegas Muga', 4, 'Rioja', 29.99, 50, 'tinto', 14.5, 'roble francés', 'Notas de frutas rojas y negras, especias y vainilla. Buena estructura y taninos aterciopelados', '16-18°C', 'Carnes rojas, cordero, guisos y quesos curados', 2, true, 692159, false),
+    ('Muga', 6, 2016, 'Bodegas Muga', 4, 'Rioja', 29.99, 50, 'tinto', 14.5, 'roble francés', 'Notas de frutas rojas y negras, especias y vainilla. Buena estructura y taninos aterciopelados', '16-18°C', 'Carnes rojas, cordero, guisos y quesos curados', 2, true, 692159, false),
 
-('Reserva de la Tierra', 2, 2015, 'Bodegas Reserva de la Tierra', 3, 'Valle del Maipo', 19.99, 100, 'tinto', 14.0, 'roble americano', 'Notas de frutas rojas y negras, especias y toques de chocolate. Elegante y equilibrado', '18-20°C', 'Carnes rojas a la parrilla, platos con salsas intensas y quesos maduros', 2, true, 323324, false),
+    ('Reserva de la Tierra', 2, 2015, 'Bodegas Reserva de la Tierra', 3, 'Valle del Maipo', 19.99, 100, 'tinto', 14.0, 'roble americano', 'Notas de frutas rojas y negras, especias y toques de chocolate. Elegante y equilibrado', '18-20°C', 'Carnes rojas a la parrilla, platos con salsas intensas y quesos maduros', 2, true, 323324, false),
 
-('Maison Castel Gran Reserva', 6, 2015, 'Maison Castel', 4, 'Cariñena', 19.99, 80, 'tinto', 13.5, 'roble americano', 'Notas de frutas negras maduras, especias y madera tostada. Taninos sedosos y final persistente.', '16-18°C', 'Carnes rojas, asados, quesos curados', 2, true, 191880, false),
+    ('Maison Castel Gran Reserva', 6, 2015, 'Maison Castel', 4, 'Cariñena', 19.99, 80, 'tinto', 13.5, 'roble americano', 'Notas de frutas negras maduras, especias y madera tostada. Taninos sedosos y final persistente.', '16-18°C', 'Carnes rojas, asados, quesos curados', 2, true, 191880, false),
 
-('Santa Margherita', 6, 2020, 'Santa Margherita', 5, 'Alto Adige', 21.99, 120, 'blanco', 12.5, 'acero inoxidable', 'Notas de manzana verde, pera y flores blancas. Fresco y equilibrado con un final persistente.', '8-10°C', 'Ensaladas, mariscos, pescados y platos vegetarianos', 2, true, 257609, false),
+    ('Santa Margherita', 6, 2020, 'Santa Margherita', 5, 'Alto Adige', 21.99, 120, 'blanco', 12.5, 'acero inoxidable', 'Notas de manzana verde, pera y flores blancas. Fresco y equilibrado con un final persistente.', '8-10°C', 'Ensaladas, mariscos, pescados y platos vegetarianos', 2, true, 257609, false),
 
-('Montes Alpha M', 2, 2017, 'Viña Montes', 3, 'Valle de Colchagua', 49.99, 40, 'tinto', 14.5, 'roble francés', 'Notas de frutas rojas y negras, especias y chocolate. Gran estructura y taninos firmes.', '18-20°C', 'Carnes rojas, caza, platos con salsas fuertes y quesos maduros', 2, true, 782699, false),
+    ('Montes Alpha M', 2, 2017, 'Viña Montes', 3, 'Valle de Colchagua', 49.99, 40, 'tinto', 14.5, 'roble francés', 'Notas de frutas rojas y negras, especias y chocolate. Gran estructura y taninos firmes.', '18-20°C', 'Carnes rojas, caza, platos con salsas fuertes y quesos maduros', 2, true, 782699, false),
 
-('Angelica Zapata', 4, 2016, 'Catena Zapata', 1, 'Mendoza', 54.99, 20, 'tinto', 14.5, 'roble francés', 'Notas de frutas rojas y negras, especias y vainilla. Buena estructura y taninos aterciopelados', '16-18°C', 'Carnes rojas, cordero, guisos y quesos curados', 3, true, 850550, false),
+    ('Angelica Zapata', 4, 2016, 'Catena Zapata', 1, 'Mendoza', 54.99, 20, 'tinto', 14.5, 'roble francés', 'Notas de frutas rojas y negras, especias y vainilla. Buena estructura y taninos aterciopelados', '16-18°C', 'Carnes rojas, cordero, guisos y quesos curados', 3, true, 850550, false),
 
-('Gran Enemigo', 1, 2012, 'Bodega Aleanna', 1, 'Mendoza', 149.99, 10, 'tinto', 14.5, 'roble francés', 'Notas de frutas rojas y negras, especias y vainilla. Buena estructura y taninos aterciopelados', '16-18°C', 'Carnes rojas, cordero, guisos y quesos curados', 3, true, 652132, false),
+    ('Gran Enemigo', 1, 2012, 'Bodega Aleanna', 1, 'Mendoza', 149.99, 10, 'tinto', 14.5, 'roble francés', 'Notas de frutas rojas y negras, especias y vainilla. Buena estructura y taninos aterciopelados', '16-18°C', 'Carnes rojas, cordero, guisos y quesos curados', 3, true, 652132, false),
 
-('Zuccardi Serie A', 4, 2019, 'Zuccardi Wines', 1, 'Valle de Uco', 17.99, 80, 'tinto', 13.5, 'sin barrica', 'Notas de frutas rojas y negras, especias y flores. Buena acidez y frescura.', '14-16°C', 'Empanadas, asados y carnes a la parrilla', 3, true, 438553, false),
+    ('Zuccardi Serie A', 4, 2019, 'Zuccardi Wines', 1, 'Valle de Uco', 17.99, 80, 'tinto', 13.5, 'sin barrica', 'Notas de frutas rojas y negras, especias y flores. Buena acidez y frescura.', '14-16°C', 'Empanadas, asados y carnes a la parrilla', 3, true, 438553, false),
 
-('Cerro Verde', 4, 2017, 'Lagarde', 1, 'Mendoza', 26.99, 40, 'tinto', 14.5, 'roble francés', 'Notas de frutas rojas y negras, especias y vainilla. Buena estructura y taninos aterciopelados', '16-18°C', 'Carnes rojas, cordero, guisos y quesos curados', 3, true, 178631, false),
+    ('Cerro Verde', 4, 2017, 'Lagarde', 1, 'Mendoza', 26.99, 40, 'tinto', 14.5, 'roble francés', 'Notas de frutas rojas y negras, especias y vainilla. Buena estructura y taninos aterciopelados', '16-18°C', 'Carnes rojas, cordero, guisos y quesos curados', 3, true, 178631, false),
 
-('Codice', 4, 2018, 'Bodega Códice', 1, 'Mendoza', 23.99, 80, 'tinto', 14.5, 'roble francés', 'Notas de frutas rojas y negras, especias y vainilla. Final persistente y equilibrado', '16-18°C', 'Carnes rojas, cordero, guisos y quesos curados', 3, true, 265178, false);
+    ('Codice', 4, 2018, 'Bodega Códice', 1, 'Mendoza', 23.99, 80, 'tinto', 14.5, 'roble francés', 'Notas de frutas rojas y negras, especias y vainilla. Final persistente y equilibrado', '16-18°C', 'Carnes rojas, cordero, guisos y quesos curados', 3, true, 265178, false);
