@@ -11,10 +11,11 @@ function generarDivsVariedadConCheckbox()
     foreach ($results as $result) {
         $divId = $result['uva_'];
         $divText = $result['uva'];
+        echo "<div class='filto'>";
         echo "<div id='$divId'>";
-        echo "<label><input type='checkbox' name='divCheckbox[]' value='$divId'>$divText</label>";
+        echo "<label><input type='checkbox' name='divCheckbox[]' value='$divId'>" . '   ' . "$divText</label>";
+        echo "</div>";
         echo "</div>";
     }
-
 }
 ?>

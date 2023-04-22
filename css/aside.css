@@ -6,18 +6,31 @@ aside {
 .contenedor_principal {
     display: flex;
     margin: 0px 10px 0px 10px;
-
 }
 
 main {
     width: 100%;
     margin-left: 10px;
+    background-color: #7f1a77;
+    border-radius: 10px;
 }
 
 .filtro {
+    background-color: #7f1a77;
+    border-radius: 10px;
+}
+
+.label {
     border-bottom: 1px solid;
     font-size: 16px;
     font-weight: 600;
     line-height: 18px;
     padding: 16px 12px 8px;
+    color: #efb810;
+}
+
+.filto {
+    background-color: #7f1a77;
+    color: #efb810;
+    padding: 10px;
 }

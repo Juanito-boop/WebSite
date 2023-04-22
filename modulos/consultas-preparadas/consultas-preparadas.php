@@ -22,11 +22,10 @@ $sentencia_productos = $conexion->prepare(
     INNER JOIN paises ON vinos.pais = paises.id 
     INNER JOIN secciones ON vinos.id_categoria = secciones.id
     WHERE 
-    pais LIKE '%$searchValue%' OR
-    uva LIKE '%$searchValue%' OR
-    nombre_vino LIKE '%$searchValue%"
+    pais = ? OR uva = ? OR nombre_vino = ?"
 );
-if ($sentencia_productos->rowCount() == 0) {
+$sentencia_productos->execute([$searchValue, $searchValue, $searchValue]);
+if ($sentencia_productos->rowCount() === 0) {
     $sentencia_productos = $conexion->prepare(
         "SELECT 
         paises.pais AS pais,
@@ -45,5 +44,6 @@ if ($sentencia_productos->rowCount() == 0) {
     );
     print_r($sentencia_productos);
 } else {
-    return $sentencia_productos;
+    $resultado = $sentencia_productos->fetchAll();
+    return $resultado;
 }
