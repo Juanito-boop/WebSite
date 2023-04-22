@@ -11,6 +11,8 @@ if (isset($_POST['usuario']) && isset($_POST['clave']) && isset($_POST['nombre']
     $nombre = $_POST['nombre'];
     $apellido = $_POST['apellido'];
     $email = $_POST['email'];
+    //contrasena fuerte
+    $clave_hash = password_hash($clave, PASSWORD_DEFAULT);
     // Conectamos a la base de datos utilizando PDO
     $conexion = new PDO("pgsql:host=" . HOST . ";port=" . PORT . ";dbname=" . DBNAME, USER, PASSWORD);
     // Preparamos la consulta SQL para insertar al usuario en la base de datos
@@ -18,7 +20,7 @@ if (isset($_POST['usuario']) && isset($_POST['clave']) && isset($_POST['nombre']
     // Creamos un objeto PDOStatement con la consulta SQL
     $statement = $conexion->prepare($consulta);
     // Ejecutamos la consulta, vinculando los valores de los marcadores de posición con las variables PHP correspondientes
-    $statement->execute(['usuario' => $usuario, 'clave' => $clave, 'nombre' => $nombre, 'apellido' => $apellido, 'email' => $email, 'rol' => 'UsuarioCorriente']);
+    $statement->execute(['usuario' => $usuario, 'clave' => $clave_hash, 'nombre' => $nombre, 'apellido' => $apellido, 'email' => $email, 'rol' => 'UsuarioCorriente']);
     // Enviamos un mensaje de respuesta al usuario indicando que el usuario ha sido creado exitosamente
     echo "El usuario ha sido creado exitosamente";
 } else {

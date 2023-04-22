@@ -3,32 +3,33 @@
 session_start();
 // Importamos el archivo con las constantes para conectarnos a la base de datos
 require('../../config/database.php');
+// Conectamos a la base de datos utilizando PDO
+$conexion = new PDO("pgsql:host=" . HOST . ";port=" . PORT . ";dbname=" . DBNAME, USER, PASSWORD);
 // Verificamos si se han enviado las variables 'user' y 'pass' a través de la solicitud POST
 if (isset($_POST['user']) && isset($_POST['pass'])) {
     // Asignamos las variables $usuario y $clave con los valores enviados a través de POST
     $usuario = $_POST['user'];
     $clave = $_POST['pass'];
-    // Conectamos a la base de datos utilizando PDO
-    $conexion = new PDO("pgsql:host=" . HOST . ";port=" . PORT . ";dbname=" . DBNAME, USER, PASSWORD);
     // Preparamos la consulta SQL para buscar al usuario en la base de datos
-    $consulta = "SELECT usuario, clave FROM usuarios WHERE usuario=:usuario AND clave=:clave";
-    // Creamos un objeto PDOStatement con la consulta SQL
-    $statement = $conexion->prepare($consulta);
-    // Ejecutamos la consulta, vinculando los valores de los marcadores de posición con las variables PHP correspondientes
-    $statement->execute(['usuario' => $usuario, 'clave' => $clave]);
-    // Obtenemos el resultado de la consulta
-    $resultado = $statement->fetch();
-    // Verificamos si se ha encontrado al usuario en la base de datos
-    if ($resultado) {
-        // Si se encontró al usuario, establecemos la variable de sesión 'usuario' con el valor de $usuario
-        $SESSION['usuario'] = $usuario;
-        // Enviamos un mensaje de respuesta al usuario indicando que el inicio de sesión fue exitoso
-        //echo "Inicio de sesion correcto";
-        // Redireccionamos al usuario a la página de inicio (opcional)
-        header('Location: /../../../index.php');
+    $consulta_usuario = "SELECT clave FROM usuarios WHERE usuario = ?";
+    $statement = $conexion->prepare($consulta_usuario);
+    $statement->execute([$usuario]);
+    // Verificamos si se encontró al usuario en la base de datos
+    if ($statement && $statement->rowCount() > 0) {
+        // Si se encontró al usuario, recuperamos la versión encriptada de la clave almacenada en la base de datos
+        $fila = $statement->fetch();
+        $clave_encriptada = $fila['clave'];
+        // Verificamos si la clave proporcionada coincide con la versión encriptada almacenada en la base de datos
+        if (password_verify($clave, $clave_encriptada)) {
+            // Si la clave proporcionada es correcta, redireccionamos al usuario a la página principal
+            header("Location: ../../index.php");
+        } else {
+            // Si la clave proporcionada es incorrecta, redireccionamos al usuario de vuelta a la página de inicio de sesión
+            header("Location: login.html");
+        }
     } else {
-        // Si no se encontró al usuario, enviamos un mensaje de respuesta indicando que el nombre de usuario o la contraseña son incorrectos
-        echo "Usuario o contraseña incorrectos";
+        // Si no se encontró al usuario en la base de datos, redireccionamos al usuario de vuelta a la página de inicio de sesión
+        header("Location: login.html");
     }
 } else {
     // Si no se enviaron las variables 'user' y 'pass', enviamos un mensaje de respuesta indicando que faltan datos
