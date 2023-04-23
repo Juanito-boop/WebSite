@@ -1,6 +1,6 @@
 <?php
-require_once './modulos/tarjetas/tarjetas.php';
-require_once './modulos/filtro/filtro.php';
+require_once('./modulos/tarjetas/tarjetas.php');
+require_once('./modulos/filtro/filtro.php');
 ?>
 <html lang="en">
 
