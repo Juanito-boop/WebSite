@@ -1,17 +1,25 @@
 :root {
+  /* colores principales y sus complementarios */
+  --color-principal-1: #e6b120;
+  --color-complementario-principal_1-1: rgb(25, 78, 223);
+  --color-complementario-principal_1-2: rgb(223, 25, 101);
+  --color-complementario-principal_1-3: rgb(25, 223, 152);
+  --color-principal-2: #63155C;
+  --color-complementario-principal_2-1: rgb(156, 234, 163);
+  --color-complementario-principal_2-2: rgb(163, 234, 199);
+  --color-complementario-principal_2-3: rgb(234, 163, 25);
+  /* colores normales */
   --color-0: inherit;
   --color-1: #141313;
-  --color-2: #e6b120;
-  --color-3: #747474;
-  --color-4: #63155C;
-  --color-5: #8f0432;
-  --color-6: #000;
-  --color-7: #ffffff66;
-  --color-8: #151515;
-  --color-9: #555555;
-  --color-10: #ffffff;
-  --color-11: #ee82ee;
-  --color-12: #ffffff80;
+  --color-2: #747474;
+  --color-3: #8f0432;
+  --color-4: #000;
+  --color-5: #ffffff66;
+  --color-6: #151515;
+  --color-7: #555555;
+  --color-8: #ffffff;
+  --color-9: #ee82ee;
+  --color-10: #ffffff80;
 }
 
 /* Estilos de fuentes */
@@ -42,13 +50,13 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover; */
-  background-color: var(--color-4) !important;
+  background-color: var(--color-principal-2) !important;
 }
 
 body::-webkit-scrollbar {
   width: 7px;
-  background: var(--color-4);
-  border: var(--color-2);
+  background: var(--color-principal-2);
+  border: var(--color-principal-1);
 }
 
 /* Estilos para imágenes */
@@ -79,13 +87,13 @@ h2 {
 /* Estilos para sección de testimonios */
 .container_testimonials {
   text-align: center;
-  background: var(--color-2);
+  background: var(--color-principal-1);
   padding: 20px;
   margin: 20px 0;
 }
 
 .testimonials_txt {
-  color: var(--color-5);
+  color: var(--color-3);
 }
 
 /* Estilos para sección de editores */
@@ -139,7 +147,7 @@ h2 {
   left: 0;
   width: 100%;
   height: 100%;
-  background: var(--color-7);
+  background: var(--color-5);
   opacity: 0;
   transition: all 0.5s;
 }
@@ -151,7 +159,7 @@ h2 {
 /* Estilos para sección de consejos */
 .container-tips {
   text-align: center;
-  background: var(--color-3);
+  background: var(--color-2);
   padding: 20px;
   margin: 20px 0;
 }
@@ -163,8 +171,8 @@ h2 {
 /* Estilos para botones */
 .btn_shop {
   display: block;
-  border: 1px solid var(--color-6);
-  color: var(--color-6);
+  border: 1px solid var(--color-4);
+  color: var(--color-4);
   padding: 10px;
   text-align: center;
   text-decoration: none;
@@ -174,8 +182,8 @@ h2 {
 
 /* Estilos para el pie de página */
 .main-footer {
-  background: var(--color-8);
-  color: var(--color-10);
+  background: var(--color-6);
+  color: var(--color-8);
   padding: 30px;
   margin: 0px 10px 0px 10px;
   display: flex;
@@ -192,11 +200,11 @@ h2 {
 }
 
 .footer_links a {
-  color: var(--color-9);
+  color: var(--color-7);
   text-decoration: none;
   padding: 10px 20px;
   margin: 0 10px;
-  border: 1px solid var(--color-9);
+  border: 1px solid var(--color-7);
   border-radius: 5px;
 }
 
@@ -205,13 +213,13 @@ h2 {
   width: 50%;
   display: block;
   padding: 20px;
-  border: 1px solid var(--color-9);
-  color: var(--color-9);
+  border: 1px solid var(--color-7);
+  color: var(--color-7);
   margin-right: 20px;
 }
 
 .copy {
-  color: var(--color-9);
+  color: var(--color-7);
 }
 
 /* Estilos para el botón flotante en pantalla */
@@ -231,7 +239,7 @@ h2 {
 }
 
 .flotante::before {
-  box-shadow: inset 0 0 2000px var(--color-12);
+  box-shadow: inset 0 0 2000px var(--color-10);
   filter: blur(10px);
   background: inherit;
 }

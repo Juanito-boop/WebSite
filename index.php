@@ -1,6 +1,6 @@
 <?php
-require_once './modulos/tarjetas/tarjetas.php';
-require_once './modulos/filtro/filtro.php';
+require_once('./modulos/filtro/filtro.php');
+require_once('./modulos/tarjetas/tarjetas.php');
 ?>
 <html lang="en">
 
@@ -46,11 +46,13 @@ require_once './modulos/filtro/filtro.php';
                 <!-- Add cart button here -->
             </div>
         </div>
-        <div class="main-header_container">
-            <input type="search" id="busqueda" name="busqeda" class="main-header_input"
-                placeholder="What product are you looking for?">
-            <em class="fas fa-search" id="lupa"></em>
-        </div>
+        <form id="myForm" action="./modulos/consultas-preparadas/consultas-preparadas.php" method="POST">
+            <div class="main-header_container">
+                <input type="search" id="query" name="query" class="main-header_input"
+                    placeholder="What product are you looking for?">
+                <em class="fas fa-search" id="lupa"></em>
+            </div>
+        </form>
     </header>
     <div class="contenedor_principal">
         <aside>
@@ -150,5 +152,6 @@ require_once './modulos/filtro/filtro.php';
     </footer>
     <script src="js/hamburguer.js"></script>
     <script src="js/gridContainer.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="modulos/buscador/buscador.js"></script>
 </body>

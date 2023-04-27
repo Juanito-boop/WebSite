@@ -7,6 +7,8 @@
     /* animación */
     transition: ease 1s;
     /* height: 335px; */
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .product {
