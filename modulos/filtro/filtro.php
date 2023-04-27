@@ -1,9 +1,9 @@
 <?php
-$obj = new Connection();
-$conn = $obj->Conexion();
-$stmt = $conn->prepare("SELECT REPLACE(variedad, ' ', '_') AS uva_, variedad AS uva FROM variedades");
-$stmt->execute();
-$results = $stmt->fetchAll();
+
+require './modulos/consultas-preparadas/consultas-preparadas.php';
+
+$results = $arreglo_filtro;
+
 function generarDivsVariedadConCheckbox()
 {
     // Generar los divs con checkbox

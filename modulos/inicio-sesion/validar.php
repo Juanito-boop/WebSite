@@ -2,9 +2,11 @@
 // Iniciamos la sesión de PHP
 session_start();
 // Importamos el archivo con las constantes para conectarnos a la base de datos
-require('../../config/database.php');
-// Conectamos a la base de datos utilizando PDO
-$conexion = new PDO("pgsql:host=" . HOST . ";port=" . PORT . ";dbname=" . DBNAME, USER, PASSWORD);
+include_once('../../config/Database.php');
+
+$obj = new Database();
+$conn = $obj->Conexion();
+
 // Verificamos si se han enviado las variables 'user' y 'pass' a través de la solicitud POST
 if (isset($_POST['user']) && isset($_POST['pass'])) {
     // Asignamos las variables $usuario y $clave con los valores enviados a través de POST
@@ -12,7 +14,7 @@ if (isset($_POST['user']) && isset($_POST['pass'])) {
     $clave = $_POST['pass'];
     // Preparamos la consulta SQL para buscar al usuario en la base de datos
     $consulta_usuario = "SELECT clave FROM usuarios WHERE usuario = ?";
-    $statement = $conexion->prepare($consulta_usuario);
+    $statement = $conn->prepare($consulta_usuario);
     $statement->execute([$usuario]);
     // Verificamos si se encontró al usuario en la base de datos
     if ($statement && $statement->rowCount() > 0) {

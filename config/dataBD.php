@@ -1,7 +1,12 @@
 <?php
 define('HOST', 'db.hijaeegxjbuivzckpijg.supabase.co');
-define('SERVER', 'localhost');
-define('DBNAME', 'postgres');
-define('PORT', '5432');
 define('USER', 'postgres');
 define('PASSWORD', ')QZzqAiwP*3(EA4Q');
+define('DBNAME', 'postgres');
+
+define('PORT', '5432');
+
+define('SERVER', 'localhost');
+define('USER_LOCAL', 'user_php');
+define('PASSWORD_LOCAL', '123456');
+define('DBNAME_LOCAL', 'bd_tienda_2');
