@@ -6,8 +6,19 @@ require_once('./modulos/tarjetas/tarjetas.php');
 
 <head>
     <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="./img/image-removebg-preview.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@200&display=swap">
     <title>Vinos De La Villa</title>
-    <script src="https://kit.fontawesome.com/b33142c330.js" crossorigin="anonymous"></script>
+    <!-- Estilos -->
+    <link rel="stylesheet" href="css/aside.css">
+    <link rel="stylesheet" href="css/Global.css">
+    <link rel="stylesheet" href="css/Hamburguer.css">
+    <link rel="stylesheet" href="css/Header.css">
+    <link rel="stylesheet" href="css/Products.css">
+    <link rel="stylesheet" href="css/Slider.css">
 </head>
 
 <body>
@@ -21,6 +32,7 @@ require_once('./modulos/tarjetas/tarjetas.php');
                     <h1 class="main-header_title">LOS VINOS</h1>
                     <h2 class="main-header_subtitle"><i>Wine Store</i></h2>
                     <h2 class="main-header_subtitle">Villa de Leyva, Carrera 9 #11-47 Segundo piso</h2>
+                    <p class="main-header_txt">CONTACTANOS (+57) 3219085857 <em class="fas fa-phone"></em></p>
                 </div>
                 <div class="icono-menu">
                     <img src="img/bars-solid.svg" id="icono-menu">
@@ -34,21 +46,23 @@ require_once('./modulos/tarjetas/tarjetas.php');
                 <!-- Add cart button here -->
             </div>
         </div>
-        <form id="myForm" method="POST">
+        <form id="myForm" action="./modulos/consultas-preparadas/consultas-preparadas.php" method="POST">
             <div class="main-header_container">
                 <input type="search" id="query" name="query" class="main-header_input"
-                    placeholder="What product are you looking for?" list="Lista">
-                <datalist id="Lista">
-                    <?php
-                    generarLista();
-                    ?>
-                </datalist>
-                <i class="fa-solid fa-magnifying-glass"></i>
+                    placeholder="What product are you looking for?">
+                <em class="fas fa-search" id="lupa"></em>
             </div>
         </form>
     </header>
     <div class="contenedor_principal">
         <aside>
+            <!-- Este código genera una sección "Filtrar por" en la barra lateral de la página web. El
+            elemento `div` con clase "filtro" muestra el texto "Filtrar por:".
+            La función `generarDivsVariedadConCheckbox()` es una función
+            de PHP que genera código HTML para una lista de casillas de verificación, cada una de
+            las cuales representa una variedad de vino diferente. Esto permite al usuario filtrar
+            los productos que se muestran en la sección principal de la página web seleccionando una
+            o más variedades de vino. -->
             <div class="filtro">
                 <div class="label">Filtrar por:</div>
                 <?php
@@ -57,7 +71,11 @@ require_once('./modulos/tarjetas/tarjetas.php');
             </div>
         </aside>
         <main>
+            <!-- empiezan las tarjetas -->
             <div class="container">
+                <!-- Llamar a la función `tarjetasFin()` que se encuentra definida en el archivo
+                `tarjetas.php` y generar el código HTML para mostrar las fichas de producto en la
+                web. -->
                 <?php
                 tarjetasFin();
                 ?>
@@ -102,7 +120,7 @@ require_once('./modulos/tarjetas/tarjetas.php');
         </div>
         <div class="container-tips">
             <div class="tip">
-                <i class="fa-regular fa-hand"></i>
+                <em class="far fa-hand-paper"></em>
                 <h2 class="tip_title">DUEÑO</h2>
                 <p class="tip_txt">DIEGO Y COMPAÑIA S.A.S</p>
                 <p>NIT 890309454-8</p>
@@ -110,7 +128,7 @@ require_once('./modulos/tarjetas/tarjetas.php');
                 <a href="#" class="btn_shop">CONTACTO</a>
             </div>
             <div class="tip">
-                <i class="fa-solid fa-rocket"></i>
+                <em class="fas fa-rocket"></em>
                 <h2 class="tip_title">Gerente General</h2>
                 <p class="tip_txt">NUBIA VELASCO</p>
                 <p>KRA 9 # 11-47 P.2</p>
@@ -134,7 +152,6 @@ require_once('./modulos/tarjetas/tarjetas.php');
     </footer>
     <script src="js/hamburguer.js"></script>
     <script src="js/gridContainer.js"></script>
-    <script src="js/css.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="modulos/buscador/buscador.js"></script>
 </body>
