@@ -86,7 +86,6 @@ function addNextButtonListener(nextBtn, container, currentPage) {
     nextBtn.addEventListener('mouseup', function () {
         currentPage++;
         currentPage = showItems(container, currentPage);
-        console.log('Current Page:', currentPage);
     });
 }
 
@@ -107,7 +106,7 @@ function addPrevButtonListener(prevBtn, container, currentPage) {
 }
 
 // Añade event listeners a los botones de "siguiente" y "anterior" y llama a la función showItems para mostrar los productos del contenedor correspondiente
-// Recibe como parámetros los botones, el contenedor y la página actual de cada uno de los 3 contenedores
+// Recibe como parámetros los botones, el contenedor y la página actual de cada uno de los contenedores
 addNextButtonListener(nextBtn1, container1, currentPage1);
 addNextButtonListener(nextBtn2, container2, currentPage2);
 addNextButtonListener(nextBtn3, container3, currentPage3);

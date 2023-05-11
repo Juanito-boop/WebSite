@@ -18,4 +18,11 @@ function generarDivsVariedadConCheckbox()
         echo "</div>";
     }
 }
-?>
+function generarLista()
+{
+    global $results;
+    foreach ($results as $result) {
+        $divValue = $result["uva"];
+        echo "<option value='$divValue'></option>";
+    }
+}

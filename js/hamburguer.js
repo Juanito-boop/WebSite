@@ -11,7 +11,5 @@ iconoMenu.addEventListener('click', (e) => {
 
   if (rutaActual == './img/icono-menu.svg') {
     e.target.setAttribute('./img/icono-menu.svg')
-  } else {
-    e.target.setAttribute('./img/icono-menu.svg')
   }
 })

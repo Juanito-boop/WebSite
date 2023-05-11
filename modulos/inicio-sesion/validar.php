@@ -2,10 +2,10 @@
 // Iniciamos la sesión de PHP
 session_start();
 // Importamos el archivo con las constantes para conectarnos a la base de datos
-include_once('../../config/Database.php');
+include_once('../../db/DatabaseV2.php');
 
-$obj = new Database();
-$conn = $obj->Conexion();
+$db = DatabaseV2::getInstance();
+$pdo = $db->getConnection();
 
 // Verificamos si se han enviado las variables 'user' y 'pass' a través de la solicitud POST
 if (isset($_POST['user']) && isset($_POST['pass'])) {
@@ -14,7 +14,7 @@ if (isset($_POST['user']) && isset($_POST['pass'])) {
     $clave = $_POST['pass'];
     // Preparamos la consulta SQL para buscar al usuario en la base de datos
     $consulta_usuario = "SELECT clave FROM usuarios WHERE usuario = ?";
-    $statement = $conn->prepare($consulta_usuario);
+    $statement = $pdo->prepare($consulta_usuario);
     $statement->execute([$usuario]);
     // Verificamos si se encontró al usuario en la base de datos
     if ($statement && $statement->rowCount() > 0) {
@@ -25,15 +25,19 @@ if (isset($_POST['user']) && isset($_POST['pass'])) {
         if (password_verify($clave, $clave_encriptada)) {
             // Si la clave proporcionada es correcta, redireccionamos al usuario a la página principal
             header("Location: ../../index.php");
+            exit(); // Es recomendable utilizar exit() después de la redirección para asegurarse de que no se envíe ningún dato adicional al navegador.
         } else {
             // Si la clave proporcionada es incorrecta, redireccionamos al usuario de vuelta a la página de inicio de sesión
             header("Location: login.html");
+            exit();
         }
     } else {
         // Si no se encontró al usuario en la base de datos, redireccionamos al usuario de vuelta a la página de inicio de sesión
         header("Location: login.html");
+        exit();
     }
 } else {
     // Si no se enviaron las variables 'user' y 'pass', enviamos un mensaje de respuesta indicando que faltan datos
     echo "Faltan datos";
+    exit;
 }

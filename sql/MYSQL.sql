@@ -1,86 +1,68 @@
--- Active: 1675450657549@@localhost@5432@postgres@public
+-- Active: 1682675737840@@127.0.0.1@3306@inventario
 
 -- TABLAS
-
--- Este código SQL está creando una tabla llamada "secciones" con cuatro columnas: "ID" que es un tipo
--- de datos BIGSERIAL y sirve como clave principal, "nombre" que es un tipo de datos TEXT y no puede
--- ser nulo, "activo" que es un tipo de datos BOOLEAN y no puede ser nulo con un valor predeterminado
--- falso, y "id_unica", que es un tipo de datos de TEXTO y debe ser único. La cláusula "SI NO EXISTE"
--- garantiza que la tabla solo se cree si aún no existe en la base de datos.
 CREATE TABLE IF NOT EXISTS secciones (
-    ID       BIGSERIAL PRIMARY KEY,
+    ID       BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     nombre   TEXT      NOT NULL,
     activo   BOOLEAN   NOT NULL DEFAULT false,
-    id_unica BIGSERIAL UNIQUE
+    id_unica BIGINT UNSIGNED UNIQUE
 );
 
--- Este código SQL está creando una tabla llamada "usuarios" con seis columnas: "ID" que es un tipo de
--- datos BIGSERIAL y sirve como clave principal, "usuario" que es un tipo de datos que varía de
--- carácter con una longitud máxima de 50, "clave " que es un tipo de dato variable de caracteres con
--- una longitud máxima de 100, "nombre" que es un tipo de dato variable de caracteres con una longitud
--- máxima de 50, "apellido" que es un tipo de dato variable de caracteres con una longitud máxima de
--- 50, " email", que es un tipo de datos de caracteres variables con una longitud máxima de 100, y
--- "rol", que es un tipo de datos de caracteres variables con una longitud máxima de 20. La cláusula
--- "IF NOT EXISTS" garantiza que la tabla solo se crea si no existe ya en la base de datos.
 CREATE TABLE IF NOT EXISTS usuarios (
-    ID       BIGSERIAL PRIMARY KEY,
-    usuario  character varying(50),
-    clave    character varying(100),
-    nombre   character varying(50),
-    apellido character varying(50),
-    email    character varying(100),
-    rol      character varying(20)
+    ID       BIGINT  UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    usuario  VARCHAR(50),
+    clave    VARCHAR(100),
+    nombre   VARCHAR(50),
+    apellido VARCHAR(50),
+    email    VARCHAR(100),
+    rol      VARCHAR(20)
 );
 
--- Este código SQL está creando una tabla llamada "paises" con dos columnas: "ID", que es un tipo de
--- datos BIGSERIAL y sirve como clave principal, y "pais", que es un tipo de datos de TEXTO. La
--- cláusula "SI NO EXISTE" garantiza que la tabla solo se cree si aún no existe en la base de datos.
 CREATE TABLE IF NOT EXISTS paises (
-    ID   BIGSERIAL PRIMARY KEY,
+    ID   BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     pais TEXT
 );
 
--- Este código SQL está creando una tabla llamada "variedades" con tres columnas: "ID" que es un tipo
--- de datos SERIAL y sirve como clave principal, "variedad" que es un tipo de datos TEXTO y
--- "pais_origen" que es un dato INTEGER type y sirve como clave externa que hace referencia a la
--- columna "ID" en la tabla "paises". La cláusula "SI NO EXISTE" garantiza que la tabla solo se cree si
--- aún no existe en la base de datos.
+
 CREATE TABLE IF NOT EXISTS variedades (
-    ID          SERIAL  PRIMARY KEY,
-    variedad    TEXT   ,
-    pais_origen INTEGER,
-    Foreign     Key     (pais_origen) REFERENCES paises(ID)
+    ID          INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    variedad    TEXT,
+    pais_origen BIGINT UNSIGNED
 );
 
 CREATE TABLE IF NOT EXISTS vinos (
-    ID                  BIGSERIAL PRIMARY KEY,-- id: Identificador único generado automáticamente por la base de datos para cada registro en la tabla
+    ID                  BIGINT  UNSIGNED AUTO_INCREMENT PRIMARY KEY,-- id: Identificador único generado automáticamente por la base de datos para cada registro en la tabla
     nombre              VARCHAR(255) NOT NULL,-- nombre: Nombre del vino, cadena de caracteres de longitud máxima de 255
-    variedad            INTEGER,-- variedad: Variedad de uva utilizada para elaborar el vino, cadena de caracteres de longitud máxima de 255
-    anada               INTEGER,-- anada: Año de cosecha de la uva utilizada para elaborar el vino, número entero
+    variedad            BIGINT  UNSIGNED,-- variedad: Variedad de uva utilizada para elaborar el vino, cadena de caracteres de longitud máxima de 255
+    anada               INT,-- anada: Año de cosecha de la uva utilizada para elaborar el vino, número entero
     bodega              VARCHAR(255) NOT NULL,-- bodega: Nombre de la bodega o viñedo que produce el vino, cadena de caracteres de longitud máxima de 255
-    pais                INTEGER,-- pais: País de origen del vino, referenciamos con foreign key
+    pais_vino           BIGINT  UNSIGNED,-- pais_vino: País de origen del vino, referenciamos con foreign key
     region              VARCHAR(255) NOT NULL,-- region: Región vinícola donde se produce el vino, cadena de caracteres de longitud máxima de 255
-    precio              NUMERIC(10, 2),-- precio: Precio del vino, número decimal con una precisión de 10 dígitos y una escala de 2 dígitos
-    stock               INTEGER,-- stock: Cantidad de botellas del vino que están disponibles en el inventario, número entero
+    precio              DECIMAL(10, 2),-- precio: Precio del vino, número decimal con una precisión de 10 dígitos y una escala de 2 dígitos
+    stock               INT,-- stock: Cantidad de botellas del vino que están disponibles en el inventario, número entero
     tipo                VARCHAR(255),-- tipo: Tipo de vino (tinto, blanco, rosado, etc.), cadena de caracteres de longitud máxima de 255
-    nivel_alcohol       NUMERIC(3, 1),-- nivel_alcohol: Porcentaje de alcohol del vino, número decimal con una precisión de 3 dígitos y una escala de 1 dígito
+    nivel_alcohol       DECIMAL(3, 1),-- nivel_alcohol: Porcentaje de alcohol del vino, número decimal con una precisión de 3 dígitos y una escala de 1 dígito
     tipo_barrica        VARCHAR(255),-- tipo_barrica: Tipo de barrica en la que se ha criado el vino (roble americano, roble francés, etc.), cadena de caracteres de longitud máxima de 255
     notas_cata          TEXT,-- notas_cata: Descripción de las características de sabor, aroma, color y cuerpo del vino, campo de texto
     temperatura_consumo VARCHAR(255),-- temperatura_consumo: Temperatura recomendada para servir el vino, cadena de caracteres de longitud máxima de 255
     maridaje            TEXT,-- maridaje: Lista de platos recomendados para maridar con el vino, campo de texto
-    id_categoria        INTEGER,-- id_categoria: Identificador de la categoría a la que pertenece el vino, número entero
+    id_categoria        BIGINT  UNSIGNED,-- id_categoria: Identificador de la categoría a la que pertenece el vino, número entero
     activo              BOOLEAN NOT NULL DEFAULT false,-- activo: Indica si el vino está activo o no, booleano con valor por defecto de false
-    id_imagen           INTEGER,-- id_imagen: Identificador de la imagen asociada al vino, número entero
+    id_imagen           BIGINT  UNSIGNED,-- id_imagen: Identificador de la imagen asociada al vino, número entero
     promocion           BOOLEAN NOT NULL DEFAULT false,-- promocion: Indica si el vino está en promoción o no, booleano con valor por defecto de false
-    busqueda            INTEGER,-- busqueda: Identificador de cada producto para organizarlos cuando se haga una busqueda
-
-    -- Este código crea tres restricciones de clave externa en una tabla de base de datos para asegurar que los valores ingresados en tres columnas específicas existan previamente en otras tablas. Esto ayuda a mantener la integridad y consistencia de los datos en la base de datos.
-    Foreign Key (variedad    ) REFERENCES variedades(ID),
-    Foreign Key (pais        ) REFERENCES paises    (ID),
-    Foreign Key (id_categoria) REFERENCES secciones (ID)
+    busqueda            BIGINT  UNSIGNED-- busqueda: Identificador de cada producto para organizarlos cuando se haga una busqueda
 );
 
---DATA
+drop table vinos;
+
+-- FOREIGN KEYS
+
+ALTER TABLE variedades ADD CONSTRAINT variedad_pais FOREIGN KEY (pais_origen) REFERENCES paises (ID);
+ALTER TABLE vinos ADD CONSTRAINT vinos_variedad FOREIGN KEY (variedad) REFERENCES variedades (ID);
+ALTER TABLE vinos ADD CONSTRAINT vinos_pais FOREIGN KEY (pais_vino) REFERENCES paises (ID);
+ALTER TABLE vinos ADD CONSTRAINT vinos_categoria FOREIGN KEY (id_categoria) REFERENCES secciones (ID);
+
+-- DATA
 
 INSERT INTO secciones (nombre, activo) VALUES
     ('NUESTROS VINOS MAS VENDIDOS'     , TRUE),
@@ -109,7 +91,7 @@ INSERT INTO variedades (variedad, pais_origen) VALUES
     ('Pinot Grigio'      , 5),
     ('Tempranillo'       , 4);
 
-INSERT INTO vinos (nombre, variedad, anada, bodega, pais, region, precio, stock, tipo, nivel_alcohol, tipo_barrica, notas_cata, temperatura_consumo, maridaje, id_categoria, activo, id_imagen, promocion, busqueda) VALUES
+INSERT INTO vinos (nombre, variedad, anada, bodega, pais_vino, region, precio, stock, tipo, nivel_alcohol, tipo_barrica, notas_cata, temperatura_consumo, maridaje, id_categoria, activo, id_imagen, promocion, busqueda) VALUES
     
     ('Petirrojo'                 , 5, 2019, 'Viñedos Petirrojo'           , 3, 'Valle Central'        , 11.99 , 40 , 'Tinto' , 13.5, 'Crianza en barrica de roble', 'Notas de frutas rojas y especias, con cuerpo medio y taninos suaves.'                                                                                           , '16-18°C', 'Carnes rojas y quesos.'                                                 , 1, true, 245726, false, 4),
     ('Posta Pizzella'            , 4, 2019, 'Bodega La Posta'             , 1, 'Valle de Uco, Mendoza', 22.99 , 50 , 'Tinto' , 14.5, 'Roble francés'              , 'Intenso y profundo, con notas de frutos negros, violetas y vainilla. En boca es jugoso, equilibrado y persistente.'                                             , '16-18°C', 'Carnes rojas asadas, pastas con salsas picantes, quesos fuertes'        , 1, true, 933404, false, 4),
