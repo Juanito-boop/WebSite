@@ -5,6 +5,7 @@ define('PASSWORD', ')QZzqAiwP*3(EA4Q');
 define('DBNAME', 'postgres');
 
 define('PORT', '5432');
+define('CHARSET', 'UTF-8');
 
 define('SERVER', 'localhost');
 define('USER_LOCAL', 'user_php');
