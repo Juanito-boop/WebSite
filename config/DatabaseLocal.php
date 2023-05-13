@@ -1,13 +1,13 @@
 <?php
 include_once('dataBD.php');
-class Database
+class DatabaseLocal
 {
     //Este bloque es un método Conexion() que intenta conectarse a una base de datos PostgreSQL utilizando PDO. 
     function Conexion()
     {
         try {
-            $dsn = "pgsql:host=" . HOST . ";port=" . PORT . ";dbname=" . DBNAME;
-            $pdo = new PDO($dsn, USER, PASSWORD);
+            $dsn = "pgsql:host=" . SERVER . ";port=" . PORT . ";dbname=" . DBNAME_LOCAL;
+            $pdo = new PDO($dsn, USER_LOCAL, PASSWORD_LOCAL);
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             return $pdo;
         } catch (PDOException $e) {

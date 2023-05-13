@@ -1,9 +1,11 @@
 <?php
 
-// use DatabaseV2;
+require_once('./config/Database.php');
 
 $databaseFilePath = realpath(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'db' . DIRECTORY_SEPARATOR . 'DatabaseV2.php');
 require_once($databaseFilePath);
+$obj = new Database();
+$conn = $obj->Conexion();
 
 function databaseQueryTask()
 {
@@ -49,11 +51,8 @@ function databaseQueryTask()
 
         $arreglo_productos = $stmt_productos->fetchAll(PDO::FETCH_ASSOC);
         $arreglo_secciones = $stmt_secciones->fetchAll(PDO::FETCH_ASSOC);
-        $_SESSION['resultado_productos'] = $arreglo_productos;
-        $_SESSION['resultado_secciones'] = $arreglo_secciones;
 
         $arreglo_filtro = $stmt_filtro->fetchAll(PDO::FETCH_ASSOC);
-        $_SESSION['arreglo_filtro'] = $arreglo_filtro;
 
     } else {
 
@@ -104,14 +103,8 @@ function databaseQueryTask()
 
         $arreglo_productos = $stmt_productos->fetchAll(PDO::FETCH_ASSOC);
         $arreglo_secciones = $stmt_secciones->fetchAll(PDO::FETCH_ASSOC);
-        $_SESSION['resultado_productos'] = $arreglo_productos;
-        $_SESSION['resultado_secciones'] = $arreglo_secciones;
 
         $arreglo_filtro = $stmt_filtro->fetchAll(PDO::FETCH_ASSOC);
-        $_SESSION['arreglo_filtro'] = $arreglo_filtro;
 
     }
 }
-
-$thread = new $thread('databaseQueryTask');
-$thread->start();
