@@ -12,7 +12,7 @@ const nextBtn2 = document.querySelector('#next-btn2');
 const nextBtn3 = document.querySelector('#next-btn3');
 
 // Establecer la cantidad de productos a mostrar por página
-const itemsPerPage = 4;
+const itemsPerPage = 5;
 
 // Inicializar el número de página actual para cada contenedor
 let currentPage1 = 1;

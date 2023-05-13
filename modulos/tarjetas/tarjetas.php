@@ -1,9 +1,10 @@
 <?php
+session_start();
 
 require './modulos/consultas-preparadas/consultas-preparadas.php';
 
-$resultado_productos = $arreglo_productos;
-$resultado_secciones = $arreglo_secciones;
+$resultado_productos = $_SESSION['resultado_productos'];
+$resultado_secciones = $_SESSION['resultado_secciones'];
 
 // $resultado_productos = [];
 // $resultado_secciones = [];
