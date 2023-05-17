@@ -1,26 +1,42 @@
 <?php
 
-require_once('./config/Database.php');
+// $databaseFilePath = realpath(
+//     path: __DIR__ .
+//     DIRECTORY_SEPARATOR . '..' .
+//     DIRECTORY_SEPARATOR . '..' .
+//     DIRECTORY_SEPARATOR . 'db' .
+//     DIRECTORY_SEPARATOR . 'DatabaseV2.php'
+// );
 
-$databaseFilePath = realpath(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'db' . DIRECTORY_SEPARATOR . 'DatabaseV2.php');
-require_once($databaseFilePath);
-$obj = new Database();
-$conn = $obj->Conexion();
+$apiProductosFilePath = realpath(
+    path: __DIR__ .
+    DIRECTORY_SEPARATOR . '..' .
+    DIRECTORY_SEPARATOR . '..' .
+    DIRECTORY_SEPARATOR . 'api' .
+    DIRECTORY_SEPARATOR . 'supabaseProductos.php'
+);
+$apiSeccionesFilePath = realpath(
+    path: __DIR__ .
+    DIRECTORY_SEPARATOR . '..' .
+    DIRECTORY_SEPARATOR . '..' .
+    DIRECTORY_SEPARATOR . 'api' .
+    DIRECTORY_SEPARATOR . 'supabaseSecciones.php'
+);
 
-function databaseQueryTask()
-{
-    $db = new DatabaseV2();
-    $pdo = $db->getConnection();
+require_once($apiProductosFilePath);
+require_once($apiSeccionesFilePath);
 
-    $data = file_get_contents('php://input');
-    $data = urldecode($data);
-    parse_str($data, $params);
+$data = file_get_contents(filename: 'php://input');
+$data = urldecode($data);
+parse_str($data, result: $params);
 
-    $miQuery = isset($_POST['query']) ? $_POST['query'] : '';
-    if (empty($miQuery)) {
+$miQuery = $_POST['query'] ?? '';
 
-        $stmt_productos = $pdo->prepare(
-            'SELECT 
+if (empty($miQuery)) {
+
+    $stmt_productos = $pdo->prepare(
+        /** @lang text */
+        query: 'SELECT 
             paises.pais         AS pais_vino,      secciones.nombre AS seccion_vino,
             variedades.variedad AS uva_vino,       vinos.id         AS id_vino,
             vinos.id_categoria  AS categoria_vino, vinos.id_imagen  AS imagen_vino,
@@ -31,80 +47,48 @@ function databaseQueryTask()
             INNER JOIN paises     ON vinos.pais = paises.id 
             INNER JOIN secciones  ON vinos.id_categoria = secciones.id
          '
-        );
+    );
+    $stmt_secciones = $pdo->prepare(
+        /** @lang text */
+        query: 'SELECT * FROM secciones WHERE id_unica != 4 and activo = false'
+    );
 
-        $stmt_secciones = $pdo->prepare(
-            'SELECT * FROM secciones WHERE CAST(id_unica AS integer) != 4'
-        );
+} else {
 
-        $stmt_filtro = $pdo->prepare(
-            "SELECT 
-            REPLACE(variedad, ' ', '_') AS uva_, 
-            variedad AS uva 
-            FROM variedades"
-        );
+    $stmt_productos = $pdo->prepare(
+        /** @lang text */
+        query: 'SELECT 
+                paises.pais         AS pais_vino,      secciones.nombre AS seccion_vino,
+                variedades.variedad AS uva_vino,       vinos.id         AS id_vino,
+                vinos.id_imagen     AS imagen_vino,    vinos.nombre     AS nombre_vino,
+                vinos.precio        AS precio_vino,    vinos.promocion  AS promocion,
+                vinos.busqueda      AS busqueda_vino
+             FROM vinos 
+                INNER JOIN variedades ON variedades.id = vinos.variedad 
+                INNER JOIN paises     ON vinos.pais = paises.id 
+                INNER JOIN secciones  ON vinos.id_categoria = secciones.id
+             WHERE 
+                paises.pais          LIKE ? OR
+                variedades.variedad  LIKE ? OR
+                vinos.nombre         LIKE ? OR
+                vinos.precio/4568.38 >= ?'
+    );
 
-        $stmt_productos->execute();
-        $stmt_secciones->execute();
-
-        $stmt_filtro->execute();
-
-        $arreglo_productos = $stmt_productos->fetchAll(PDO::FETCH_ASSOC);
-        $arreglo_secciones = $stmt_secciones->fetchAll(PDO::FETCH_ASSOC);
-
-        $arreglo_filtro = $stmt_filtro->fetchAll(PDO::FETCH_ASSOC);
-
+    $stmt_productos->bindValue(param: 1, value: '%' . $miQuery . '%');
+    $stmt_productos->bindValue(param: 2, value: '%' . $miQuery . '%');
+    $stmt_productos->bindValue(param: 3, value: '%' . $miQuery . '%');
+    if (is_numeric($miQuery)) {
+        $stmt_productos->bindValue(param: 4, value: (int) $miQuery, type: PDO::PARAM_INT);
     } else {
-
-        $stmt_productos = $pdo->prepare(
-            'SELECT 
-            paises.pais         AS pais_vino,      secciones.nombre AS seccion_vino,
-            variedades.variedad AS uva_vino,       vinos.id         AS id_vino,
-            vinos.id_imagen     AS imagen_vino,    vinos.nombre     AS nombre_vino,
-            vinos.precio        AS precio_vino,    vinos.promocion  AS promocion,
-            vinos.busqueda      AS busqueda_vino
-         FROM vinos 
-            INNER JOIN variedades ON variedades.id = vinos.variedad 
-            INNER JOIN paises     ON vinos.pais = paises.id 
-            INNER JOIN secciones  ON vinos.id_categoria = secciones.id
-         WHERE 
-            paises.pais          LIKE ? OR
-            variedades.variedad  LIKE ? OR
-            vinos.nombre         LIKE ? OR
-            vinos.precio/4568.38 >= ?'
-        );
-
-        $stmt_productos->bindValue(1, '%' . $miQuery . '%', PDO::PARAM_STR);
-        $stmt_productos->bindValue(2, '%' . $miQuery . '%', PDO::PARAM_STR);
-        $stmt_productos->bindValue(3, '%' . $miQuery . '%', PDO::PARAM_STR);
-        if (is_numeric($miQuery)) {
-            // Si $miQuery es un número, asignamos su valor como entero
-            $stmt_productos->bindValue(4, (int) $miQuery, PDO::PARAM_INT);
-        } else {
-            // Si $miQuery es una cadena, asignamos su valor como cadena
-            $stmt_productos->bindValue(4, $miQuery, PDO::PARAM_STR);
-        }
-
-        $stmt_secciones = $pdo->prepare(
-            'SELECT * FROM secciones WHERE CAST(id_unica AS integer) = 4'
-        );
-
-        $stmt_filtro = $pdo->prepare(
-            "SELECT 
-            REPLACE(variedad, ' ', '_') AS uva_, 
-            variedad AS uva 
-            FROM variedades"
-        );
-
-        $stmt_productos->execute();
-        $stmt_secciones->execute();
-
-        $stmt_filtro->execute();
-
-        $arreglo_productos = $stmt_productos->fetchAll(PDO::FETCH_ASSOC);
-        $arreglo_secciones = $stmt_secciones->fetchAll(PDO::FETCH_ASSOC);
-
-        $arreglo_filtro = $stmt_filtro->fetchAll(PDO::FETCH_ASSOC);
-
+        $stmt_productos->bindValue(param: 4, value: $miQuery);
     }
+    $stmt_secciones = $pdo->prepare(
+        /** @lang text */
+        query: 'SELECT * FROM secciones WHERE id_unica = 4'
+    );
 }
+
+$stmt_filtro = $pdo->prepare(
+    /** @lang text */
+    query: "SELECT REPLACE(variedad, ' ', '_') AS uva_, variedad AS uva FROM variedades"
+);

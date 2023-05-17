@@ -2,9 +2,11 @@
 
 require './modulos/consultas-preparadas/consultas-preparadas.php';
 
-$results = $arreglo_filtro;
+if (isset($arreglo_filtro)) {
+    $results = $arreglo_filtro;
+}
 
-function generarDivsVariedadConCheckbox()
+function generarDivsVariedadConCheckbox(): void
 {
     // Generar los divs con checkbox
     global $results;
@@ -18,4 +20,3 @@ function generarDivsVariedadConCheckbox()
         echo "</div>";
     }
 }
-?>

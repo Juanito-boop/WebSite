@@ -33,11 +33,6 @@
   src: url(../fonts/poppins-Bold.ttf);
 }
 
-@font-face {
-  font-family: 'Raleway', sans-serif;
-  src: url();
-}
-
 /* Estilos generales */
 * {
   box-sizing: border-box;

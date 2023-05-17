@@ -1,6 +1,7 @@
 <?php
-require_once('./modulos/filtro/filtro.php');
-require_once('./modulos/tarjetas/tarjetas.php');
+session_start();
+// require_once('./modulos/filtro/filtro.php');
+include('./modulos/tarjetas/tarjetas.php');
 ?>
 <html lang="en">
 
@@ -18,7 +19,6 @@ require_once('./modulos/tarjetas/tarjetas.php');
     <link rel="stylesheet" href="css/Hamburguer.css">
     <link rel="stylesheet" href="css/Header.css">
     <link rel="stylesheet" href="css/Products.css">
-    <link rel="stylesheet" href="css/Slider.css">
 </head>
 
 <body>
@@ -35,41 +35,27 @@ require_once('./modulos/tarjetas/tarjetas.php');
                     <p class="main-header_txt">CONTACTANOS (+57) 3219085857 <em class="fas fa-phone"></em></p>
                 </div>
                 <div class="icono-menu">
-                    <img src="img/bars-solid.svg" id="icono-menu">
+                    <img src="img/bars-solid.svg" id="icono-menu" alt="">
                 </div>
                 <div class="cont-menu opacity" id="menu">
                     <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="#">Sepas</a></li>
+                        <li><a href="index.php">Home</a></li>
+                        <li><a href="#">Cepas</a></li>
                     </ul>
                 </div>
                 <!-- Add cart button here -->
             </div>
         </div>
-        <form id="myForm" action="./modulos/consultas-preparadas/consultas-preparadas.php" method="POST">
+        <!-- <form id="myForm" action="./modulos/consultas-preparadas/consultas-preparadas.php" method="POST">
             <div class="main-header_container">
+                <label for="query"></label>
                 <input type="search" id="query" name="query" class="main-header_input"
                     placeholder="What product are you looking for?">
                 <em class="fas fa-search" id="lupa"></em>
             </div>
-        </form>
+        </form> -->
     </header>
     <div class="contenedor_principal">
-        <aside>
-            <!-- Este código genera una sección "Filtrar por" en la barra lateral de la página web. El
-            elemento `div` con clase "filtro" muestra el texto "Filtrar por:".
-            La función `generarDivsVariedadConCheckbox()` es una función
-            de PHP que genera código HTML para una lista de casillas de verificación, cada una de
-            las cuales representa una variedad de vino diferente. Esto permite al usuario filtrar
-            los productos que se muestran en la sección principal de la página web seleccionando una
-            o más variedades de vino. -->
-            <div class="filtro">
-                <div class="label">Filtrar por:</div>
-                <?php
-                generarDivsVariedadConCheckbox();
-                ?>
-            </div>
-        </aside>
         <main>
             <!-- empiezan las tarjetas -->
             <div class="container">
@@ -103,9 +89,9 @@ require_once('./modulos/tarjetas/tarjetas.php');
                 y cerveza</p>
             <p>HORARIOS DE ATENCION :</p>
             <ul>
-                dom 12:00 p.m. - 10:00 p.m.<br>
-                lun-mar-mié-jue 3:00 p.m. - 10:00 p.m.<br>
-                vie-sáb 12:00 p.m. - 12:00 a.m.<br>
+                dom 12:00 p.m. - 10:00 p.m.
+                lun-mar-mié-jue 3:00 p.m. - 10:00 p.m.
+                vie-sáb 12:00 p.m. - 12:00 a.m.
             </ul>
         </div>
         <div class="container-editor">
