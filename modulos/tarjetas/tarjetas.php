@@ -1,36 +1,36 @@
 <?php
 
-// require '../../api/supabaseProductos.php';
-// require '../../api/supabaseSecciones.php';
 require './api/supabaseProductos.php';
 require './api/supabaseSecciones.php';
 
 $productos = $data_productos;
 $secciones = $data_secciones;
 
-function get_image($unique_id)
+function get_image($url)
 {
-    $image_path = 'img/vinos/' . $unique_id . '.png';
+    $image_path = 'img/vinos/' . $url . '.png';
     return file_exists($image_path) ? $image_path : "img/logo.png";
 }
 
-function get_button($isPromotion)
+function get_button($isPromotion, $unique)
 {
     $class = $isPromotion ? 'promotion-btn' : 'product-btn';
     $text = $isPromotion ? 'PROMOCION' : '  INFORMACION';
-    return '<a href="" class="' . $class . '"><em class="fas fa-shopping-cart">' . $text . '</em></a>';
+    return '<a href="./modulos/detalles/info.php?id=' . $unique . '" class="' . $class . '">
+                <em class="fas fa-shopping-cart">' . $text . '</em>
+            </a>';
 }
 
-function get_product($productos, $x)
+function get_product($producto, $categoriaSeleccionada)
 {
-    $categoria = $productos['id_categoria'];
-    $nombre_vino = $productos['nombre'];
-    $precio_vino = $productos['precio'];
-    $promocion = $productos['promocion'];
-    $unique = $productos['id_imagen'];
-    $cepa = $productos['variedades']['variedad'];
+    $categoria = $producto['id_categoria'];
+    $nombre_vino = $producto['nombre'];
+    $precio_vino = $producto['precio'];
+    $promocion = $producto['promocion'];
+    $unique = $producto['id_unica'];
+    $cepa = $producto['variedades']['variedad'];
 
-    $button = get_button($promocion);
+    $button = get_button($promocion, $unique);
     $imagen = get_image($unique);
 
     $taza_cambio = 4568.38;
@@ -38,7 +38,7 @@ function get_product($productos, $x)
     $precio_cop = $precio_vino * $taza_cambio;
     $precio_final = number_format($precio_cop, decimals: 0, decimal_separator: '.', thousands_separator: ',');
 
-    if ($categoria == $x) {
+    if ($categoria == $categoriaSeleccionada) {
         return '
         <div class="product">
             <div class="product_description">
@@ -52,38 +52,38 @@ function get_product($productos, $x)
     }
 }
 
-function get_section($secciones, $x, $productos)
+function get_section($seccion, $seccionSeleccionada, $productos)
 {
     static $i = 1;
     $section = '<h2 class="main-title">
                     <strong>
-                        ' . $secciones['nombre'] . '
+                        ' . $seccion['nombre'] . '
                     </strong>
                 </h2>';
     $section .= '<div class="container-products" id="container' . $i . '">';
-    foreach ($productos as $productos_data) {
-        $section .= get_product($productos_data, $x);
+    foreach ($productos as $producto) {
+        $section .= get_product($producto, $seccionSeleccionada);
     }
     $section .= '</div>';
     $i++;
     return $section;
 }
 
-function get_all_sections($secciones, $x, $productos)
+function get_all_sections($secciones, $seccionID, $productos)
 {
     $sections = "";
-    foreach ($secciones as $seccion_productos) {
-        if ($seccion_productos["id_unica"] == $x) {
-            $sections .= get_section($seccion_productos, $x, $productos);
+    foreach ($secciones as $seccion) {
+        if ($seccion["id_unica"] == $seccionID) {
+            $sections .= get_section($seccion, $seccionID, $productos);
         }
     }
     return $sections;
 }
 
-function tarjetas($x)
+function tarjetas($seccionID)
 {
     global $secciones, $productos;
-    $sections = get_all_sections($secciones, $x, $productos);
+    $sections = get_all_sections($secciones, $seccionID, $productos);
     echo $sections;
 }
 

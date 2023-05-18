@@ -22,7 +22,7 @@ if ($response === false) {
 } else {
     $data_productos = json_decode($response, associative: true);
     if ($data_productos === null) {
-        $error = 'Error al decodificar la respuesta JSON';
+        $error = 'Error al decodificar el JSON';
     }
 }
 
