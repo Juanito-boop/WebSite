@@ -1,5 +1,4 @@
 <?php
-session_start();
 // require_once('./modulos/filtro/filtro.php');
 include('./modulos/tarjetas/tarjetas.php');
 ?>

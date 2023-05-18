@@ -6,18 +6,17 @@ require './api/supabaseSecciones.php';
 $productos = $data_productos;
 $secciones = $data_secciones;
 
-function get_image($url)
-{
-    $image_path = 'img/vinos/' . $url . '.png';
-    return file_exists($image_path) ? $image_path : "img/logo.png";
-}
-
 function get_button($isPromotion, $unique)
 {
     $class = $isPromotion ? 'promotion-btn' : 'product-btn';
-    $text = $isPromotion ? 'PROMOCION' : '  INFORMACION';
-    return '<a href="./modulos/detalles/info.php?id=' . $unique . '" class="' . $class . '">
-                <em class="fas fa-shopping-cart">' . $text . '</em>
+    $text = $isPromotion ? '<p>  PROMOCION</p>' : '<p>  INFORMACION</p>';
+    return '<a href="./modulos/detalles/info.php?id=' . $unique . '" class="' . $class . '" alt="' . $text . '">
+                <img 
+                src="./img/magnifying-glass-plus-solid.svg" 
+                style="
+                    width: 15px;
+                    color: #efb810;
+                ">' . $text . '
             </a>';
 }
 
@@ -28,10 +27,10 @@ function get_product($producto, $categoriaSeleccionada)
     $precio_vino = $producto['precio'];
     $promocion = $producto['promocion'];
     $unique = $producto['id_unica'];
+    $url = $producto['url_imagen'];
     $cepa = $producto['variedades']['variedad'];
 
     $button = get_button($promocion, $unique);
-    $imagen = get_image($unique);
 
     $taza_cambio = 4568.38;
 
@@ -42,7 +41,7 @@ function get_product($producto, $categoriaSeleccionada)
         return '
         <div class="product">
             <div class="product_description">
-                <img src="' . $imagen . '" alt="" class="product_img">
+                <img src="' . $url . '" alt="" class="product_img">
                 <h2 class="product_title bold">' . $nombre_vino . '</h2>
                 <h2 class="product_description bold">' . $cepa . '</h2>
                 <h2 class="product_price bold"> $' . $precio_final . ' COP </h2>

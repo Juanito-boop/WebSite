@@ -16,7 +16,7 @@
     border-radius: 10px;
     height: 100%;
     padding: 20px;
-    text-align: center;
+    /* text-align: center; */
     background-color: #7f1a77;
     /* height: 335px; */
 }
@@ -28,7 +28,7 @@
 }
 
 .product_title {
-    color: #efb810;
+    color: rgb(239, 184, 16);
     margin-top: 2px;
     font-size: 0.9em;
     text-align: center;
@@ -56,6 +56,10 @@
     border-radius: 10px;
     text-align: center;
     text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 
 .product_icon {

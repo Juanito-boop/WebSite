@@ -25,5 +25,6 @@ if ($response === false) {
         $error = 'Error al decodificar el JSON';
     }
 }
+// print_r($data_productos);
 
 curl_close($curl);
