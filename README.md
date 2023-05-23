@@ -13,8 +13,8 @@ https://github.com/Juanito-boop/WebSite.git
 7. Abre el proyecto en tu servidor local.
 <h2>Uso</h2>
 <ol>
-1. Los usuarios pueden explorar diferentes categorías de vinos.
-2. Pueden ver detalles sobre cada tipo de vino, como la región de origen, el año de cosecha, las notas de sabor, etc.
+  <li>1. Los usuarios pueden explorar diferentes categorías de vinos.</li>
+<li>2. Pueden ver detalles sobre cada tipo de vino, como la región de origen, el año de cosecha, las notas de sabor, etc.</li>
 </ol>
 
 <h2>Tecnologías utilizadas</h2>
