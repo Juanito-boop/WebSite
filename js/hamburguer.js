@@ -9,7 +9,7 @@ iconoMenu.addEventListener('click', (e) => {
   // Alternamos su atributo 'src' para el ícono del menú
   const rutaActual = e.target.getAttribute('src')
 
-  if (rutaActual == './img/icono-menu.svg') {
+  if (rutaActual === './img/icono-menu.svg') {
     e.target.setAttribute('./img/icono-menu.svg')
   } else {
     e.target.setAttribute('./img/icono-menu.svg')

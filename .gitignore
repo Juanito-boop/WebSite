@@ -4,3 +4,4 @@ composer.lock
 vendor/
 config/dataBD.php
 productos.json
+/nbproject/private/

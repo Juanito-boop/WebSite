@@ -1,31 +1,23 @@
-<h1>Electronic Commerce de Vinos</h1>
+<h1>Catálogo Virtual de Vinos</h1>
+<p>Este proyecto es un catálogo virtual de vinos donde los usuarios pueden explorar y obtener información sobre diferentes tipos de vinos. No se realiza la venta de vinos ni se ofrece un servicio de entrega a domicilio.</p>
+<h2>Instalación</h2>
+1. Clonar el Repositorio desde GitHub
+```bash
+https://github.com/Juanito-boop/WebSite.git
+```
+2. Configura un servidor local como Apache, Nginx, o cualquier otro que soporte PHP. 
+3. Asegúrate de tener instalado PHP 8.1 o superior y PostgreSQL.
+4. Crea una base de datos de PostgreSQL.
+5. En la carpeta de configuración, encuentra el archivo de configuración de la base de datos y actualiza los valores de conexión para reflejar tu entorno local.
+6. Ejecuta los scripts SQL proporcionados en la carpeta "sql" para crear las tablas y los registros necesarios en tu base de datos.
+7. Abre el proyecto en tu servidor local.
+<h2>Uso</h2>
+<ol>
+1. Los usuarios pueden explorar diferentes categorías de vinos.
+2. Pueden ver detalles sobre cada tipo de vino, como la región de origen, el año de cosecha, las notas de sabor, etc.
+</ol>
 
-<p> Este proyecto es una tienda en línea de vinos a nivel nacional. Los clientes pueden realizar compras desde la comodidad de su hogar y recibir sus productos en la puerta de su casa.</p>
-
-<h1>Instalación</h1>
-    
-<ol><li>Clona el repositorio desde GitHub: 
-<bash>
-``
-    git clone https://github.com/Juanito-boop/WebSite.git
-``
-</bash>
-</li>
-    <li>Configura un servidor Apache(XAMMP, WAMMP, Laragon) y asegúrate de tener instalado PHP 8.0 o superior y PostgreSQL.</li>
-    <li>Crea una base de datos de PostgreSQL llamada tienda.</li>
-    <li>En la carpeta config, entrar al archivo dataBD.php y actualizar los valores para la conexión a la base de datos.</li>
-    <li>Ejecuta el archivo PGSQL.sql ubicado en la carpeta sql dentro tu base de datos para crear las tablas y los registros necesarios.</li>
-    <li>Abre el proyecto en tu servidor local (http://localhost/WebSite).</li></ol>
-
-<h1>Uso</h1>
-
-<ol><li>Los usuarios pueden crear una cuenta para guardar su información y revisar su historial de compras.</li>
-    <li>Los usuarios pueden navegar por los productos disponibles en la tienda y agregarlos a su carrito de compras.</li>
-    <li>Los usuarios pueden realizar compras utilizando una tarjeta de crédito o débito.</li>
-    <li>Los administradores pueden agregar nuevos productos, editar los productos existentes y ver las órdenes realizadas por los clientes.</li></ol>
-
-<h1>Tecnologías utilizadas</h1>
-
+<h2>Tecnologías utilizadas</h2>
 <li>HTML5</li>
 <li>CSS3</li>
 <li>JavaScript</li>

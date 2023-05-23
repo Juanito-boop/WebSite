@@ -3,7 +3,7 @@ const myForm = document.getElementById('myForm');
 const searchInput = document.getElementById('query');
 
 // Escuchar el evento 'keyup' en el campo de búsqueda
-searchInput.addEventListener('keyup', function (event) {
+searchInput.addEventListener('keyup', () => {
     if (searchInput.value.trim() !== '') {
         myForm.submit(); // Enviar el formulario
     }

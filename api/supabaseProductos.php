@@ -26,5 +26,4 @@ if ($response === false) {
     }
 }
 // print_r($data_productos);
-
 curl_close($curl);
