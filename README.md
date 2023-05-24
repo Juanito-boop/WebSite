@@ -3,9 +3,9 @@
 <h2>Instalación</h2>
 <ol>
 <li> Clonar el Repositorio desde GitHub</li>
-```
-https://github.com/Juanito-boop/WebSite.git
-```
+
+    https://github.com/Juanito-boop/WebSite.git
+
 <li> Configura un servidor local como Apache, Nginx, o cualquier otro que soporte PHP. </li>
 <li> Asegúrate de tener instalado PHP 8.1 o superior y PostgreSQL.</li>
 <li> Crea una base de datos de PostgreSQL.</li>
