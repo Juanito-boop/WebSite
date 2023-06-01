@@ -1,29 +1,62 @@
 <?php
-// Iniciamos la sesión de PHP
-session_start();
-// Importamos el archivo con las constantes para conectarnos a la base de datos
-include_once('../../config/Database.php');
 
-$obj = new Database();
-$conn = $obj->Conexion();
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $curl = curl_init();
 
-// Verificamos si se han enviado los datos a través de la solicitud POST
-if (isset($_POST['usuario']) && isset($_POST['clave']) && isset($_POST['nombre']) && isset($_POST['apellido']) && isset($_POST['email'])) {
-    // Asignamos las variables con los valores enviados a través de POST
-    $usuario = $_POST['usuario'];
-    $clave = $_POST['clave'];
-    $nombre = $_POST['nombre'];
-    $apellido = $_POST['apellido'];
-    $email = $_POST['email'];
-    //contrasena fuerte
-    $clave_hash = password_hash($clave, PASSWORD_DEFAULT);
-    // Preparamos la consulta SQL para insertar al usuario en la base de datos
-    $crear = $conn->prepare("INSERT INTO usuarios (usuario, clave, nombre, apellido, email, rol) VALUES (:usuario, :clave, :nombre, :apellido, :email, :rol)");
-    // Ejecutamos la consulta, vinculando los valores de los marcadores de posición con las variables PHP correspondientes
-    $crear->execute(['usuario' => $usuario, 'clave' => $clave_hash, 'nombre' => $nombre, 'apellido' => $apellido, 'email' => $email, 'rol' => 'UsuarioCorriente']);
-    // Enviamos un mensaje de respuesta al usuario indicando que el usuario ha sido creado exitosamente
-    header("Location: ../../modulos/inicio-sesion/login.html");
+    $nombre = $_POST["nombre"];
+    $apellido = $_POST["apellido"];
+    $email = $_POST["email"];
+    $username = $_POST["usuario"];
+    $password = $_POST["clave"];
+
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+    $data = array(
+        'usuario' => $username,
+        'clave' => $hashedPassword,
+        'nombre' => $nombre,
+        'apellido' => $apellido,
+        'email' => $email,
+        'rol' => 'UsuarioCorriente'
+    );
+
+    $json_data = json_encode($data);
+
+    $url = 'https://hijaeegxjbuivzckpijg.supabase.co/rest/v1/usuarios';
+    $apiKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhpamFlZWd4amJ1aXZ6Y2twaWpnIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NTg1MTgxNjAsImV4cCI6MTk3NDA5NDE2MH0.dZo4cMQV2Xm1rugxdthp9Q8c40oHRkRHbrJlh4a3-BU';
+
+    curl_setopt_array(
+        $curl,
+        options: array(
+            CURLOPT_URL => $url,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'POST',
+            CURLOPT_POSTFIELDS => $json_data,
+            CURLOPT_HTTPHEADER => array(
+                "Authorization: Bearer $apiKey",
+                "Content-Type: application/json",
+                "Prefer: return=minimal",
+                "apikey: $apiKey"
+            ),
+        )
+    );
+
+    $response = curl_exec($curl);
+    $httpCode = curl_getinfo($curl, option: CURLINFO_HTTP_CODE);
+    curl_close($curl);
+
+    if ($httpCode == 200 || $httpCode == 201) {
+        echo '<script>alert("Registro exitoso.");window.location.href = "../inicio-sesion/login.html";</script>';
+    } else {
+        echo "<script>alert('Error al crear un usuario '$httpCode); 
+              if (confirm('¿Quieres volver al inicio de sesión?')) { 
+                  window.location.href = '../inicio-sesion/login.html'; 
+              }</script>";
+    }
 } else {
-    // Si no se enviaron todos los datos requeridos, enviamos un mensaje de respuesta indicando que faltan datos
-    echo "Faltan datos";
+    include "registro.html";
 }

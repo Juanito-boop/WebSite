@@ -1,39 +1,45 @@
 <?php
-// Iniciamos la sesión de PHP
-session_start();
-// Importamos el archivo con las constantes para conectarnos a la base de datos
-include_once('../../config/Database.php');
 
-$obj = new Database();
-$conn = $obj->Conexion();
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $ch = curl_init();
 
-// Verificamos si se han enviado las variables 'user' y 'pass' a través de la solicitud POST
-if (isset($_POST['user']) && isset($_POST['pass'])) {
-    // Asignamos las variables $usuario y $clave con los valores enviados a través de POST
-    $usuario = $_POST['user'];
-    $clave = $_POST['pass'];
-    // Preparamos la consulta SQL para buscar al usuario en la base de datos
-    $consulta_usuario = "SELECT clave FROM usuarios WHERE usuario = ?";
-    $statement = $conn->prepare($consulta_usuario);
-    $statement->execute([$usuario]);
-    // Verificamos si se encontró al usuario en la base de datos
-    if ($statement && $statement->rowCount() > 0) {
-        // Si se encontró al usuario, recuperamos la versión encriptada de la clave almacenada en la base de datos
-        $fila = $statement->fetch();
-        $clave_encriptada = $fila['clave'];
-        // Verificamos si la clave proporcionada coincide con la versión encriptada almacenada en la base de datos
-        if (password_verify($clave, $clave_encriptada)) {
-            // Si la clave proporcionada es correcta, redireccionamos al usuario a la página principal
-            header("Location: ../../index.php");
+    $username = $_POST["user"];
+    $password = $_POST["pass"];
+
+    $url = "https://hijaeegxjbuivzckpijg.supabase.co/rest/v1/usuarios?usuario=eq.$username";
+    $apiKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhpamFlZWd4amJ1aXZ6Y2twaWpnIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NTg1MTgxNjAsImV4cCI6MTk3NDA5NDE2MH0.dZo4cMQV2Xm1rugxdthp9Q8c40oHRkRHbrJlh4a3-BU";
+    curl_setopt_array($ch, [
+        CURLOPT_URL => $url,
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => "",
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 30,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => "GET",
+        CURLOPT_HTTPHEADER => [
+            "Authorization: Bearer $apiKey",
+            "apikey: $apiKey",
+        ]
+    ]);
+
+    $response = curl_exec($ch);
+    curl_close($ch);
+
+    $data = json_decode($response, true);
+    if (!empty($data)) {
+        $hashedPassword = $data[0]["clave"];
+
+        if (password_verify($password, $hashedPassword)) {
+            if ($data[0]["rol"] == "Administrador") {
+                header("Location: ../carga-producto-bd/formulario-nuevo-producto.php");
+            } else {
+                header("Location: ../../index.php");
+            }
         } else {
-            // Si la clave proporcionada es incorrecta, redireccionamos al usuario de vuelta a la página de inicio de sesión
-            header("Location: login.html");
+            echo "Nombre de usuario o contraseña incorrectos.";
         }
     } else {
-        // Si no se encontró al usuario en la base de datos, redireccionamos al usuario de vuelta a la página de inicio de sesión
-        header("Location: login.html");
+        echo "Nombre de usuario o contraseña incorrectos.";
     }
-} else {
-    // Si no se enviaron las variables 'user' y 'pass', enviamos un mensaje de respuesta indicando que faltan datos
-    echo "Faltan datos";
 }
+?>

@@ -1,6 +1,21 @@
 <?php
-// require_once('./modulos/filtro/filtro.php');
-include('./modulos/tarjetas/tarjetas.php');
+
+use api\GET\supabaseGetSecciones;
+use api\GET\supabaseGetVinos;
+use modulos\tarjetas\generadorTarjetas;
+
+spl_autoload_register(function ($class) {
+    if (file_exists(filename: str_replace(search: '\\', replace: '/', subject: $class) . '.php')) {
+        require_once(str_replace(search: '\\', replace: '/', subject: $class) . '.php');
+    }
+});
+
+$vinosApi = new supabaseGetVinos();
+$vinos = $vinosApi->getProductos(); //array productos
+
+$seccionesApi = new supabaseGetSecciones();
+$secciones = $seccionesApi->getSecciones(); //array secciones
+
 ?>
 <html lang="en">
 
@@ -39,30 +54,32 @@ include('./modulos/tarjetas/tarjetas.php');
                 <div class="cont-menu opacity" id="menu">
                     <ul>
                         <li><a href="index.php">Home</a></li>
-                        <li><a href="#">Cepas</a></li>
                     </ul>
                 </div>
                 <!-- Add cart button here -->
             </div>
         </div>
-        <!-- <form id="myForm" action="./modulos/consultas-preparadas/consultas-preparadas.php" method="POST">
+        <form id="myForm" action="./modulos/consultas-preparadas/consultas-preparadas.php" method="POST">
             <div class="main-header_container">
                 <label for="query"></label>
                 <input type="search" id="query" name="query" class="main-header_input"
                     placeholder="What product are you looking for?">
                 <em class="fas fa-search" id="lupa"></em>
             </div>
-        </form> -->
+        </form>
     </header>
     <div class="contenedor_principal">
         <main>
             <!-- empiezan las tarjetas -->
             <div class="container">
-                <!-- Llamar a la función `tarjetasFin()` que se encuentra definida en el archivo
-                `tarjetas.php` y generar el código HTML para mostrar las fichas de producto en la
-                web. -->
                 <?php
-                tarjetasFin();
+                /* Crea una nueva instancia de la clase `generadorTarjetas`, pasando como
+                argumentos los arrays `` y ``. Luego llama al método
+                `showProductCardsWithPagination()` en el objeto ``, que
+                genera y muestra tarjetas de productos con paginación basada en los datos de las
+                matrices `` y ``. */
+                $productCardGenerator = new generadorTarjetas($vinos, $secciones);
+                $productCardGenerator->showProductCardsWithPagination();
                 ?>
             </div>
         </main>

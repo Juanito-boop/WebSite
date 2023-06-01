@@ -1,22 +1,65 @@
 <?php
 
-require './modulos/consultas-preparadas/consultas-preparadas.php';
+require_once '../../api/GET/supabaseGetVariedades.php';
+require_once '../../api/GET/supabaseGetPaises.php';
+require_once '../../api/GET/supabaseGetSecciones.php';
 
-if (isset($arreglo_filtro)) {
-    $results = $arreglo_filtro;
+if (isset($dataGetVariedades)) {
+    $resultsV = $dataGetVariedades;
+}
+if (isset($dataGetPaises)) {
+    $resultsP = $dataGetPaises;
+}
+$resultados = new api\GET\supabaseGetSecciones();
+$resultsS = $resultados->getSecciones();
+
+function generarOpcionesVariedad(): void
+{
+    global $resultsV;
+    if (!empty($resultsV)) {
+        echo "<option value='' name='variedad'>Seleccione una cepa</option>";
+        foreach ($resultsV as $result) {
+            $divId = $result['id'];
+            $divText = $result['variedad'];
+            echo "<option value='$divId' name='variedad'>$divText</option>";
+        }
+    }
 }
 
-function generarDivsVariedadConCheckbox(): void
+function generarOpcionesPaises(): void
 {
-    // Generar los divs con checkbox
-    global $results;
-    foreach ($results as $result) {
-        $divId = $result['uva_'];
-        $divText = $result['uva'];
-        echo "<div class='filto'>";
-        echo "<div id='$divId'>";
-        echo "<label><input type='checkbox' name='divCheckbox[]' value='$divId'>" . '   ' . "$divText</label>";
-        echo "</div>";
-        echo "</div>";
+    global $resultsP;
+    if (!empty($resultsP)) {
+        echo "<option value='' name='pais'>Seleccione un país</option>";
+        foreach ($resultsP as $result) {
+            $divId = $result['id'];
+            $divText = $result['pais'];
+            echo "<<option value='$divId' name='pais'>$divText</option>";
+        }
     }
+}
+function categorias(): void
+{
+    global $resultsS;
+    if (!empty($resultsS)) {
+        echo "<option value='' name='categoria'>Seleccione una categoría</option>";
+        foreach ($resultsS as $result) {
+            $divId = $result['id_unica'];
+            $divText = $result['nombre'];
+            echo "<option value='$divId' name='categoria'>$divText</option>";
+        }
+    }
+}
+
+function tipos(): void
+{
+    $opciones = array("Tinto", "Blanco", "Rosado", "Espumoso", "Dulce", "Otro");
+
+    if (!empty($opciones)) {
+        echo "<option value='' name='tipo'>Seleccione un tipo</option>";
+        foreach ($opciones as $opcion) {
+            echo "<option value='$opcion' name='tipo'>$opcion</option>";
+        }
+    }
+
 }

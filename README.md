@@ -2,7 +2,7 @@
 <p>Este proyecto es un catálogo virtual de vinos donde los usuarios pueden explorar y obtener información sobre diferentes tipos de vinos. No se realiza la venta de vinos ni se ofrece un servicio de entrega a domicilio.</p>
 <h2>Instalación</h2>
 1. Clonar el Repositorio desde GitHub
-```bash
+```
 https://github.com/Juanito-boop/WebSite.git
 ```
 2. Configura un servidor local como Apache, Nginx, o cualquier otro que soporte PHP. 
