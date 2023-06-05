@@ -40,3 +40,39 @@ const supabase = createClient(supabaseUrl, supabaseKey)
 //         alert('Error al subir la imagen :31')
 //     }
 // }
+// -----> Building on the Heroku - 22 stack
+// -----> Using buildpack: heroku / php
+// -----> PHP app detected
+
+// !WARNING: No 'composer.json' found!
+// !
+//     !Your project only contains an 'index.php', no 'composer.json'.
+//  !
+//     !Using 'index.php' to declare app type as PHP is deprecated and
+// !may lead to unexpected behavior.
+//  !
+//     !Please consider updating your codebase to utilize Composer and
+// !modern dependency management in order to benefit from the latest
+// !PHP runtimes and improved application performance, as well as
+//     !control over the PHP versions and extensions available.
+//  !
+//     !For an introduction to dependency management with Composer and
+// !how to get the most out of PHP on Heroku, refer to the docs at
+// !https://getcomposer.org/doc/00-intro.md and
+// !https://devcenter.heroku.com/articles/getting-started-with-php
+// -----> Bootstrapping...
+// -----> Preparing platform package installation...
+// NOTICE: No runtime required in composer.lock; using PHP ^ 8.0.0
+// -----> Installing platform packages...
+// - apache(2.4.57)
+//     - php(8.2.6)
+//     - composer(2.2.20)
+//     - nginx(1.24.0)
+// -----> Installing dependencies...
+//        Composer version 2.2.20 2023 - 02 - 10 14: 11: 10
+// -----> Preparing runtime environment...
+// NOTICE: No Procfile, using 'web: heroku-php-apache2'.
+// -----> Checking for additional extensions to install...
+// -----> Discovering process types
+//        Procfile declares types -> web
+// -----> Compressing...
