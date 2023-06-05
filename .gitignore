@@ -1,5 +1,4 @@
 .env
-composer.lock
 vendor/
 config/dataBD.php
 productos.json
