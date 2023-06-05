@@ -1,47 +1,42 @@
-import { createClient } from '@supabase/supabase-js'
+import { createClient } from '/node_modules/@supabase/supabase-js';
 
-const supabaseUrl = 'https://hijaeegxjbuivzckpijg.supabase.co'
-const supabaseApiKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhpamFlZWd4amJ1aXZ6Y2twaWpnIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NTg1MTgxNjAsImV4cCI6MTk3NDA5NDE2MH0.dZo4cMQV2Xm1rugxdthp9Q8c40oHRkRHbrJlh4a3-BU'
+const supabaseUrl = 'https://npuxpuelimayqrsmzqur.supabase.co'
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5wdXhwdWVsaW1heXFyc216cXVyIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODU5MzIyOTMsImV4cCI6MjAwMTUwODI5M30.XBKmo8wZRwFviHAgQjgDbbE3D_vmaeqvEP4mKi6W3bU'
+const supabase = createClient(supabaseUrl, supabaseKey)
 
-const supabase = createClient(supabaseUrl, supabaseApiKey)
+// var formulario = document.getElementById('formularioProducto');
 
-document.getElementById('submitBtn').addEventListener('click', function (event) {
-    event.preventDefault(); // Evita que el formulario se envíe automáticamente
-    alert('Subiendo imagen... :11')
-    uploadFile()
-});
+// formulario.addEventListener('submit', function (event) {
+//     event.preventDefault();
+//     alert('Subiendo imagen... :10');
+//     uploadFile();
+// });
 
-async function uploadFile() {
+// async function uploadFile() {
+//     console.log("uyyyyyy");
+//     const imageInput = document.getElementById('imageInput')
 
-    const imageInput = document.getElementById('imageInput')
+//     const imageFile = imageInput.files[0]
+//     const fileName = imageFile.name
 
-    const imageFile = imageInput.files[0]
-    const fileName = imageFile.name
+//     const { data, error } = await supabase
+//         .storage
+//         .from('imagenes-vino')
+//         .upload("public/" + fileName, imageFile, {
+//             cacheControl: '3600',
+//             upsert: false
+//         })
+//     console.log(data);
 
-    const { data, error } = await supabase
-        .storage
-        .from('imagenes-vino')
-        .upload(fileName, imageFile, {
-            cacheControl: '3600',
-            upsert: false
-        })
+//     if (!error) {
+//         var inputImagen = document.createElement("input");
+//         inputImagen.type = "hidden";
+//         inputImagen.name = "imagenes";
+//         inputImagen.value = imageInput.value;
+//         formulario.appendChild(inputImagen);
 
-    if (error) {
-        alert('Error al subir la imagen :21')
-    } else {
-        const formData = new FormData()
-        formData.append('fileName', fileName)
-
-        const response = await fetch('../modulos/carga-producto-bd/logica.php', {
-            method: 'POST',
-            body: formData
-        })
-
-        // Maneja la respuesta del script PHP
-        if (response.ok) {
-            alert('Imagen subida correctamente :33')
-        } else {
-            alert('Error al subir la imagen :35')
-        }
-    }
-}
+//         formulario.submit();
+//     } else {
+//         alert('Error al subir la imagen :31')
+//     }
+// }

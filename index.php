@@ -5,16 +5,16 @@ use api\GET\supabaseGetVinos;
 use modulos\tarjetas\generadorTarjetas;
 
 spl_autoload_register(function ($class) {
-    if (file_exists(filename: str_replace(search: '\\', replace: '/', subject: $class) . '.php')) {
-        require_once(str_replace(search: '\\', replace: '/', subject: $class) . '.php');
+    if (file_exists(filename: str_replace(search: '\\', replace: '/', subject: $class).'.php')) {
+        require_once str_replace(search: '\\', replace: '/', subject: $class).'.php';
     }
 });
 
 $vinosApi = new supabaseGetVinos();
-$vinos = $vinosApi->getProductos(); //array productos
+$vinos = $vinosApi->getProductos(); // array productos
 
 $seccionesApi = new supabaseGetSecciones();
-$secciones = $seccionesApi->getSecciones(); //array secciones
+$secciones = $seccionesApi->getSecciones(); // array secciones
 
 ?>
 <html lang="en">
@@ -54,6 +54,7 @@ $secciones = $seccionesApi->getSecciones(); //array secciones
                 <div class="cont-menu opacity" id="menu">
                     <ul>
                         <li><a href="index.php">Home</a></li>
+                        <li><a href="modulos/carga-producto-bd/formulario-nuevo-producto.php">Nuevo Producto</a></li>
                     </ul>
                 </div>
                 <!-- Add cart button here -->
@@ -79,8 +80,8 @@ $secciones = $seccionesApi->getSecciones(); //array secciones
                 genera y muestra tarjetas de productos con paginación basada en los datos de las
                 matrices `` y ``. */
                 $productCardGenerator = new generadorTarjetas($vinos, $secciones);
-                $productCardGenerator->showProductCardsWithPagination();
-                ?>
+$productCardGenerator->showProductCardsWithPagination();
+?>
             </div>
         </main>
     </div>
