@@ -53,7 +53,7 @@
     <?php
     use api\GET\supabaseGetVinos;
 
-    require_once('../../api/GET/supabaseGetVinos.php');
+    require_once '../../api/GET/supabaseGetVinos.php';
 
     $supabaseGetVinos = new supabaseGetVinos();
     $dataGetProductos = $supabaseGetVinos->getProductos();
@@ -83,7 +83,7 @@
                     alt="<?php echo $productoEncontrado['nombre']; ?>" class="product_img"
                     style="width: 100%; height: 100%;">
             </aside>
-            <main>
+            <main Style="background-color: #7f1a77;border-radius: 10px;">
                 <h1><label for="nombre-vino">Nombre: </label></h1>
                 <p id="nombre-vino">
                     <?php echo $productoEncontrado['nombre']; ?>

@@ -60,14 +60,14 @@ $secciones = $seccionesApi->getSecciones(); // array secciones
                 <!-- Add cart button here -->
             </div>
         </div>
-        <form id="myForm" action="./modulos/consultas-preparadas/consultas-preparadas.php" method="POST">
+        <!-- <form id="myForm" action="./modulos/consultas-preparadas/consultas-preparadas.php" method="POST">
             <div class="main-header_container">
                 <label for="query"></label>
                 <input type="search" id="query" name="query" class="main-header_input"
                     placeholder="What product are you looking for?">
                 <em class="fas fa-search" id="lupa"></em>
             </div>
-        </form>
+        </form> -->
     </header>
     <div class="contenedor_principal">
         <main>

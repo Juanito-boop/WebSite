@@ -36,9 +36,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 header('Location: ../../index.php');
             }
         } else {
-            echo 'Nombre de usuario o contraseña incorrectos.';
+            echo '<script>alert("Contraseña incorrecta.");window.location.href = "login.html";</script>';
         }
     } else {
-        echo 'Nombre de usuario o contraseña incorrectos.';
+        echo '<script>alert("Usuario no encontrado.");window.location.href = "login.html";</script>';
     }
 }

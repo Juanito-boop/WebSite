@@ -111,7 +111,7 @@ require '../filtro/filtro.php';
         </div>
     </form>
     <script src="../../js/renderizadoImagen.js"></script>
-    <script type="module" src="../../js/subidaImagen.js"></script>
+    <!-- <script type="module" src="../../js/subidaImagen.js"></script> -->
 </body>
 
 </html>
