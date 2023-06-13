@@ -1,12 +1,13 @@
 {
     "require": {
         "ext-curl": "*",
-        "ext-pdo": "*",
         "guzzlehttp/guzzle": "^7.5",
         "laravel/installer": "^4.5",
         "php-kit/ext-pdo": "^1.1",
+        "rafaelwendel/phpsupabase": "^0.0.5",
         "ramsey/uuid": "^4.7",
+        "supabase/supabase-php": "^0.0.1",
         "vlucas/phpdotenv": "^5.5",
-        "rafaelwendel/phpsupabase": "^0.0.5"
+        "rmccue/requests": "^2.0"
     }
 }

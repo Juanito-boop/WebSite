@@ -22,7 +22,7 @@ class generadorTarjetas
                 </a>";
     }
 
-    private function getProduct($producto, $categoriaSeleccionada): ?string
+    private function getProduct($producto, $categoriaSeleccionada):  ? string
     {
         $categoria = $producto['id_categoria'];
         $nombreVino = $producto['nombre'];
@@ -49,7 +49,7 @@ class generadorTarjetas
         return null;
     }
 
-    private function getSection($seccion, $seccionSeleccionada): string
+    private function getSection($seccion, $seccionSeleccionada) : string
     {
         $section = "<h2 class=main-title><strong>{$seccion['nombre']}</strong></h2>";
         $section .= '<div class=container-products id=container' . $seccionSeleccionada . '>';
@@ -68,7 +68,7 @@ class generadorTarjetas
     {
         $sectionsHtml = "";
         foreach ($this->secciones as $seccion) {
-            if ($seccion["id_unica"] == $seccionID) {
+            if ($seccion['id_unica'] == $seccionID) {
                 $sectionHtml = $this->getSection($seccion, $seccionID);
                 $sectionsHtml .= $sectionHtml;
             }

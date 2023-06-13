@@ -5,8 +5,8 @@ use api\GET\supabaseGetVinos;
 use modulos\tarjetas\generadorTarjetas;
 
 spl_autoload_register(function ($class) {
-    if (file_exists(filename: str_replace(search: '\\', replace: '/', subject: $class).'.php')) {
-        require_once str_replace(search: '\\', replace: '/', subject: $class).'.php';
+    if (file_exists(filename:str_replace(search:'\\', replace:'/', subject:$class) . '.php')) {
+        require_once str_replace(search:'\\', replace:'/', subject:$class) . '.php';
     }
 });
 
@@ -17,6 +17,7 @@ $seccionesApi = new supabaseGetSecciones();
 $secciones = $seccionesApi->getSecciones(); // array secciones
 
 ?>
+
 <html lang="en">
 
 <head>
@@ -53,108 +54,187 @@ $secciones = $seccionesApi->getSecciones(); // array secciones
                 </div>
                 <div class="cont-menu opacity" id="menu">
                     <ul>
-                        <li><a href="index.php">Home</a></li>
-                        <li><a href="modulos/carga-producto-bd/formulario-nuevo-producto.php">Nuevo Producto</a></li>
+                        <li>
+                            <a href="index.php">Home</a>
+                        </li>
+                        <li>
+                            <a href="modulos/carga-producto-bd/formulario-nuevo-producto.php">Nuevo Producto</a>
+                        </li>
+                        <li>
+                            <a href="modulos/roles/roles.html">Nuevo Rol</a>
+                        </li>
                     </ul>
                 </div>
                 <!-- Add cart button here -->
             </div>
         </div>
-        <!-- <form id="myForm" action="./modulos/consultas-preparadas/consultas-preparadas.php" method="POST">
+        <form id="myForm" action="./modulos/consultas-preparadas/consultas-preparadas.php" method="POST">
             <div class="main-header_container">
                 <label for="query"></label>
                 <input type="search" id="query" name="query" class="main-header_input"
                     placeholder="What product are you looking for?">
                 <em class="fas fa-search" id="lupa"></em>
             </div>
-        </form> -->
+        </form>
     </header>
+
     <div class="contenedor_principal">
         <main>
             <!-- empiezan las tarjetas -->
             <div class="container">
                 <?php
-                /* Crea una nueva instancia de la clase `generadorTarjetas`, pasando como
-                argumentos los arrays `` y ``. Luego llama al método
-                `showProductCardsWithPagination()` en el objeto ``, que
-                genera y muestra tarjetas de productos con paginación basada en los datos de las
-                matrices `` y ``. */
-                $productCardGenerator = new generadorTarjetas($vinos, $secciones);
+$productCardGenerator = new generadorTarjetas($vinos, $secciones);
 $productCardGenerator->showProductCardsWithPagination();
 ?>
+
             </div>
+
         </main>
-    </div>
-    <div class="testimonials">
-        <div class="container_testimonials">
-            <h2 class="section_title">DESCUBRE UN POCO DE NOSOTROS</h2>
-            <h3 class="testimonial_title">SOMOS VINOS DE LA VILLA</h3>
-            <p class="testimonial_txt">Estamos ubicados en Villa De Leyva boyaca Carrera 9 #11-47 Segundo piso
-                de
-                La Galleta, Villa de Leyva, Boyaca, Colombia</p>
-            <p class="testimonial_txt">Lugar para los amantes del vino. Vino por copa desde COP$8000, Botellas
-                desde
-                COP$27.900, Amplio surtido en vinos de: Colombia, España, Italia, Francia, Chile, Argentina y
-                California para acompañar: Tapas, Paninis, tablas de quesos y jamones. Buena música. Ambiente
-                agradable.</p>
-            <p class="testimonial_txt">Poseemos diferentes servicios como: Bar de vinos. También podemos ofrecer
-                servicio de restaurante como: Cenas, Abierto hasta tarde (revisar horario según corresponda),
-                Bebidas</p>
-            <p class="testimonial_txt">OTRAS CARACTERÍSTICAS: Comodos Asientos, Brindamos el fino alcohol, Wi-Fi
-                gratis, Aceptamos tarjetas de crédito, Servicio de mesa, Reservas, Acceso para silla de ruedas,
-                Vino
-                y cerveza</p>
-            <p>HORARIOS DE ATENCION :</p>
-            <ul>
-                dom 12:00 p.m. - 10:00 p.m.
-                lun-mar-mié-jue 3:00 p.m. - 10:00 p.m.
-                vie-sáb 12:00 p.m. - 12:00 a.m.
-            </ul>
-        </div>
-        <div class="container-editor">
-            <div class="editor_item">
-                <img src="img/pexels-payam-masouri-731348.jpg" alt="" class="editor_img">
-                <p class="editor_circle">SOPORTE </p>
-            </div>
-            <div class="editor_item">
-                <img src="img/pexels-grape-things-2647933.jpg" alt="" class="editor_img">
-                <p class="editor_circle">SERVICIO AL CLIENTE </p>
-            </div>
-        </div>
-        <div class="container-tips">
-            <div class="tip">
-                <em class="far fa-hand-paper"></em>
-                <h2 class="tip_title">DUEÑO</h2>
-                <p class="tip_txt">DIEGO Y COMPAÑIA S.A.S</p>
-                <p>NIT 890309454-8</p>
-                <p>KRA 9 # 11-47 P.2</p>
-                <a href="#" class="btn_shop">CONTACTO</a>
-            </div>
-            <div class="tip">
-                <em class="fas fa-rocket"></em>
-                <h2 class="tip_title">Gerente General</h2>
-                <p class="tip_txt">NUBIA VELASCO</p>
-                <p>KRA 9 # 11-47 P.2</p>
-                <p>Telefono: 3219085857</p>
-                <p>Correo Electronico: ventas@vinosdelavilla.com</p>
-                <a href="#" class="btn_shop">CONTACTO</a>
-            </div>
-        </div>
+
     </div>
 
+    <div class="testimonials">
+
+        <div class="container_testimonials">
+
+            <h2 class="section_title">DESCUBRE UN POCO DE NOSOTROS</h2>
+
+            <h3 class="testimonial_title">SOMOS VINOS DE LA VILLA</h3>
+
+            <p class="testimonial_txt">Estamos ubicados en Villa De Leyva boyaca Carrera 9 #11-47 Segundo piso
+
+                de
+
+                La Galleta, Villa de Leyva, Boyaca, Colombia</p>
+
+            <p class="testimonial_txt">Lugar para los amantes del vino. Vino por copa desde COP$8000, Botellas
+
+                desde
+
+                COP$27.900, Amplio surtido en vinos de: Colombia, España, Italia, Francia, Chile, Argentina y
+
+                California para acompañar: Tapas, Paninis, tablas de quesos y jamones. Buena música. Ambiente
+
+                agradable.</p>
+
+            <p class="testimonial_txt">Poseemos diferentes servicios como: Bar de vinos. También podemos ofrecer
+
+                servicio de restaurante como: Cenas, Abierto hasta tarde (revisar horario según corresponda),
+
+                Bebidas</p>
+
+            <p class="testimonial_txt">OTRAS CARACTERÍSTICAS: Comodos Asientos, Brindamos el fino alcohol, Wi-Fi
+
+                gratis, Aceptamos tarjetas de crédito, Servicio de mesa, Reservas, Acceso para silla de ruedas,
+
+                Vino
+
+                y cerveza</p>
+
+            <p>HORARIOS DE ATENCION :</p>
+
+            <ul>
+
+                dom 12:00 p.m. - 10:00 p.m.
+
+                lun-mar-mié-jue 3:00 p.m. - 10:00 p.m.
+
+                vie-sáb 12:00 p.m. - 12:00 a.m.
+
+            </ul>
+
+        </div>
+
+        <div class="container-editor">
+
+            <div class="editor_item">
+
+                <img src="img/pexels-payam-masouri-731348.jpg" alt="" class="editor_img">
+
+                <p class="editor_circle">SOPORTE </p>
+
+            </div>
+
+            <div class="editor_item">
+
+                <img src="img/pexels-grape-things-2647933.jpg" alt="" class="editor_img">
+
+                <p class="editor_circle">SERVICIO AL CLIENTE </p>
+
+            </div>
+
+        </div>
+
+        <div class="container-tips">
+
+            <div class="tip">
+
+                <em class="far fa-hand-paper"></em>
+
+                <h2 class="tip_title">DUEÑO</h2>
+
+                <p class="tip_txt">DIEGO Y COMPAÑIA S.A.S</p>
+
+                <p>NIT 890309454-8</p>
+
+                <p>KRA 9 # 11-47 P.2</p>
+
+                <a href="#" class="btn_shop">CONTACTO</a>
+
+            </div>
+
+            <div class="tip">
+
+                <em class="fas fa-rocket"></em>
+
+                <h2 class="tip_title">Gerente General</h2>
+
+                <p class="tip_txt">NUBIA VELASCO</p>
+
+                <p>KRA 9 # 11-47 P.2</p>
+
+                <p>Telefono: 3219085857</p>
+
+                <p>Correo Electronico: ventas@vinosdelavilla.com</p>
+
+                <a href="#" class="btn_shop">CONTACTO</a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
     <footer class="main-footer">
+
         <div class="footer_section">
+
             <h2 class="footer_title">UBICACION :</h2>
+
             <p class="footer_txt"> Carrera 9 #11-47 Segundo piso de La Galleta, a unos pasos de la plaza principal
+
                 de Villa de Leyva ,Boyaca, Colombia</p>
+
         </div>
+
         <div class="footer_section">
+
             <h2 class="footer_title">Links</h2>
+
             <p class="footer_txt"><a href="#">HOME</a></p>
+
         </div>
+
     </footer>
+
     <script src="js/hamburguer.js"></script>
+
     <script src="js/gridContainer.js"></script>
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- <script src="modulos/buscador/buscador.js"></script> -->
+
+    <script src="modulos/buscador/buscador.js"></script>
+
 </body>

@@ -18,11 +18,8 @@
     <form class="box" action="crear_usuario.php" method="post"> 
         <!-- Agregamos un encabezado con el título "Registro de Usuario". -->
         <h1>Registro de Usuario</h1>
-        <!-- Agregamos campos de entrada de texto para el nombre, apellido, correo electrónico, nombre de usuario y clave del usuario. Todos estos campos son requeridos. -->
-        <input type="text" id="nombre" name="nombre" placeholder="Nombre" required>
-        <input type="text" id="apellido" name="apellido" placeholder="Apellido" required>
+        <!-- Agregamos campos de entrada de texto para el correo electrónico y clave del usuario. Estos campos son requeridos. -->
         <input type="email" id="email" name="email" placeholder="Correo Electronico" required>
-        <input type="text" id="usuario" name="usuario" placeholder="Nombre de usuario" required>
         <input type="password" id="clave" name="clave" placeholder="Clave" required>
         <!-- Agregamos un botón para enviar el formulario con el texto "Crear usuario". -->
         <button type="submit">Crear usuario</button>
