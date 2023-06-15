@@ -26,15 +26,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $data = json_decode($response, true);
     if (!empty($data)) {
-        $administrador = $data['is_super_admin'];
-        if ($administrador == true) {
-            header('Location: ../carga-producto-bd/formulario-nuevo-producto.php');
-        } else {
-            header('Location: ../../index.php');
-        }
+    $token = $data['access_token'];
+    session_start();
+    $_SESSION['token'] = $token;
+    header('Location: ../../index.php');
     } else {
-        echo '<script>alert("Contraseña incorrecta / Usuario no encontrado.");
-                      window.location.href = "login.html";
-              </script>';
+        echo '<script>alert("Contraseña incorrecta / Usuario no encontrado."); window.location.href = "login.html";</script>';
     }
 }

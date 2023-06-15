@@ -1,4 +1,6 @@
 <?php
+session_start();
+$token = $_SESSION['token'];
 
 use api\GET\supabaseGetSecciones;
 use api\GET\supabaseGetVinos;

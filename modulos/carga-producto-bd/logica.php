@@ -4,7 +4,7 @@ $nombreArchivo = $_FILES['imagenes']['name'];
 $tipoArchivo = $_FILES['imagenes']['type'];
 $rutaTemporal = $_FILES['imagenes']['tmp_name'];
 
-$urlImg = "https://npuxpuelimayqrsmzqur.supabase.co/storage/v1/object/public/images/$nombreArchivo";
+$urlImg = "https://npuxpuelimayqrsmzqur.supabase.co/storage/v1/object/images/$nombreArchivo";
 
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, $urlImg);
@@ -14,7 +14,7 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, [
     'apikey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5wdXhwdWVsaW1heXFyc216cXVyIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODU5MzIyOTMsImV4cCI6MjAwMTUwODI5M30.XBKmo8wZRwFviHAgQjgDbbE3D_vmaeqvEP4mKi6W3bU',
     'Content-Type: ' . $tipoArchivo,
 ]);
-curl_setopt($ch, CURLOPT_POSTFIELDS, file_get_contents($rutaTemporal));
+curl_setopt($ch, CURLOPT_POSTFIELDS, '@' . $rutaTemporal);
 $response = curl_exec($ch);
 $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 
@@ -68,5 +68,5 @@ if ($httpCode == 200 || $httpCode == 201) {
     var_dump($datosVino);
 
 } else {
-    echo '<script>alert("Error al subir la imagen");window.location.href = "formulario-nuevo-producto.php";</script>';
+    echo "<script>alert('Error al subir la imagen' $httpCode);window.location.href = 'formulario-nuevo-producto.php';</script>";
 }
