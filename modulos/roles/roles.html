@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Formulario de Roles</title>
+</head>
+<body>
+<h2>Formulario de Roles</h2>
+
+<form action="crear-rol.php" method="post">
+    <label for="nombreRol">Nombre de Rol:</label>
+    <input type="text" id="nombreRol" name="nombreRol"><br><br>
+
+    <label>Permisos:</label><br>
+    <input type="checkbox" id="leer" name="permisos_leer" value="true">
+    <label for="leer">Leer</label><br>
+
+    <input type="checkbox" id="agregar" name="permisos_agregar" value="true">
+    <label for="agregar">Agregar</label><br>
+
+    <input type="checkbox" id="actualizar" name="permisos_actualizar" value="true">
+    <label for="actualizar">Actualizar</label><br>
+
+    <input type="checkbox" id="eliminar" name="permisos_eliminar" value="true">
+    <label for="eliminar">Eliminar</label><br><br>
+
+    <input type="submit" value="Guardar">
+</form>
+
+</body>
+</html>

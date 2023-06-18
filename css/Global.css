@@ -7,7 +7,7 @@
   --color-principal-2: #63155C;
   --color-complementario-principal_2-1: rgb(156, 234, 163);
   --color-complementario-principal_2-2: rgb(163, 234, 199);
-  --color-complementario-principal_2-3: rgb(234, 163, 25);
+  --color-complementario-principal_2-3: #eaa319;
   /* colores normales */
   --color-0: inherit;
   --color-1: #141313;
@@ -31,11 +31,6 @@
 @font-face {
   font-family: 'poppins';
   src: url(../fonts/poppins-Bold.ttf);
-}
-
-@font-face {
-  font-family: 'Raleway', sans-serif;
-  src: url();
 }
 
 /* Estilos generales */
