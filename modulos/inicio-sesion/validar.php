@@ -26,10 +26,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $data = json_decode($response, true);
     if (!empty($data)) {
-    $token = $data['access_token'];
-    session_start();
-    $_SESSION['token'] = $token;
-    header('Location: ../../index.php');
+        session_start();
+        $token = $data['access_token'];
+        $_SESSION['token'] = $token;
+        $admin = $data['role'];
+        $_SESSION['admin'] = $admin;
+        if ($admin === 'Admin') {
+            header("Location: ../../index.php?token=$token&isSuperAdmin=true");
+        } else {
+            header("Location: ../../index.php?token=$token&isSuperAdmin=false");
+        }
     } else {
         echo '<script>alert("Contraseña incorrecta / Usuario no encontrado."); window.location.href = "login.html";</script>';
     }
