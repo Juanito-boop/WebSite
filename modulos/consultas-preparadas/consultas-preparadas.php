@@ -11,7 +11,7 @@ if (empty($miQuery)) {
     $apikey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5wdXhwdWVsaW1heXFyc216cXVyIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODU5MzIyOTMsImV4cCI6MjAwMTUwODI5M30.XBKmo8wZRwFviHAgQjgDbbE3D_vmaeqvEP4mKi6W3bU';
 
     // Realizar la solicitud a la API y obtener la respuesta
-    $url = 'https://npuxpuelimayqrsmzqur.supabase.co/rest/v1/vinos?select=*';
+    $url = 'https://' . $_ENV['ID_PROJECT'] . '.supabase.co/rest/v1/vinos?select=*';
     curl_setopt_array($curl, [
         CURLOPT_URL => $url,
         CURLOPT_RETURNTRANSFER => true,

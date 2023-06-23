@@ -2,7 +2,7 @@
 <project version="4">
   <component name="DdlMappings">
     <mapping uuid="58dcbf90-745c-4387-9bfa-cefc54829d35" name="DDL Mapping">
-      <data-sources ddl="c53fd318-80ce-488d-afe4-8e8b8396015b" />
+      <data-sources db="859c0696-83ad-473c-9606-8e00ec6adb9b" ddl="c53fd318-80ce-488d-afe4-8e8b8396015b" />
       <scope>
         <node kind="database" negative="1">
           <node kind="schema" negative="1" />

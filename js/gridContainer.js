@@ -11,8 +11,20 @@ prevBtn3 = document.querySelector('#prev-btn3');
 nextBtn1 = document.querySelector('#next-btn1');
 nextBtn2 = document.querySelector('#next-btn2');
 nextBtn3 = document.querySelector('#next-btn3');
+//dependiendo del tamano se mostrara una cantidad de items por pagina
+var windowWidth = window.innerWidth;
 
-const itemsPerPage = 5;
+//valor predeterminado
+var itemsPerPage = 5;
+
+//valores : 
+if (windowWidth < 768) {
+    itemsPerPage = 3;
+} else if (windowWidth >= 768 && windowWidth <= 1329) {
+    itemsPerPage = 4;
+} else if (windowWidth > 1330){
+    itemsPerPage = 5;
+}
 
 let currentPage1 = 1;
 let currentPage2 = 1;

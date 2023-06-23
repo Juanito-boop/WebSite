@@ -3,7 +3,7 @@
 $curl = curl_init();
 
 curl_setopt_array($curl, [
-    CURLOPT_URL => 'https://npuxpuelimayqrsmzqur.supabase.co/rest/v1/vinos?nombre=eq.Petirrojo',
+    CURLOPT_URL => 'https://' . $_ENV['ID_PROJECT'] . '.supabase.co/rest/v1/vinos?nombre=eq.Petirrojo',
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_ENCODING => '',
     CURLOPT_MAXREDIRS => 10,

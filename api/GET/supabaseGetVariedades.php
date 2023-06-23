@@ -1,9 +1,16 @@
 <?php
 
+require_once '../../vendor/autoload.php';
+
+use Dotenv\Dotenv as Dotenv;
+
+$dotenv = Dotenv::createUnsafeImmutable('../../');
+$dotenv->load();
+
 $curl = curl_init();
 
 curl_setopt_array($curl, [
-    CURLOPT_URL => 'https://npuxpuelimayqrsmzqur.supabase.co/rest/v1/variedades?select=id%2Cvariedad',
+    CURLOPT_URL => 'https://' . $_ENV['ID_PROJECT'] . '.supabase.co/rest/v1/variedades?select=id%2Cvariedad',
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_ENCODING => '',
     CURLOPT_MAXREDIRS => 10,

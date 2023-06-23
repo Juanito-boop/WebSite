@@ -1,5 +1,12 @@
 <?php
 
+require_once '../../vendor/autoload.php';
+
+use Dotenv\Dotenv as Dotenv;
+
+$dotenv = Dotenv::createUnsafeImmutable('../../');
+$dotenv->load();
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $email = $_POST['email'];
@@ -29,9 +36,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         session_start();
         $token = $data['access_token'];
         $_SESSION['token'] = $token;
-        $admin = $data['role'];
+        $admin = $data['is_super_admin'];
         $_SESSION['admin'] = $admin;
-        if ($admin === 'Admin') {
+        if ($admin != null) {
             header("Location: ../../index.php?token=$token&isSuperAdmin=true");
         } else {
             header("Location: ../../index.php?token=$token&isSuperAdmin=false");

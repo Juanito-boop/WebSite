@@ -2,9 +2,9 @@
 session_start();
 $token = $_SESSION['token'];
 
-use api\GET\supabaseGetSecciones;
-use api\GET\supabaseGetVinos;
-use modulos\tarjetas\generadorTarjetas;
+use api\GET\supabaseGetSecciones as SupabaseSecciones;
+use api\GET\supabaseGetVinos as SupabaseVinos;
+use modulos\tarjetas\generadorTarjetas as tarjetas;
 
 spl_autoload_register(function ($class) {
     if (file_exists(filename: str_replace(search: '\\', replace: '/', subject: $class) . '.php')) {
@@ -12,13 +12,13 @@ spl_autoload_register(function ($class) {
     }
 });
 
-$vinosApi = new supabaseGetVinos();
-$vinos = $vinosApi->getProductos(); // array productos
+$vinosApi = new SupabaseVinos();
+$vinos = $vinosApi->getProductos(); // array productos.json
 
-$seccionesApi = new supabaseGetSecciones();
+$seccionesApi = new SupabaseSecciones();
 $secciones = $seccionesApi->getSecciones(); // array secciones
 
-$productCardGenerator = new generadorTarjetas($vinos, $secciones);
+$productCardGenerator = new tarjetas($vinos, $secciones);
 
 ?>
 
@@ -62,7 +62,9 @@ $productCardGenerator = new generadorTarjetas($vinos, $secciones);
                             <a href="index.php">Home</a>
                         </li>
                         <li>
-                            <a href="modulos/carga-producto-bd/formulario-nuevo-producto.php">Nuevo Producto</a>
+                            <a
+                                href="modulos/carga-producto-bd/formulario-nuevo-producto.php?token=<?php echo $token; ?>">Nuevo
+                                Producto</a>
                         </li>
                         <li>
                             <a href="modulos/roles/roles.html">Nuevo Rol</a>
@@ -84,7 +86,7 @@ $productCardGenerator = new generadorTarjetas($vinos, $secciones);
 
     <div class="contenedor_principal">
         <main>
-            <!-- empiezan las tarjetas -->
+            <!-- tarjetas -->
             <div class="container">
                 <?php $productCardGenerator->showProductCardsWithPagination(); ?>
             </div>

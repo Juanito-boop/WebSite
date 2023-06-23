@@ -1,0 +1,497 @@
+[
+  {
+    "id": 1,
+    "nombre": "Petirrojo",
+    "anada": 2019,
+    "bodega": "Bodega Requingua, Chile",
+    "region": "Valle Central",
+    "precio": 87.422,
+    "stock": 40,
+    "tipo": "Tinto",
+    "nivel_alcohol": 13.0,
+    "tipo_barrica": "El vino Petirrojo se añeja en barricas de roble francés y americano durante un periodo de 8 meses.",
+    "descripcion": "Un vino con cuerpo y personalidad única. Sus notas frutales y especiadas te transportarán a un bosque encantado, mientras que su elegante estructura te cautivará en cada sorbo.",
+    "notas_cata": "En nariz, este vino chileno ofrece una mezcla de frutas rojas, especias y notas florales. En boca, se destaca por su buena acidez y cuerpo medio, con sabores de cerezas, ciruelas y un toque de vainilla. El final es largo y persistente, con un ligero toque de taninos.",
+    "temperatura_consumo": "16-18°C",
+    "activo": true,
+    "id_unica": 245726,
+    "url_imagen": "https://npuxpuelimayqrsmzqur.supabase.co/storage/v1/object/public/images/245726.png",
+    "promocion": false,
+    "busqueda": 4,
+    "maridaje": "Va muy bien con platos de pasta con salsa de tomate, carnes asadas y quesos suaves.",
+    "pais": 3,
+    "id_categoria": 1,
+    "variedad": 5,
+    "paises": {
+      "pais": "Chile"
+    },
+    "secciones": {
+      "nombre": "NUESTROS VINOS MAS VENDIDOS"
+    },
+    "variedades": {
+      "variedad": "Merlot"
+    }
+  },
+  {
+    "id": 2,
+    "nombre": "Posta Pizzella",
+    "anada": 2019,
+    "bodega": "Bodega La Posta, Argentina",
+    "region": "Valle de Uco, Mendoza",
+    "precio": 98.842,
+    "stock": 50,
+    "tipo": "Tinto",
+    "nivel_alcohol": 13.5,
+    "tipo_barrica": "Este vino se añeja en barricas de roble francés y americano durante un periodo de 12 meses.",
+    "descripcion": "Descubre la esencia de los viñedos argentinos en cada botella de este vino. Con su aroma seductor y su sabor intenso a frutas maduras, Posta Pizzella te invita a disfrutar de una experiencia verdaderamente indulgente.",
+    "notas_cata": "De origen argentino, este vino tinto presenta un intenso aroma a frutos negros, junto con notas especiadas y de vainilla. En el paladar, es un vino de cuerpo medio con taninos suaves y redondos, con un sabor a frutos negros maduros y una acidez equilibrada. El final es largo y agradable.",
+    "temperatura_consumo": "16-18°C",
+    "activo": true,
+    "id_unica": 933404,
+    "url_imagen": "https://npuxpuelimayqrsmzqur.supabase.co/storage/v1/object/public/images/933404.png",
+    "promocion": false,
+    "busqueda": 4,
+    "maridaje": "Es ideal para acompañar con carnes rojas a la parrilla, guisos y estofados.",
+    "pais": 1,
+    "id_categoria": 1,
+    "variedad": 4,
+    "paises": {
+      "pais": "Argentina"
+    },
+    "secciones": {
+      "nombre": "NUESTROS VINOS MAS VENDIDOS"
+    },
+    "variedades": {
+      "variedad": "Malbec"
+    }
+  },
+  {
+    "id": 3,
+    "nombre": "Marquez de villa de leyva",
+    "anada": 2017,
+    "bodega": "Bodega Marquez de Villa de Leyva, Colombia",
+    "region": "Villa de Leyva",
+    "precio": 477.162,
+    "stock": 50,
+    "tipo": "Tinto",
+    "nivel_alcohol": 13.5,
+    "tipo_barrica": "Este vino se añeja en barricas de roble francés durante un periodo de 12 meses.",
+    "descripcion": "Un vino que rinde homenaje a la tradición y la historia. Marquez de Villa de Leyva te sorprenderá con su equilibrio perfecto entre notas de frutas negras, especias y un toque sutil de roble, creando una experiencia memorable.",
+    "notas_cata": "Proveniente de Colombia, este vino tinto tiene un aroma a frutos rojos y negros, junto con notas de cedro y especias. En el paladar, es un vino de cuerpo medio con taninos suaves y una acidez equilibrada, con sabores a frutos negros y un toque de vainilla. El final es largo y persistente.",
+    "temperatura_consumo": "15-17°C",
+    "activo": true,
+    "id_unica": 948930,
+    "url_imagen": "https://npuxpuelimayqrsmzqur.supabase.co/storage/v1/object/public/images/948930.png",
+    "promocion": false,
+    "busqueda": 4,
+    "maridaje": "Combina bien con platos de pollo asado, pastas con salsas cremosas y quesos suaves.",
+    "pais": 2,
+    "id_categoria": 1,
+    "variedad": 2,
+    "paises": {
+      "pais": "Colombia"
+    },
+    "secciones": {
+      "nombre": "NUESTROS VINOS MAS VENDIDOS"
+    },
+    "variedades": {
+      "variedad": "Cabernet Sauvignon"
+    }
+  },
+  {
+    "id": 4,
+    "nombre": "Don Melchor",
+    "anada": 2018,
+    "bodega": "Bodega Concha y Toro, Chile",
+    "region": "Maipo",
+    "precio": 174.622,
+    "stock": 50,
+    "tipo": "Tinto",
+    "nivel_alcohol": 14.0,
+    "tipo_barrica": "Este vino se añeja en barricas de roble francés durante un periodo de 15 meses.",
+    "descripcion": "La excelencia en cada detalle define a Don Melchor. Este vino de renombre internacional ofrece una combinación armoniosa de frutas negras, taninos sedosos y un final largo y persistente que deleitará a los amantes del buen vino.",
+    "notas_cata": "Este vino chileno ofrece un aroma a frutos rojos maduros, junto con notas de tabaco y cuero. En boca, es un vino de cuerpo completo con taninos firmes y una acidez equilibrada, con sabores a frutos negros y un toque de vainilla. El final es largo y persistente, con un ligero toque de especias.",
+    "temperatura_consumo": "16-18°C",
+    "activo": true,
+    "id_unica": 543152,
+    "url_imagen": "https://npuxpuelimayqrsmzqur.supabase.co/storage/v1/object/public/images/543152.png",
+    "promocion": false,
+    "busqueda": 4,
+    "maridaje": "Va muy bien con carnes rojas asadas, platos de cordero y quesos curados.",
+    "pais": 3,
+    "id_categoria": 1,
+    "variedad": 2,
+    "paises": {
+      "pais": "Chile"
+    },
+    "secciones": {
+      "nombre": "NUESTROS VINOS MAS VENDIDOS"
+    },
+    "variedades": {
+      "variedad": "Cabernet Sauvignon"
+    }
+  },
+  {
+    "id": 5,
+    "nombre": "Purple Angel",
+    "anada": 2018,
+    "bodega": "Bodega Montes, Chile",
+    "region": "Colchagua Valley",
+    "precio": 113.962,
+    "stock": 50,
+    "tipo": "Tinto",
+    "nivel_alcohol": 14.5,
+    "tipo_barrica": "Este vino se añeja en barricas de roble francés durante un periodo de 18 meses.",
+    "descripcion": "Sumérgete en la tentación de Purple Angel. Sus aromas intensos a frutas rojas y negras, complementados con notas de chocolate y vainilla, te envolverán en una experiencia sensual y llena de placer.",
+    "notas_cata": "Originario de Chile, este vino tinto presenta un aroma a frutos negros, junto con notas de especias y cedro. En el paladar, es un vino de cuerpo completo con taninos firmes y una acidez equilibrada, con sabores a frutos negros maduros y un toque de vainilla y chocolate oscuro. El final es largo y persistente, con un ligero toque de tabaco.",
+    "temperatura_consumo": "16-18°C",
+    "activo": true,
+    "id_unica": 330628,
+    "url_imagen": "https://npuxpuelimayqrsmzqur.supabase.co/storage/v1/object/public/images/330628.png",
+    "promocion": false,
+    "busqueda": 4,
+    "maridaje": "Es ideal para acompañar con carnes rojas asadas, platos de caza y quesos fuertes.",
+    "pais": 3,
+    "id_categoria": 1,
+    "variedad": 3,
+    "paises": {
+      "pais": "Chile"
+    },
+    "secciones": {
+      "nombre": "NUESTROS VINOS MAS VENDIDOS"
+    },
+    "variedades": {
+      "variedad": "Carménère"
+    }
+  },
+  {
+    "id": 6,
+    "nombre": "Muga",
+    "anada": 2016,
+    "bodega": "Bodegas Muga, España",
+    "region": "Rioja",
+    "precio": 75.962,
+    "stock": 50,
+    "tipo": "Tinto",
+    "nivel_alcohol": 14.0,
+    "tipo_barrica": "Este vino se añeja en barricas de roble francés y americano durante un periodo de 24 meses.",
+    "descripcion": "El equilibrio perfecto entre tradición y modernidad se encuentra en cada botella de Muga. Disfruta de su elegante carácter con notas de frutas rojas, vainilla y un toque especiado, que te transportará a los paisajes encantadores de La Rioja, España.",
+    "notas_cata": "Este vino español tiene un aroma a frutos rojos y negros, junto con notas de cuero y especias. En boca, es un vino de cuerpo medio con taninos suaves y una acidez equilibrada, con sabores a frutos negros y un toque de vainilla. El final es largo y persistente, con un ligero toque de regaliz.",
+    "temperatura_consumo": "16-18°C",
+    "activo": true,
+    "id_unica": 692159,
+    "url_imagen": "https://npuxpuelimayqrsmzqur.supabase.co/storage/v1/object/public/images/692159.png",
+    "promocion": false,
+    "busqueda": 4,
+    "maridaje": "Va muy bien con platos de jamón ibérico, embutidos y carnes asadas.",
+    "pais": 4,
+    "id_categoria": 2,
+    "variedad": 6,
+    "paises": {
+      "pais": "España"
+    },
+    "secciones": {
+      "nombre": "NUESTROS MEJORES VINOS"
+    },
+    "variedades": {
+      "variedad": "Pinot Grigio"
+    }
+  },
+  {
+    "id": 7,
+    "nombre": "Reserva de la Tierra",
+    "anada": 2015,
+    "bodega": "Bodegas Fariña, España",
+    "region": "Valle del Maipo",
+    "precio": 75.962,
+    "stock": 100,
+    "tipo": "Tinto",
+    "nivel_alcohol": 13.5,
+    "tipo_barrica": "Este vino se añeja en barricas de roble francés durante un periodo de 12 meses.",
+    "descripcion": "Este vino encarna la esencia de la tierra en cada sorbo. Con sus aromas a frutas maduras y su suave textura, Reserva de la Tierra te llevará a un viaje sensorial por los paisajes vírgenes y exuberantes de los viñedos.",
+    "notas_cata": "Proveniente de Colombia, este vino tinto tiene un aroma a frutos rojos y negros, junto con notas de vainilla y especias. En el paladar, es un vino de cuerpo medio con taninos suaves y una acidez equilibrada, con sabores a frutos negros maduros y un toque de regaliz. El final es largo y agradable.",
+    "temperatura_consumo": "18-20°C",
+    "activo": true,
+    "id_unica": 323324,
+    "url_imagen": "https://npuxpuelimayqrsmzqur.supabase.co/storage/v1/object/public/images/323324.png",
+    "promocion": false,
+    "busqueda": 4,
+    "maridaje": "Combina bien con platos de carne de cerdo asada, carnes rojas a la parrilla y quesos curados.",
+    "pais": 3,
+    "id_categoria": 2,
+    "variedad": 2,
+    "paises": {
+      "pais": "Chile"
+    },
+    "secciones": {
+      "nombre": "NUESTROS MEJORES VINOS"
+    },
+    "variedades": {
+      "variedad": "Cabernet Sauvignon"
+    }
+  },
+  {
+    "id": 8,
+    "nombre": "Maison Castel Gran Reserva",
+    "anada": 2015,
+    "bodega": "Maison Castel, Francia",
+    "region": "Cariñena",
+    "precio": 83.582,
+    "stock": 80,
+    "tipo": "Tinto",
+    "nivel_alcohol": 13.5,
+    "tipo_barrica": "Este vino se añeja en barricas de roble francés durante un periodo de 12 meses.",
+    "descripcion": "Descubre la elegancia francesa en cada botella de este gran reserva. Su complejidad aromática, con notas de frutas maduras, madera y especias, te invita a disfrutar de momentos inolvidables junto a tus seres queridos.",
+    "notas_cata": "Este vino francés ofrece un aroma a frutos rojos y negros, junto con notas de especias y vainilla. En boca, es un vino de cuerpo completo con taninos firmes y una acidez equilibrada, con sabores a frutos negros y un toque de cacao y café. El final es largo y persistente.",
+    "temperatura_consumo": "18-20°C",
+    "activo": true,
+    "id_unica": 191880,
+    "url_imagen": "https://npuxpuelimayqrsmzqur.supabase.co/storage/v1/object/public/images/191880.png",
+    "promocion": false,
+    "busqueda": 4,
+    "maridaje": "Es ideal para acompañar con platos de caza, carnes rojas a la parrilla y quesos curados.",
+    "pais": 4,
+    "id_categoria": 2,
+    "variedad": 6,
+    "paises": {
+      "pais": "España"
+    },
+    "secciones": {
+      "nombre": "NUESTROS MEJORES VINOS"
+    },
+    "variedades": {
+      "variedad": "Pinot Grigio"
+    }
+  },
+  {
+    "id": 9,
+    "nombre": "Santa Margherita",
+    "anada": 2020,
+    "bodega": "Santa Margherita, Italia",
+    "region": "Alto Adige",
+    "precio": 189.962,
+    "stock": 120,
+    "tipo": "Blanco",
+    "nivel_alcohol": 12.0,
+    "tipo_barrica": "Este vino no se añeja en barricas de roble.",
+    "descripcion": "Un vino italiano que captura la esencia del sol y el mar Mediterráneo. Santa Margherita te brinda una experiencia refrescante con sus notas cítricas y florales, su acidez equilibrada y su final vibrante.",
+    "notas_cata": "De origen italiano, este vino tinto tiene un aroma a frutos rojos maduros, junto con notas de vainilla y especias. En el paladar, es un vino de cuerpo medio con taninos suaves y una acidez equilibrada, con sabores a frutos rojos y un toque de cacao. El final es largo y agradable.",
+    "temperatura_consumo": "12-14°C",
+    "activo": true,
+    "id_unica": 257609,
+    "url_imagen": "https://npuxpuelimayqrsmzqur.supabase.co/storage/v1/object/public/images/257609.png",
+    "promocion": false,
+    "busqueda": 4,
+    "maridaje": "Va muy bien con platos de pescados y mariscos, ensaladas y quesos suaves.",
+    "pais": 5,
+    "id_categoria": 2,
+    "variedad": 6,
+    "paises": {
+      "pais": "Italia"
+    },
+    "secciones": {
+      "nombre": "NUESTROS MEJORES VINOS"
+    },
+    "variedades": {
+      "variedad": "Pinot Grigio"
+    }
+  },
+  {
+    "id": 10,
+    "nombre": "Montes Alpha M",
+    "anada": 2017,
+    "bodega": "Bodega Montes, Chile",
+    "region": "Valle de Colchagua",
+    "precio": 208.962,
+    "stock": 40,
+    "tipo": "Tinto",
+    "nivel_alcohol": 14.5,
+    "tipo_barrica": "Este vino se añeja en barricas de roble francés durante un periodo de 18 meses.",
+    "descripcion": "Un vino chileno que encarna la pasión y la sofisticación. Montes Alpha M te seducirá con sus aromas a frutas negras, chocolate y tabaco, mientras sus taninos firmes y su elegante estructura te envuelven en un abrazo cálido.",
+    "notas_cata": "Este vino chileno ofrece un aroma a frutos rojos y negros, junto con notas de especias y tabaco. En boca, es un vino de cuerpo completo con taninos firmes y una acidez equilibrada, con sabores a frutos negros y un toque de vainilla. El final es largo y persistente, con un ligero toque de cedro.",
+    "temperatura_consumo": "18-20°C",
+    "activo": true,
+    "id_unica": 782699,
+    "url_imagen": "https://npuxpuelimayqrsmzqur.supabase.co/storage/v1/object/public/images/782699.png",
+    "promocion": false,
+    "busqueda": 4,
+    "maridaje": "Es ideal para acompañar con platos de carnes rojas a la parrilla, guisos y estofados.",
+    "pais": 3,
+    "id_categoria": 2,
+    "variedad": 2,
+    "paises": {
+      "pais": "Chile"
+    },
+    "secciones": {
+      "nombre": "NUESTROS MEJORES VINOS"
+    },
+    "variedades": {
+      "variedad": "Cabernet Sauvignon"
+    }
+  },
+  {
+    "id": 11,
+    "nombre": "Angelica Zapata",
+    "anada": 2016,
+    "bodega": "Bodega Catena Zapata, Argentina",
+    "region": "Mendoza",
+    "precio": 569.962,
+    "stock": 20,
+    "tipo": "Tinto",
+    "nivel_alcohol": 14.5,
+    "tipo_barrica": "Este vino se añeja en barricas de roble francés durante un periodo de 18 meses.",
+    "descripcion": "La expresión máxima de la viticultura argentina se encuentra en Angelica Zapata. Este vino de alta gama te sorprenderá con sus notas complejas a frutas maduras, especias y tabaco, creando una experiencia única y memorable.",
+    "notas_cata": "De origen argentino, este vino tinto presenta un aroma a frutos negros y notas de especias y tabaco. En el paladar, es un vino de cuerpo completo con taninos firmes y una acidez equilibrada, con sabores a frutos negros maduros y un toque de vainilla y chocolate oscuro. El final es largo y persistente.",
+    "temperatura_consumo": "16-18°C",
+    "activo": true,
+    "id_unica": 850550,
+    "url_imagen": "https://npuxpuelimayqrsmzqur.supabase.co/storage/v1/object/public/images/850550.png",
+    "promocion": false,
+    "busqueda": 4,
+    "maridaje": "Va muy bien con platos de carnes rojas asadas, platos de caza y quesos curados.",
+    "pais": 1,
+    "id_categoria": 3,
+    "variedad": 4,
+    "paises": {
+      "pais": "Argentina"
+    },
+    "secciones": {
+      "nombre": "VINOS IMPORTADOS MAS EXQUISITOS"
+    },
+    "variedades": {
+      "variedad": "Malbec"
+    }
+  },
+  {
+    "id": 12,
+    "nombre": "Gran Enemigo",
+    "anada": 2012,
+    "bodega": "Bodega Catena Zapata, Argentina",
+    "region": "Mendoza",
+    "precio": 68.362,
+    "stock": 10,
+    "tipo": "Tinto",
+    "nivel_alcohol": 14.5,
+    "tipo_barrica": "Este vino se añeja en barricas de roble francés durante un periodo de 18 meses.",
+    "descripcion": "Un vino que desafía las convenciones y rompe barreras. Gran Enemigo combina la elegancia del Viejo Mundo con la audacia del Nuevo Mundo, ofreciendo un perfil aromático y gustativo sorprendente que despierta los sentidos.",
+    "notas_cata": "Este vino argentino tiene un aroma a frutos negros y notas de especias y cedro. En boca, es un vino de cuerpo completo con taninos firmes y una acidez equilibrada, con sabores a frutos negros y un toque de vainilla. El final es largo y persistente, con un ligero toque de tabaco.",
+    "temperatura_consumo": "16-18°C",
+    "activo": true,
+    "id_unica": 652132,
+    "url_imagen": "https://npuxpuelimayqrsmzqur.supabase.co/storage/v1/object/public/images/652132.png",
+    "promocion": false,
+    "busqueda": 4,
+    "maridaje": "Es ideal para acompañar con carnes rojas asadas, platos de caza y quesos fuertes.",
+    "pais": 1,
+    "id_categoria": 3,
+    "variedad": 1,
+    "paises": {
+      "pais": "Argentina"
+    },
+    "secciones": {
+      "nombre": "VINOS IMPORTADOS MAS EXQUISITOS"
+    },
+    "variedades": {
+      "variedad": "Cabernet Franc"
+    }
+  },
+  {
+    "id": 13,
+    "nombre": "Zuccardi Serie A",
+    "anada": 2019,
+    "bodega": "Bodega Familia Zuccardi, Argentina",
+    "region": "Valle de Uco",
+    "precio": 102.762,
+    "stock": 80,
+    "tipo": "Tinto",
+    "nivel_alcohol": 14.0,
+    "tipo_barrica": "Este vino se añeja en barricas de roble francés durante un periodo de 10 meses.",
+    "descripcion": "Este vino argentino captura la esencia de los viñedos de alta altitud. Zuccardi Serie A te cautivará con su frescura y vivacidad, sus notas frutales y herbáceas, y su textura sedosa que lo convierten en una opción ideal para acompañar cualquier ocasión.",
+    "notas_cata": "Proveniente de Argentina, este vino tinto presenta un aroma a frutos rojos y negros, junto con notas de especias y vainilla. En el paladar, es un vino de cuerpo medio con taninos suaves y una acidez equilibrada, con sabores a frutos negros y un toque de regaliz. El final es largo y agradable.",
+    "temperatura_consumo": "16-18°C",
+    "activo": true,
+    "id_unica": 438553,
+    "url_imagen": "https://npuxpuelimayqrsmzqur.supabase.co/storage/v1/object/public/images/438553.png",
+    "promocion": false,
+    "busqueda": 4,
+    "maridaje": "Va muy bien con platos de carnes rojas a la parrilla, guisos y estofados.",
+    "pais": 1,
+    "id_categoria": 3,
+    "variedad": 4,
+    "paises": {
+      "pais": "Argentina"
+    },
+    "secciones": {
+      "nombre": "VINOS IMPORTADOS MAS EXQUISITOS"
+    },
+    "variedades": {
+      "variedad": "Malbec"
+    }
+  },
+  {
+    "id": 14,
+    "nombre": "Cerro Verde",
+    "anada": 2017,
+    "bodega": "Bodegas Fariña, España",
+    "region": "Mendoza",
+    "precio": 91.362,
+    "stock": 40,
+    "tipo": "Tinto",
+    "nivel_alcohol": 14.0,
+    "tipo_barrica": "Este vino se añeja en barricas de roble francés durante un periodo de 10 meses.",
+    "descripcion": "Un vino que celebra la riqueza y diversidad de los suelos latinoamericanos. Cerro Verde te envolverá con sus aromas intensos a frutas rojas y negras, su textura aterciopelada y su final persistente, transportándote a los majestuosos paisajes de los viñedos.",
+    "notas_cata": "Este vino chileno tiene un aroma a frutos rojos y negros, junto con notas de vainilla y especias. En boca, es un vino de cuerpo medio con taninos suaves y una acidez equilibrada, con sabores a frutos negros maduros y un toque de chocolate oscuro. El final es largo y agradable.",
+    "temperatura_consumo": "16-18°C",
+    "activo": true,
+    "id_unica": 178631,
+    "url_imagen": "https://npuxpuelimayqrsmzqur.supabase.co/storage/v1/object/public/images/178631.png",
+    "promocion": false,
+    "busqueda": 4,
+    "maridaje": "Es ideal para acompañar con platos de carne de cerdo asada, carnes rojas a la parrilla y quesos suaves.",
+    "pais": 1,
+    "id_categoria": 3,
+    "variedad": 4,
+    "paises": {
+      "pais": "Argentina"
+    },
+    "secciones": {
+      "nombre": "VINOS IMPORTADOS MAS EXQUISITOS"
+    },
+    "variedades": {
+      "variedad": "Malbec"
+    }
+  },
+  {
+    "id": 15,
+    "nombre": "Codice",
+    "anada": 2018,
+    "bodega": "Bodegas y Viñedos Codice, Argentina",
+    "region": "Mendoza",
+    "precio": 45.562,
+    "stock": 80,
+    "tipo": "Tinto",
+    "nivel_alcohol": 13.5,
+    "tipo_barrica": "Este vino se añeja en barricas de roble francés durante un periodo de 12 meses.",
+    "descripcion": "Descubre la esencia de la pasión y la historia en cada botella de Codice. Con sus notas a frutas maduras, su elegancia y su equilibrio perfecto, este vino te invita a disfrutar de una experiencia sensorial única que cautivará tus sentidos.",
+    "notas_cata": "De origen argentino, este vino tinto presenta un aroma a frutos rojos y negros, junto con notas de especias y cedro. En el paladar, es un vino de cuerpo medio con taninos suaves y una acidez equilibrada, con sabores a frutos negros y un toque de vainilla. El final es largo y agradable.",
+    "temperatura_consumo": "16-18°C",
+    "activo": true,
+    "id_unica": 265178,
+    "url_imagen": "https://npuxpuelimayqrsmzqur.supabase.co/storage/v1/object/public/images/265178.png",
+    "promocion": false,
+    "busqueda": 4,
+    "maridaje": "Va muy bien con platos de carnes rojas a la parrilla, guisos y estofados.",
+    "pais": 1,
+    "id_categoria": 3,
+    "variedad": 4,
+    "paises": {
+      "pais": "Argentina"
+    },
+    "secciones": {
+      "nombre": "VINOS IMPORTADOS MAS EXQUISITOS"
+    },
+    "variedades": {
+      "variedad": "Malbec"
+    }
+  }
+]

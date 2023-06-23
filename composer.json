@@ -6,8 +6,17 @@
         "php-kit/ext-pdo": "^1.1",
         "rafaelwendel/phpsupabase": "^0.0.5",
         "ramsey/uuid": "^4.7",
+        "rmccue/requests": "^2.0",
         "supabase/supabase-php": "^0.0.1",
-        "vlucas/phpdotenv": "^5.5",
-        "rmccue/requests": "^2.0"
+        "supabase/storage-php": "^0.0.1",
+        "vlucas/phpdotenv": "^5.5"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "": "src/"
+        }
     }
 }

@@ -4,74 +4,82 @@ namespace modulos\tarjetas;
 
 class generadorTarjetas
 {
-    private $productos;
-    private $secciones;
+    private mixed $productos;
+    private mixed $secciones;
+
     public function __construct($dataGetProductos, $dataGetSecciones)
     {
         $this->productos = $dataGetProductos;
         $this->secciones = $dataGetSecciones;
     }
+
     private function getButton($isPromotion, $unique): string
     {
         $class = $isPromotion ? 'promotion-btn' : 'product-btn';
         $text = $isPromotion ? 'PROMOCIÓN' : 'INFORMACIÓN';
-        return "<a href=./modulos/detalles/info.php?id=$unique class=$class> <img src=./img/magnifying-glass-plus-solid.svg Style='width: 15px;' alt=''>&nbsp;{$text} </a>";
+        $image = "<img src=../../img/magnifying-glass-plus-solid.svg Style='width: 15px;' alt=''>";
+        return "<a href=./modulos/detalles/info.php?id=$unique class=$class>$image&nbsp;$text</a>";
     }
-    private function getProduct($producto, $categoriaSeleccionada): ?string
+
+    private function renderProductCard($product): string
     {
-        $categoria = $producto['id_categoria'];
-        $nombreVino = $producto['nombre'];
-        $precioVino = $producto['precio'];
-        $promocion = $producto['promocion'];
-        $unique = $producto['id_unica'];
-        $url = $producto['url_imagen'];
-        $cepa = $producto['variedades']['variedad'];
+        $categoria = $product['id_categoria'];
+        $nombreVino = $product['nombre'];
+        $precioVino = $product['precio'];
+        $promocion = $product['promocion'];
+        $unique = $product['id_unica'];
+        $url = $product['url_imagen'];
+        $cepa = $product['variedades']['variedad'];
         $button = $this->getButton($promocion, $unique);
-        if ($categoria == $categoriaSeleccionada) {
-            return "<div class=product> <div class=product_description> <img src=$url alt=$nombreVino-$cepa class=product_img> <h2 class=product_title bold>$nombreVino</h2> <h2 class=product_description bold>$cepa</h2> <h2 class=product_price bold> $ $precioVino COP </h2> $button </div> </div>";
-        }
-        return null;
+
+        return "<div class='product'>
+                    <div class='product_description'>
+                        <img src='$url' alt='$nombreVino-$cepa' class='product_img'>
+                        <h2 class='product_title bold'>$nombreVino</h2>
+                        <h2 class='product_description bold'>$cepa</h2>
+                        <h2 class='product_price bold'>$ $precioVino COP</h2>
+                        $button
+                    </div>
+                </div>";
     }
-    private function getSection($seccion, $seccionSeleccionada): string
+
+    private function renderSection($section): string
     {
-        $section = "<h2 class=main-title><strong>{$seccion['nombre']}</strong></h2>";
-        $section .= '<div class=container-products id=container' . $seccionSeleccionada . '>';
-        foreach ($this->productos as $producto) {
-            $productHtml = $this->getProduct($producto, $seccionSeleccionada);
-            if ($productHtml !== null) {
-                $section .= $productHtml;
+        $sectionName = $section['nombre'];
+        $sectionHtml = "<h2 class='main-title'><strong>$sectionName</strong></h2>";
+        $sectionHtml .= "<div class='container-products' id='container{$section['id_unica']}'>";
+
+        foreach ($this->productos as $product) {
+            if ($product['id_categoria'] == $section['id_unica']) {
+                $sectionHtml .= $this->renderProductCard($product);
             }
         }
-        $section .= '</div>';
-        return $section;
+
+        $sectionHtml .= '</div>';
+
+        return $sectionHtml;
     }
-    private function getAllSections($seccionID): string
-    {
-        $sectionsHtml = "";
-        foreach ($this->secciones as $seccion) {
-            if ($seccion['id_unica'] == $seccionID) {
-                $sectionHtml = $this->getSection($seccion, $seccionID);
-                $sectionsHtml .= $sectionHtml;
-            }
-        }
-        return $sectionsHtml;
-    }
+
     public function showProductCards($seccionID): void
     {
-        $sectionsHtml = $this->getAllSections($seccionID);
-        echo $sectionsHtml;
+        foreach ($this->secciones as $section) {
+            if ($section['id_unica'] == $seccionID) {
+                echo $this->renderSection($section);
+                break;
+            }
+        }
     }
+
     public function showProductCardsWithPagination(): void
     {
-        $totalSecciones = count($this->secciones);
-        for ($i = 1; $i <= $totalSecciones; $i++) {
-            echo '<div>';
-            $this->showProductCards($i);
-            echo '<div class="pagination">';
-            echo '<button id="prev-btn' . $i . '">🔙</button>';
-            echo '<button id="next-btn' . $i . '">🔜</button>';
-            echo '</div>';
-            echo '</div>';
+        foreach ($this->secciones as $section) {
+            echo "<div>";
+            $this->showProductCards($section['id_unica']);
+            echo "<div class='pagination'>";
+            echo "<button id='prev-btn{$section['id_unica']}'>🔙</button>";
+            echo "<button id='next-btn{$section['id_unica']}'>🔜</button>";
+            echo "</div>";
+            echo "</div>";
         }
     }
 }

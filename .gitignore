@@ -1,5 +1,4 @@
 .env
 vendor/
 config/dataBD.php
-productos.json
 /nbproject/private/
