@@ -1,9 +1,12 @@
 <?php
 session_start();
-$token = $_SESSION['token'];
+$token = $_SESSION['token'] ?? '';
 
-use api\GET\supabaseGetSecciones as SupabaseSecciones;
-use api\GET\supabaseGetVinos as SupabaseVinos;
+use API\TABLES\GET\supabaseGetPaises as supabasePaises;
+use API\TABLES\GET\supabaseGetSecciones as supabaseSecciones;
+use API\TABLES\GET\supabaseGetVariedades as supabaseVariedades;
+use API\TABLES\GET\supabaseGetVinos as supabaseVinos;
+
 use modulos\tarjetas\generadorTarjetas as tarjetas;
 
 spl_autoload_register(function ($class) {
@@ -12,11 +15,15 @@ spl_autoload_register(function ($class) {
     }
 });
 
-$vinosApi = new SupabaseVinos();
-$vinos = $vinosApi->getProductos(); // array productos.json
+$paisesApi = new supabasePaises();
+$seccionesApi = new supabaseSecciones();
+$variedadesApi = new supabaseVariedades();
+$vinosApi = new supabaseVinos();
 
-$seccionesApi = new SupabaseSecciones();
+$paises = $paisesApi->getPaises(); // array paises
 $secciones = $seccionesApi->getSecciones(); // array secciones
+$variedades = $variedadesApi->getVariedades(); // array variedades
+$vinos = $vinosApi->getProductos(); // array productos
 
 $productCardGenerator = new tarjetas($vinos, $secciones);
 
@@ -29,7 +36,7 @@ $productCardGenerator = new tarjetas($vinos, $secciones);
     <link rel="icon" type="image/png" href="./img/image-removebg-preview.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@200&display=swap">
     <title>Vinos De La Villa</title>
     <!-- Estilos -->
@@ -79,7 +86,7 @@ $productCardGenerator = new tarjetas($vinos, $secciones);
                 <label for="query"></label>
                 <input type="search" id="query" name="query" class="main-header_input"
                     placeholder="What product are you looking for?">
-                <em class="fas fa-search" id="lupa"></em>
+                <i class="fa-solid fa-magnifying-glass" id="lupa"></i>
             </div>
         </form>
     </header>

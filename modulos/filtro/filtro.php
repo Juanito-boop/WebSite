@@ -4,14 +4,19 @@ require_once '../../api/GET/supabaseGetVariedades.php';
 require_once '../../api/GET/supabaseGetPaises.php';
 require_once '../../api/GET/supabaseGetSecciones.php';
 
+use API\TABLES\GET\supabaseGetSecciones as supaSecciones;
+use API\TABLES\GET\supabaseGetPaises as supaPaises;
+
 if (isset($dataGetVariedades)) {
     $resultsV = $dataGetVariedades;
 }
 if (isset($dataGetPaises)) {
     $resultsP = $dataGetPaises;
 }
-$resultados = new api\GET\supabaseGetSecciones();
-$resultsS = $resultados->getSecciones();
+
+$resultadosSecciones = new supaSecciones();
+$resultadosPaises = new supaPaises();
+$resultsS = $resultadosSecciones->getSecciones();
 
 function generarOpcionesVariedad(): void
 {
