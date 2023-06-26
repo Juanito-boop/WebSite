@@ -34,14 +34,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $data = json_decode($response, true);
     if (!empty($data)) {
         session_start();
-        $token = $data['access_token'];
-        $_SESSION['token'] = $token;
-        $admin = $data['is_super_admin'];
-        $_SESSION['admin'] = $admin;
-        if ($admin != null) {
-            header("Location: ../../index.php?token=$token&isSuperAdmin=true");
-        } else {
-            header("Location: ../../index.php?token=$token&isSuperAdmin=false");
+        if (isset($data['access_token']) && isset($data['user']['role'])) {
+            $rol = $data['user']['role'];
+            $token = $data['access_token'];
+            $_SESSION['admin'] = $rol;
+            $_SESSION['token'] = $token;
+            if ($rol === "Admin") {
+                header("Location: ../../index.php?token=$token&isSuperAdmin=true");
+            } else if ($rol === "authenticated") {
+                header("Location: ../../index.php?token=$token&isSuperAdmin=false");
+            }
         }
     } else {
         echo '<script>alert("Contraseña incorrecta / Usuario no encontrado."); window.location.href = "login.html";</script>';

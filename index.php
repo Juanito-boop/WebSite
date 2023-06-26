@@ -1,6 +1,7 @@
 <?php
 session_start();
 $token = $_SESSION['token'] ?? '';
+$isSuperAdmin = isset($_GET['isSuperAdmin']) ? $_GET['isSuperAdmin'] : false;
 
 use API\TABLES\GET\supabaseGetPaises as supabasePaises;
 use API\TABLES\GET\supabaseGetSecciones as supabaseSecciones;
@@ -68,14 +69,18 @@ $productCardGenerator = new tarjetas($vinos, $secciones);
                         <li>
                             <a href="index.php">Home</a>
                         </li>
-                        <li>
-                            <a
-                                href="modulos/carga-producto-bd/formulario-nuevo-producto.php?token=<?php echo $token; ?>">Nuevo
-                                Producto</a>
-                        </li>
-                        <li>
-                            <a href="modulos/roles/roles.html">Nuevo Rol</a>
-                        </li>
+                        <?php
+                        if ($isSuperAdmin === 'true') {
+                            echo '<li>
+                                        <a href="modulos/carga-producto-bd/formulario-nuevo-producto.php?token=' . $token . '">Nuevo Producto</a>
+                                </li>
+                                <li>
+                                        <a href="modulos/roles/roles.html">Nuevo Rol</a>
+                                </li>';
+                        } else {
+                            return null;
+                        }
+                        ?>
                     </ul>
                 </div>
                 <!-- Add cart button here -->
