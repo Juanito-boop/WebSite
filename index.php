@@ -1,12 +1,10 @@
 <?php
 session_start();
 $token = $_SESSION['token'] ?? '';
-$isSuperAdmin = isset($_GET['isSuperAdmin']) ? $_GET['isSuperAdmin'] : false;
+$isSuperAdmin = $_GET['isSuperAdmin'] ?? false;
 
-use API\TABLES\GET\supabaseGetPaises as supabasePaises;
-use API\TABLES\GET\supabaseGetSecciones as supabaseSecciones;
-use API\TABLES\GET\supabaseGetVariedades as supabaseVariedades;
-use API\TABLES\GET\supabaseGetVinos as supabaseVinos;
+use API\TABLES\supabaseSecciones;
+use API\TABLES\supabaseVinos;
 
 use modulos\tarjetas\generadorTarjetas as tarjetas;
 
@@ -16,15 +14,11 @@ spl_autoload_register(function ($class) {
     }
 });
 
-$paisesApi = new supabasePaises();
 $seccionesApi = new supabaseSecciones();
-$variedadesApi = new supabaseVariedades();
 $vinosApi = new supabaseVinos();
 
-$paises = $paisesApi->getPaises(); // array paises
 $secciones = $seccionesApi->getSecciones(); // array secciones
-$variedades = $variedadesApi->getVariedades(); // array variedades
-$vinos = $vinosApi->getProductos(); // array productos
+$vinos = $vinosApi->getVinos(); // array vinos
 
 $productCardGenerator = new tarjetas($vinos, $secciones);
 
@@ -78,7 +72,7 @@ $productCardGenerator = new tarjetas($vinos, $secciones);
                                         <a href="modulos/roles/roles.html">Nuevo Rol</a>
                                 </li>';
                         } else {
-                            return null;
+                            echo "";
                         }
                         ?>
                     </ul>
@@ -123,7 +117,7 @@ $productCardGenerator = new tarjetas($vinos, $secciones);
                 Bebidas
             </p>
             <p class="testimonial_txt">
-                OTRAS CARACTERÍSTICAS: Comodos Asientos, Brindamos el fino alcohol, Wi-Fi gratis, Aceptamos tarjetas de
+                OTRAS CARACTERÍSTICAS: Comodos Asientos, Brindamos el fino alcohol, wifi gratis, Aceptamos tarjetas de
                 crédito, Servicio de mesa, Reservas, Acceso para silla de ruedas, Vino y cerveza
             </p>
             <p>HORARIOS DE ATENCION :</p>
@@ -167,8 +161,7 @@ $productCardGenerator = new tarjetas($vinos, $secciones);
         <div class="footer_section">
             <h2 class="footer_title">UBICACION :</h2>
             <p class="footer_txt">
-                Carrera 9 #11-47 Segundo piso de La Galleta, a unos pasos de la plaza principal de Villa de Leyva
-                ,Boyaca, Colombia
+                Carrera 9 #11-47 Segundo piso de La Galleta, a unos pasos de la plaza principal de Villa de Leyva, Boyaca, Colombia
             </p>
         </div>
         <div class="footer_section">

@@ -1,22 +1,22 @@
 <?php
 
-require_once '../../api/GET/supabaseGetVariedades.php';
-require_once '../../api/GET/supabaseGetPaises.php';
-require_once '../../api/GET/supabaseGetSecciones.php';
+use API\TABLES\supabaseSecciones;
+use API\TABLES\supabaseVariedades;
+use API\TABLES\supabasePaises;
 
-use API\TABLES\GET\supabaseGetSecciones as supaSecciones;
-use API\TABLES\GET\supabaseGetPaises as supaPaises;
+spl_autoload_register(function ($class) {
+    if (file_exists(filename: str_replace(search: '\\', replace: '/', subject: $class) . '.php')) {
+        require_once str_replace(search: '\\', replace: '/', subject: $class) . '.php';
+    }
+});
 
-if (isset($dataGetVariedades)) {
-    $resultsV = $dataGetVariedades;
-}
-if (isset($dataGetPaises)) {
-    $resultsP = $dataGetPaises;
-}
+$getVariedades = new supabaseVariedades();
+$getPaises = new supabasePaises();
+$getSecciones = new supabaseSecciones();
 
-$resultadosSecciones = new supaSecciones();
-$resultadosPaises = new supaPaises();
-$resultsS = $resultadosSecciones->getSecciones();
+$resultsV = $getVariedades->getVariedades();
+$resultsP = $getPaises->getPaises();
+$resultsS = $getSecciones->getSecciones();
 
 function generarOpcionesVariedad(): void
 {
@@ -39,7 +39,7 @@ function generarOpcionesPaises(): void
         foreach ($resultsP as $result) {
             $divId = $result['id'];
             $divText = $result['pais'];
-            echo "<<option value='$divId' name='pais'>$divText</option>";
+            echo "<option value='$divId' name='pais'>$divText</option>";
         }
     }
 }

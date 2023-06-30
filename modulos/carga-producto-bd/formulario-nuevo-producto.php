@@ -1,6 +1,6 @@
 <?php
-require '../../api/GET/supabaseGetVariedades.php';
-require '../../api/GET/supabaseGetPaises.php';
+require '../../api/TABLES/supabaseVariedades.php';
+require '../../api/TABLES/supabasePaises.php';
 require '../filtro/filtro.php';
 ?>
 <!DOCTYPE html>
@@ -13,7 +13,7 @@ require '../filtro/filtro.php';
 </head>
 
 <body>
-    <form action="storage.php" id="formularioProducto" enctype="multipart/form-data" method="POST">
+    <form action="supa.php" id="formularioProducto" enctype="multipart/form-data" method="POST">
         <div class="contenedor-principal">
             <div class="contenedor-imagen">
                 <img id="imagePreview" src="#" alt="Vista previa de la imagen">

@@ -92,7 +92,7 @@ curl_close($ch);
                     <h1 class="main-header_title">LOS VINOS</h1>
                     <h2 class="main-header_subtitle"><i>Wine Store</i></h2>
                     <h2 class="main-header_subtitle">Villa de Leyva, Carrera 9 #11-47 Segundo piso</h2>
-                    <p class="main-header_txt">CONTACTANOS (+57) 3219085857 <em class="fas fa-phone"></em></h3>
+                    <p class="main-header_txt">CONTACTANOS (+57) 3219085857 <em class="fas fa-phone"></em></p>
                 </div>
                 <div class="icono-menu">
                     <img src="../../img/bars-solid.svg" id="icono-menu" alt="">

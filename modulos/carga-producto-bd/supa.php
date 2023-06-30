@@ -1,13 +1,35 @@
 <?php
-use Supabase\CreateClient;
 
-$client = new CreateClient('https://npuxpuelimayqrsmzqur.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5wdXhwdWVsaW1heXFyc216cXVyIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODU5MzIyOTMsImV4cCI6MjAwMTUwODI5M30.XBKmo8wZRwFviHAgQjgDbbE3D_vmaeqvEP4mKi6W3bU');
+use Dotenv\Dotenv;
 
-$bucketName = 'images';
+require __DIR__ . '/../../vendor/autoload.php';
 
-$objects = $client->storage->from($bucketName)->__getUrl;
+$dotenv = Dotenv::createUnsafeImmutable(__DIR__ . '/../../');
+$dotenv->load();
 
-foreach ($objects['data'] as $object) {
-    echo $object['name'] . "\n";
-}
-?>
+$bucket = 'my-bucket';
+$file = file_get_contents($_FILES['imagenes']['tmp_name']);
+$filename = $_FILES['imagenes']['name'];
+$projectId = $_ENV['ID_PROJECT'];
+
+$url = 'https://storage.supabase.io/storage/v1/object/' . $bucket . '/' . $filename . '?projectId=' . $projectId;
+
+$ch = curl_init();
+curl_setopt($ch, option: CURLOPT_URL, value: $url);
+curl_setopt($ch, option: CURLOPT_RETURNTRANSFER, value: true);
+curl_setopt($ch, option: CURLOPT_CUSTOMREQUEST, value: 'POST');
+curl_setopt($ch, option: CURLOPT_POSTFIELDS, value: $file);
+curl_setopt($ch, option: CURLOPT_HTTPHEADER, value: array(
+    'Content-Type: application/octet-stream',
+    'Authorization: Bearer ' . $_ENV['APIKEY']
+));
+
+$response = curl_exec($ch);
+curl_close($ch);
+
+// Decodificar la respuesta JSON
+$data = json_decode($response, true);
+
+// Obtener la URL del archivo recién subido
+$url = $data['url'];
+echo $url;

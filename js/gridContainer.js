@@ -60,8 +60,9 @@ function showItems(container, page) {
 }
 
 function updateItemsPerPage() {
-    var windowWidth = window.innerWidth;
+    let windowWidth = window.innerWidth;
 
+    let itemsPerPage;
     if (windowWidth > 1330) {
         itemsPerPage = 5;
     } else if (windowWidth >= 1070) {

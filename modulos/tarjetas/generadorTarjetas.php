@@ -72,8 +72,8 @@ class generadorTarjetas
     public function renderPaginationButtons(int $sectionId): void
     {
         echo "<div class='pagination'>";
-        echo "<button id='prev-btn{$sectionId}'><i class='fa-solid fa-arrow-left'></i></button>";
-        echo "<button id='next-btn{$sectionId}'><i class='fa-solid fa-arrow-right'></i></button>";
+        echo "<button id='prev-btn$sectionId'><i class='fa-solid fa-arrow-left'></i></button>";
+        echo "<button id='next-btn$sectionId'><i class='fa-solid fa-arrow-right'></i></button>";
         echo "</div>";
     }
 
