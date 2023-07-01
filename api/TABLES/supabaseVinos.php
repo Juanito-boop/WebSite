@@ -20,7 +20,8 @@ class supabaseVinos
      */
     public function getVinos(): array
     {
-        return $this->cURL->get(tabla: "vinos", parametros: "select=id,nombre,anada,bodega,region,precio,stock,tipo,nivel_alcohol,tipo_barrica,descripcion,notas_cata,temperatura_consumo,activo,id_unica,url_imagen,promocion,busqueda,maridaje,pais,paises(pais),id_categoria,secciones(nombre),variedad,variedades(variedad)&order=id.asc");
+        $parametrosConsulta = "select=id,nombre,anada,bodega,region,precio,stock,tipo,nivel_alcohol,tipo_barrica,descripcion,notas_cata,temperatura_consumo,activo,id_unica,url_imagen,promocion,busqueda,maridaje,pais,paises(pais),id_categoria,secciones(nombre),variedad,variedades(variedad)&order=id.asc";
+        return $this->cURL->get(tabla: "vinos", parametros: $parametrosConsulta);
     }
 
     /**
@@ -44,6 +45,6 @@ class supabaseVinos
      */
     public function deleteVino(string $columnaBuscar, mixed $valorEliminar): string
     {
-        return $this->cURL->delete(tabla: "vinos", columna: $columnaBuscar, valorColumna: $valorEliminar);
+        return $this->cURL->delete("vinos", $columnaBuscar,$valorEliminar);
     }
 }

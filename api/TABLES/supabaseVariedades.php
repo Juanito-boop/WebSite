@@ -44,7 +44,7 @@ class supabaseVariedades
      */
     public function deleteVariedad(int $id_unica): string
     {
-        return $this->cURL->delete(tabla: "variedades", columna: "id", valorColumna: $id_unica);
+        return $this->cURL->delete(tabla: "variedades", columnaBuscar: "id", valorEliminar: $id_unica);
     }
 }
 

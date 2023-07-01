@@ -1,7 +1,7 @@
 <?php
-require '../../api/TABLES/supabaseVariedades.php';
-require '../../api/TABLES/supabasePaises.php';
-require '../filtro/filtro.php';
+require_once __DIR__ . '/../../api/TABLES/supabaseVariedades.php';
+require_once __DIR__ . '/../../api/TABLES/supabasePaises.php';
+require_once __DIR__ . '/../filtro/filtro.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,56 +17,57 @@ require '../filtro/filtro.php';
         <div class="contenedor-principal">
             <div class="contenedor-imagen">
                 <img id="imagePreview" src="#" alt="Vista previa de la imagen">
-            </div class="informacion">
-            <div class="contenedor-informacion">
-                <label>
-                    <span>Carga la imagen del vino:</span>
-                    <input type="file" name="imagenes" id="imageInput" accept="image/*">
-                </label>
-                <label>
-                    <span>Nombre Vino:</span>
-                    <input type="text" class="informacion" name="nombre_vino">
-                </label>
-                <label>
-                    <span>Cepa:</span>
-                    <select class="informacion" id="variedades" name="variedad">
-                        <?php generarOpcionesVariedad(); ?>
-                    </select>
-                </label>
-                <label>
-                    <span>Tipo de vino:</span>
-                    <select name="tipos" id="tipos">
-                        <?php tipos(); ?>
-                    </select>
-                </label>
-                <label>
-                    <span>Año de Añada:</span>
-                    <input type="number" class="informacion" name="annada">
-                </label>
-                <label>
-                    <span>Bodega Vino:</span>
-                    <input type="text" class="informacion" name="bodega_vino">
-                </label>
-                <label>
-                    <span>Pais:</span>
-                    <select class="informacion" id="paises" name="pais">
-                        <?php generarOpcionesPaises(); ?>
-                    </select>
-                </label>
-                <label>
-                    <span>Region:</span>
-                    <input type="text" class="informacion" name="region">
-                </label>
-                <label>
-                    <span>Precio:</span>
-                    <input type="text" class="informacion" name="precio">
-                </label>
-                <label>
-                    <span>Nivel Alcohol:</span>
-                    <input type="number" class="informacion" name="nivel_alcohol" step="0.1">
-                </label>
             </div>
-            <div class="contenedor-informacion">
+            <div class="informacion-bucket">
+                <div class="contenedor-informacion">
+                    <label>
+                        <span>Carga la imagen del vino:</span>
+                        <input type="file" name="images" id="imageInput" accept="image/*">
+                    </label>
+                    <label>
+                        <span>Nombre Vino:</span>
+                        <input type="text" class="informacion" name="nombre_vino">
+                    </label>
+                    <label>
+                        <span>Cepa:</span>
+                        <select class="informacion" id="variedades" name="variedad">
+                            <?php generarOpcionesVariedad(); ?>
+                        </select>
+                    </label>
+                    <label>
+                        <span>Tipo de vino:</span>
+                        <select name="tipos" id="tipos">
+                            <?php tipos(); ?>
+                        </select>
+                    </label>
+                    <label>
+                        <span>Año de Añada:</span>
+                        <input type="number" class="informacion" name="annada">
+                    </label>
+                    <label>
+                        <span>Bodega Vino:</span>
+                        <input type="text" class="informacion" name="bodega_vino">
+                    </label>
+                    <label>
+                        <span>Pais:</span>
+                        <select class="informacion" id="paises" name="pais">
+                            <?php generarOpcionesPaises(); ?>
+                        </select>
+                    </label>
+                    <label>
+                        <span>Region:</span>
+                        <input type="text" class="informacion" name="region">
+                    </label>
+                    <label>
+                        <span>Precio:</span>
+                        <input type="text" class="informacion" name="precio">
+                    </label>
+                    <label>
+                        <span>Nivel Alcohol:</span>
+                        <input type="number" class="informacion" name="nivel_alcohol" step="0.1">
+                    </label>
+                </div>
+                <div class="contenedor-informacion">
                 <label>
                     <span>Tipo de Barrica:</span>
                     <input type="text" class="informacion" name="tipo_barrica">
@@ -97,17 +98,17 @@ require '../filtro/filtro.php';
                     <span>Stock Producto:</span>
                     <input type="number" class="informacion" name="stock">
                 </label>
-                <label>
-                    <span>Promoción:</span>
+                <label class="if">
+                    <span >Promoción:</span>
                     <input type="checkbox" name="promocion">
                 </label>
-                <label>
+                <label class="if">
                     <span>Activo:</span>
                     <input type="checkbox" name="activo">
                 </label>
                 <button type="submit" id="submitBtn">Cargar Producto</button>
             </div>
-        </div>
+            </div>
         </div>
     </form>
     <script src="../../js/renderizadoImagen.js"></script>

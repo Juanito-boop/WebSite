@@ -13,6 +13,7 @@ label span {
     width: 200px;
     /* Ajusta el ancho según tus necesidades */
     vertical-align: top;
+    text-align: center;
 }
 
 label input,
@@ -48,7 +49,7 @@ label textarea {
 .contenedor-principal input[type=number]:focus,
 .contenedor-principal textarea:focus {
     border-color: #2ecc71;
-    width: 280px;
+    width: 225px;
 }
 
 .contenedor-imagen {
@@ -64,6 +65,17 @@ label textarea {
     width: 50%;
     align-items: center;
     justify-content: center;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.informacion-bucket{
+    display: flex;
+    margin-top: 20px;
+}
+
+.if{
+    display: flex;
 }
 
 #imagePreview {

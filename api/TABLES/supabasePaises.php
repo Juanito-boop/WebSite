@@ -44,7 +44,7 @@ class supabasePaises
      */
     public function deletePais(string $columnaBuscar, mixed $valorEliminar): string
     {
-        return $this->cURL->delete(tabla: "paises", columna: $columnaBuscar, valorColumna: $valorEliminar);
+        return $this->cURL->delete(tabla: "paises", columnaBuscar: $columnaBuscar, valorEliminar: $valorEliminar);
     }
 
 }

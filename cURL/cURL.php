@@ -4,31 +4,26 @@ namespace cURL;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-use CurlHandle;
 use Dotenv\Dotenv as Dotenv;
 use Exception;
 
 $dotenv = Dotenv::createUnsafeImmutable(paths: __DIR__ . '/../');
 $dotenv->load();
 
-class cURL
-{
+class cURL {
     private static $instance;
     private string $apiKey;
     private string $id_project;
 
-    private function __construct()
-    {
+    private function __construct() {
         $this->apiKey = $_ENV['APIKEY'];
         $this->id_project = $_ENV['ID_PROJECT'];
     }
 
-    public static function getInstance(): cURL
-    {
+    public static function getInstance(): cURL {
         if (self::$instance === null) {
             self::$instance = new cURL();
         }
-
         return self::$instance;
     }
 
@@ -48,30 +43,24 @@ class cURL
      * @return array una matriz.
      * @throws Exception
      */
-    public function get(string $tabla, string $parametros): array
-    {
+    public function get(string $tabla, string $parametros): array {
         $ch = curl_init();
         $url = "https://$this->id_project.supabase.co/rest/v1/$tabla?$parametros";
-
-        curl_setopt($ch, option: CURLOPT_URL, value: $url);
-        curl_setopt($ch, option: CURLOPT_RETURNTRANSFER, value: true);
-        curl_setopt($ch, option: CURLOPT_CUSTOMREQUEST, value: 'GET');
-        curl_setopt($ch, option: CURLOPT_HTTPHEADER, value: [
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
+        curl_setopt($ch, CURLOPT_HTTPHEADER, [
             'apikey: ' . $this->apiKey,
             'Authorization: Bearer ' . $this->apiKey,
         ]);
-
         $response = curl_exec($ch);
-
         if (curl_errno($ch)) {
             $error = curl_error($ch);
             curl_close($ch);
-            throw new Exception(message: 'Error en la solicitud cURL: ' . $error);
+            throw new Exception('Error en la solicitud cURL: ' . $error);
         }
-
         curl_close($ch);
         $array = json_decode($response, true);
-
         return $array ?? [];
     }
 
@@ -80,7 +69,7 @@ class cURL
      * con los datos proporcionados y devuelve una alerta de JavaScript con el
      * código de respuesta HTTP.
      *
-     * @param string $tabla El parámetro "tabla" es una cadena que representa él
+     * @param string $tabla El parámetro "tabla" es una cadena que representa el
      * nombre de la tabla donde desea publicar los datos.
      * @param array $data El parámetro "data" es una matriz que contiene los datos
      * que se enviarán en la solicitud POST. Debe tener el formato requerido por la
@@ -91,15 +80,13 @@ class cURL
      * cURL.
      * @throws Exception
      */
-    public function post(string $tabla, array $data): string
-    {
+    public function post(string $tabla, array $data): string {
         $ch = curl_init();
         $url = "https://$this->id_project.supabase.co/rest/v1/$tabla";
-
-        curl_setopt($ch, option: CURLOPT_URL, value: $url);
-        curl_setopt($ch, option: CURLOPT_RETURNTRANSFER, value: true);
-        curl_setopt($ch, option: CURLOPT_CUSTOMREQUEST, value: 'POST');
-        curl_setopt(handle: $ch, option: CURLOPT_HTTPHEADER, value: [
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
+        curl_setopt($ch, CURLOPT_HTTPHEADER, [
             'apikey: ' . $this->apiKey,
             'Authorization: Bearer ' . $this->apiKey,
             'Content-Type: application/json',
@@ -127,16 +114,14 @@ class cURL
      * El mensaje incluye el código de respuesta HTTP de la solicitud cURL.
      * @throws Exception
      */
-    public function patch(string $tabla, string $columnaBuscar, mixed $valorBuscar, mixed $valorCambiar): string
-    {
+    public function patch(string $tabla, string $columnaBuscar, mixed $valorBuscar, mixed $valorCambiar): string {
         $ch = curl_init();
         $url = "https://$this->id_project.supabase.co/rest/v1/$tabla?$columnaBuscar=eq." . urlencode($valorBuscar);
         $dataPatch = json_encode([$columnaBuscar => $valorCambiar]);
-
-        curl_setopt($ch, option: CURLOPT_URL, value: $url);
-        curl_setopt($ch, option: CURLOPT_RETURNTRANSFER, value: true);
-        curl_setopt($ch, option: CURLOPT_CUSTOMREQUEST, value: 'PATCH');
-        curl_setopt($ch, option: CURLOPT_HTTPHEADER, value: [
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PATCH');
+        curl_setopt($ch, CURLOPT_HTTPHEADER, [
             'apikey: ' . $this->apiKey,
             'Authorization: Bearer ' . $this->apiKey,
             'Content-Type: application/json',
@@ -165,54 +150,45 @@ class cURL
      * DELETE.
      * @throws Exception
      */
-    public function delete(string $tabla, string $columna, int $valorColumna): string
-    {
+    public function delete(string $tabla, string $columnaBuscar, mixed $valorEliminar): string {
         $ch = curl_init();
-        $url = "https://$this->id_project.supabase.co/rest/v1/$tabla?$columna=eq.$valorColumna";
-
-        curl_setopt($ch, option: CURLOPT_URL, value: $url);
-        curl_setopt($ch, option: CURLOPT_RETURNTRANSFER, value: true);
-        curl_setopt($ch, option: CURLOPT_CUSTOMREQUEST, value: 'DELETE');
-        curl_setopt($ch, option: CURLOPT_HTTPHEADER, value: [
+        $url = "https://$this->id_project.supabase.co/rest/v1/$tabla?$columnaBuscar=eq." . urlencode($valorEliminar);
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'DELETE');
+        curl_setopt($ch, CURLOPT_HTTPHEADER, [
             'apikey: ' . $this->apiKey,
             'Authorization: Bearer ' . $this->apiKey,
         ]);
-
-        curl_exec($ch);
-        $http_response = curl_getinfo($ch, option: CURLINFO_HTTP_CODE);
-
-        if (curl_errno($ch)) {
-            $error = curl_error($ch);
-            curl_close($ch);
-            throw new Exception(message: 'Error en la solicitud cURL: ' . $error);
-        }
-
-        curl_close($ch);
-
-        return '<script> alert("Correcto ' . $http_response . '")</script>';
+        return $this->extracted($ch);
     }
 
     /**
-     * @param CurlHandle|false $ch
-     * @param array $data
-     * @return string
+     * La función `extracted` es una función auxiliar que se utiliza para
+     * ejecutar una solicitud cURL y devolver un mensaje de alerta de JavaScript
+     * con el código de respuesta HTTP recibido.
+     *
+     * @param resource $ch El parámetro "ch" es el recurso cURL que representa la
+     * solicitud HTTP.
+     * @param string|null $data El parámetro "data" es una cadena JSON que contiene los
+     * datos que se enviarán en la solicitud cURL. Si no se proporciona, se
+     * establecerá en null.
+     *
+     * @return string una cadena que contiene un mensaje de alerta de JavaScript.
+     * El mensaje incluye el código de respuesta HTTP recibido de la solicitud
+     * cURL.
      * @throws Exception
      */
-    public function extracted(CurlHandle|false $ch, array $data): string
-    {
-        curl_setopt($ch, option: CURLOPT_POSTFIELDS, value: $data);
-
-        curl_exec($ch);
-        $http_response = curl_getinfo($ch, option: CURLINFO_HTTP_CODE);
-
+    private function extracted($ch, ?string $data = null): string {
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+        $response = curl_exec($ch);
         if (curl_errno($ch)) {
             $error = curl_error($ch);
             curl_close($ch);
-            throw new Exception(message: 'Error en la solicitud cURL: ' . $error);
+            throw new Exception('Error en la solicitud cURL: ' . $error);
         }
-
+        $statusCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         curl_close($ch);
-
-        return '<script> alert("Correcto ' . $http_response . '")</script>';
+        return "<script>alert('Código de respuesta HTTP: $statusCode');</script>";
     }
 }

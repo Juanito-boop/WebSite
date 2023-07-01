@@ -4,11 +4,9 @@ use API\TABLES\supabaseSecciones;
 use API\TABLES\supabaseVariedades;
 use API\TABLES\supabasePaises;
 
-spl_autoload_register(function ($class) {
-    if (file_exists(filename: str_replace(search: '\\', replace: '/', subject: $class) . '.php')) {
-        require_once str_replace(search: '\\', replace: '/', subject: $class) . '.php';
-    }
-});
+require_once '../../api/TABLES/supabaseVariedades.php';
+require_once '../../api/TABLES/supabasePaises.php';
+require_once '../../api/TABLES/supabaseSecciones.php';
 
 $getVariedades = new supabaseVariedades();
 $getPaises = new supabasePaises();

@@ -20,7 +20,8 @@ class supabaseSecciones
      */
     public function getSecciones(): array
     {
-        return $this->cURL->get(tabla: "secciones", parametros: "id_unica=neq.4&select=*");
+        $parametrosConsulta = "id_unica=neq.4&select=*";
+        return $this->cURL->get(tabla: "secciones", parametros: $parametrosConsulta);
     }
 
     /**
