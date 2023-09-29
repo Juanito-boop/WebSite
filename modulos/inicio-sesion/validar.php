@@ -1,51 +1,34 @@
 <?php
 
-use Dotenv\Dotenv as Dotenv;
+use cURL\auth;
 
-require_once '../../vendor/autoload.php';
+require_once __DIR__ . '/../../cURL/auth.php';
 
-$dotenv = Dotenv::createUnsafeImmutable('../../');
-$dotenv->load();
+$auth = auth::getInstance();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-    $email = $_POST['email'];
-    $password = $_POST['pass'];
-    $data = [
-        'email' => $email,
-        'password' => $password,
-    ];
-    $json_data = json_encode($data);
+    try {
+        $email = $_POST['email'];
+        $password = $_POST['pass'];
 
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, 'https://' . $_ENV['ID_PROJECT'] . '.supabase.co/auth/v1/token?grant_type=password');
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
-    curl_setopt($ch, CURLOPT_HTTPHEADER, [
-        'apikey: ' . $_ENV['APIKEY'],
-        'Content-Type: application/json',
-    ]);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, $json_data);
+        $data = $auth->USER_LOGIN_MAIL_PASS($email, $password);
 
-    $response = curl_exec($ch);
+        if (!empty($data)) {
+            session_start();
 
-    curl_close($ch);
-
-    $data = json_decode($response, true);
-    if (!empty($data)) {
-        session_start();
-        if (isset($data['access_token']) && isset($data['user']['role'])) {
-            $rol = $data['user']['role'];
-            $token = $data['access_token'];
-            $_SESSION['admin'] = $rol;
-            $_SESSION['token'] = $token;
-            if ($rol === "Admin") {
-                header("Location: ../../index.php?token=$token&isSuperAdmin=true");
-            } else if ($rol === "authenticated") {
-                header("Location: ../../index.php?token=$token&isSuperAdmin=false");
+            if (isset($data['access_token']) && isset($data['user']['role'])) {
+                $rol = $data['user']['role'];
+                $token = $data['access_token'];
+                $_SESSION['admin'] = $rol; // Guardar el rol en la sesión
+                $_SESSION['token'] = $token; // Guardar el token en la sesión
+                header("Location: ../../index.php");
             }
+        } else {
+            echo '<script>alert("Contraseña incorrecta / Usuario no encontrado."); window.location.href = "login.html";</script>';
         }
-    } else {
-        echo '<script>alert("Contraseña incorrecta / Usuario no encontrado."); window.location.href = "login.html";</script>';
+    } catch (Exception $e) {
+        // Manejo de excepciones en caso de error
+        echo "Error: " . $e->getMessage();
     }
 }

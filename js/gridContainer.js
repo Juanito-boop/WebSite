@@ -16,6 +16,26 @@ let currentPage1 = 1;
 let currentPage2 = 1;
 let currentPage3 = 1;
 
+let itemsPerPage;
+
+function updateItemsPerPage() {
+    let windowWidth = window.innerWidth;
+
+
+    if (windowWidth > 1330) {
+        itemsPerPage = 5;
+    } else if (windowWidth >= 1070) {
+        itemsPerPage = 4;
+    } else {
+        itemsPerPage = 3;
+    }
+
+    currentPage1 = showItems(container1, currentPage1);
+    currentPage2 = showItems(container2, currentPage2);
+    currentPage3 = showItems(container3, currentPage3);
+}
+
+
 function calculateTotalPages(container) {
     const items = Array.from(container.children).filter(child => child.classList.contains('product'));
     return Math.ceil(items.length / itemsPerPage);
@@ -59,22 +79,6 @@ function showItems(container, page) {
     return page;
 }
 
-function updateItemsPerPage() {
-    let windowWidth = window.innerWidth;
-
-    let itemsPerPage;
-    if (windowWidth > 1330) {
-        itemsPerPage = 5;
-    } else if (windowWidth >= 1070) {
-        itemsPerPage = 4;
-    } else {
-        itemsPerPage = 3;
-    }
-
-    currentPage1 = showItems(container1, currentPage1);
-    currentPage2 = showItems(container2, currentPage2);
-    currentPage3 = showItems(container3, currentPage3);
-}
 
 window.addEventListener('resize', updateItemsPerPage);
 

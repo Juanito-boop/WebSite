@@ -2,17 +2,17 @@
 
 namespace API\TABLES;
 
-require_once __DIR__ . '/../../cURL/cURL.php';
+require_once __DIR__ . '/../../cURL/rest.php';
 
-use cURL\cURL as curl;
+use cURL\rest;
 use Exception;
 
 class supabasePaises
 {
-    private curl $cURL;
+    private rest $cURL;
     public function __construct()
     {
-        $this->cURL = curl::getInstance();
+        $this->cURL = rest::getInstance();
     }
 
     /**

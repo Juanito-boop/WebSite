@@ -1,39 +1,49 @@
-import { createClient } from '../node_modules/@supabase/supabase-js/dist/main/index.js';
+import { Upload } from 'tus-js-client'
 
-const url = 'https://npuxpuelimayqrsmzqur.supabase.co';
-const apiKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5wdXhwdWVsaW1heXFyc216cXVyIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODU5MzIyOTMsImV4cCI6MjAwMTUwODI5M30.XBKmo8wZRwFviHAgQjgDbbE3D_vmaeqvEP4mKi6W3bU';
+const projectId = ''
+const token = ''
 
-const supabase = createClient(url, apiKey);
-
-var formulario = document.getElementById('formularioProducto');
-const imageInput = formulario.getElementById('imageInput');
-
-const imageFile = imageInput.files[0]
-const fileName = imageFile.name
-
-formulario.addEventListener('submit', function (event) {
-    event.preventDefault();
-    alert('Subiendo imagen... :10');
-    uploadFile(imageFile);
-});
-
-async function uploadFile(file) {
-    const { data, error } = await supabase
-        .storage
-        .from('images')
-        .upload("public/" + fileName, imageFile, {
-            cacheControl: '3600',
-            upsert: false
+function uploadFile(bucketName, fileName, file) {
+    return new Promise((resolve, reject) => {
+        var upload = new Upload(file, {
+            endpoint: `https://${projectId}.supabase.co/storage/v1/upload/resumable`,
+            retryDelays: [0, 3000, 5000, 10000, 20000],
+            headers: {
+                authorization: `Bearer ${token}`,
+                'x-upsert': 'true', // optionally set upsert to true to overwrite existing files
+            },
+            uploadDataDuringCreation: true,
+            metadata: {
+                bucketName: bucketName,
+                objectName: fileName,
+                contentType: 'image/png',
+                cacheControl: 3600,
+            },
+            chunkSize: 6 * 1024 * 1024, // NOTE: it must be set to 6MB (for now) do not change it
+            onError: function (error) {
+                console.log('Failed because: ' + error)
+                reject(error)
+            },
+            onProgress: function (bytesUploaded, bytesTotal) {
+                var percentage = ((bytesUploaded / bytesTotal) * 100).toFixed(2)
+                console.log(bytesUploaded, bytesTotal, percentage + '%')
+            },
+            onSuccess: function () {
+                // console.log(upload)
+                console.log('Download %s from %s', upload.file.name, upload.url)
+                resolve()
+            },
         })
-    if (!error) {
-        var inputImagen = document.createElement("input");
-        inputImagen.type = "hidden";
-        inputImagen.name = "imagenes";
-        inputImagen.value = imageInput.value;
-        formulario.appendChild(inputImagen);
 
-        formulario.submit();
-    } else {
-        alert('Error al subir la imagen :31')
-    }
+        // Check if there are any previous uploads to continue.
+        return upload.findPreviousUploads().then(function (previousUploads) {
+            // Found previous uploads so we select the first one.
+            if (previousUploads.length) {
+                upload.resumeFromPreviousUpload(previousUploads[0])
+            }
+
+            // Start the upload
+            upload.start()
+        })
+    })
 }

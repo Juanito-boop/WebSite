@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <link rel="icon" type="image/png" href="./img/image-removebg-preview.svg">
+    <link rel="icon" type="image/png" href="../../img/image-removebg-preview.svg">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,12 +14,22 @@
 <!--Este es un formulario para iniciar sesión en una página web-->
 
 <body>
-    <form class="box" action="validar.php" method="POST">
-        <h1>Inicio de Sesion</h1>
+    <form class="box" style="display: block;" action="validar.php" method="POST">
+        <h1>Inicio de sesion correo y clave</h1>
         <!--Campo para ingresar el nombre de correo-->
         <input type="text" id="email" name="email" placeholder="Email" required>
         <!--Campo para ingresar la contraseña-->
         <input type="password" id="password" name="pass" placeholder="Password" required>
+        <!--Botón para enviar los datos-->
+        <button type="submit">Login</button>
+        <!--Enlace para redirigir al usuario a la página de registro si no tiene una cuenta-->
+        <a href="../registro/registro.html">¿No tienes una cuenta? Regístrate aquí<br></a>
+        <a class="gren" href="../../index.php"><em class="fas fa-home"></em></a>
+    </form>
+    <form class="box" style="display: none;" action="magic-link.php" method="POST">
+        <h1>Inicio de sesion con magic link</h1>
+        <!--Campo para ingresar el correo-->
+        <input type="text" id="emaila" name="email" placeholder="Email" required>
         <!--Botón para enviar los datos-->
         <button type="submit">Login</button>
         <!--Enlace para redirigir al usuario a la página de registro si no tiene una cuenta-->

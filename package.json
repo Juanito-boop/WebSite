@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "@supabase/supabase-js": "^2.26.0",
+    "@uppy/core": "^3.3.0",
+    "@uppy/dashboard": "^3.4.1",
+    "@uppy/tus": "^3.1.2",
+    "dotenv": "^16.3.1",
+    "tus-js-client": "^3.1.0"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.3.3"
+  }
+}
